@@ -1,0 +1,15 @@
+.ingredients-list {
+  font-weight: bolder;
+  * {
+    list-style: none;
+  }
+  &__item {
+    font-weight: initial;
+    &:first-child {
+      margin-top: 20px;
+    }
+    &-checkbox {
+      margin-right: 5px;
+    }
+  }
+}

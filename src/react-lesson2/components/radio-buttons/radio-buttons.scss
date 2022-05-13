@@ -1,0 +1,23 @@
+.radio {
+  font-weight: bolder;
+
+  &-list {
+    margin-top: 20px;
+    font-weight: initial;
+    display: flex;
+    width: 250px;
+    justify-content: space-between;
+
+    &__item {
+      list-style: none;
+      &-label {
+        align-items: center;
+        display: flex;
+        white-space: nowrap;
+      }
+      &-radio {
+        margin-right: 5px;
+      }
+    }
+  }
+}

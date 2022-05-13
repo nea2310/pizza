@@ -1,0 +1,8 @@
+.product-page {
+  display: flex;
+  flex-direction: column;
+
+  &__order-button {
+    margin: 20px auto;
+  }
+}
