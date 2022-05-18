@@ -7,11 +7,8 @@ const OPT = require('./optimization');
 
 const { merge } = require('webpack-merge');
 const devServ = require('./webpack.devServer.js');
-let confE = null;
 
-//let pluginM = ['@plugins/java-import.ts'];
 let demoM = [];
-
 if (DP.isProd) {
   demoM.push('./index.tsx');
 } else {
@@ -19,30 +16,16 @@ if (DP.isProd) {
   demoM.push('./index.tsx');
 }
 
-if (DP.isPlugin) {
-  confE = {
-    //	plugin: pluginM
-  };
-} else {
-  confE = {
-    //	plugin: pluginM,
-    demo: demoM,
-  };
-}
-
 let pubPath;
 if (DP.isAbsPath) pubPath = PATHS.public;
 
 module.exports = merge(devServ, {
 
-
-
-  // target: DP.isDev ? 'web' : 'browserslist',
   target: 'web',
-  //devtool: DP.isDev ? 'eval-cheap-module-source-map' : 'source-map', //  (карта для браузеров) 
-  devtool: DP.isDev ? false : false,
-
-  entry: confE,
+  devtool: false,
+  entry: {
+    demo: demoM,
+  },
 
   context: PATHS.src, // корень исходников
   mode: DP.isDev ? 'development' : 'production',   // собираем проект в режиме разработки
@@ -60,15 +43,12 @@ module.exports = merge(devServ, {
       '@styles': `${PATHS.src}${PATHS.assets}styles`,
       '@typescript': `${PATHS.src}${PATHS.assets}ts`,
       '@img': `${PATHS.src}${PATHS.assets}images`,
-      '@pag': `${PATHS.src}\\pages`,
-      '@com': `${PATHS.src}\\components`,
       '@': PATHS.src,
-      comp: PATHS.components,
-      '~': path.join(__dirname, '../src/react-lesson2'),
-      '~c': path.join(__dirname, '../src/react-lesson2/components'),
-      '~p': path.join(__dirname, '../src/react-lesson2/pages'),
-      '~s': path.join(__dirname, '../src/react-lesson2/store'),
-      '~r': path.join(__dirname, '../src/react-lesson2/routes')
+      '~': path.join(__dirname, '../src/react-APP'),
+      '~c': path.join(__dirname, '../src/react-APP/components'),
+      '~p': path.join(__dirname, '../src/react-APP/pages'),
+      '~s': path.join(__dirname, '../src/react-APP/store'),
+      '~r': path.join(__dirname, '../src/react-APP/routes')
     }
   },
 

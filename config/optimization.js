@@ -6,7 +6,7 @@ const DP = require('./isDev');
 module.exports = {
   optimization: () => {
     const config = {  // позволяет лишний код который используеться в нескольких js файлах вынести в один отдельный файл тем самым минимизируя основные.
-      runtimeChunk: DP.isPlugin ? undefined : 'single',
+      runtimeChunk: 'single',
       splitChunks: {  // создаються файлы vendors
         chunks: 'all' // создаёт отдельные вендор файлы в которые кидает весь лишний код, при этом наш бандел файл перестаёт весить полтора мегобайта :). 
       }

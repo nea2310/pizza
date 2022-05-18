@@ -11,16 +11,10 @@ module.exports = {
 
     if (ext === 'css') {
       dir = `${PATHS.assets}css/`;
-    } else
-      if (ext === 'js') {
-        dir = `${PATHS.assets}js/`;
-      }
+    }
     dir = dir.replace(/\//g, '\\');
 
-    if (DP.isMulti)
-      dir = dir.replace(/^\\/, '');
-
-    if (DP.isDev || DP.isPlugin) {
+    if (DP.isDev) {
       return `${dir}[name].${ext}`;
     }
     else {

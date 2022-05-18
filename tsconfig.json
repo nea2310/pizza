@@ -31,19 +31,19 @@
     "noImplicitAny": true, // запретить неявные any
     "paths": {
       "~c/*": [
-        "src/react-lesson2/components/*"
+        "src/react-APP/components/*"
       ],
       "~p/*": [
-        "src/react-lesson2/pages/*"
+        "src/react-APP/pages/*"
       ],
       "~r*": [
-        "src/react-lesson2/routes/*"
+        "src/react-APP/routes/*"
       ],
       "~s/*": [
-        "src/react-lesson2/store/*"
+        "src/react-APP/store/*"
       ],
       "~/*": [
-        "src/react-lesson2/*"
+        "src/react-APP/*"
       ],
     },
   },
