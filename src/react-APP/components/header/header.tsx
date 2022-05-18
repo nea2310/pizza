@@ -70,9 +70,9 @@ const Header = () => {
   const list: IRoutesMap =
   {
     pizzaItems: { name: 'Главная', img: pizzaItemsIMG },
-    cart: { name: 'Корзина' },
-    order: { name: 'Заказать сейчас' },
-    home: { name: 'OLD' },
+    about: { name: 'О нас' },
+    deals: { name: 'Акции' },
+    blog: { name: 'Блог' },
   };
   for (let key in routesMap) {
     if (key in list) {

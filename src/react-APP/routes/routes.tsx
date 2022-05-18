@@ -8,6 +8,9 @@ import Product from '~p/product/product';
 import LoginPage from '~p/login/login';
 import PizzaItems from '~p/pizzaItems/pizzaItems';
 import RegisterPage from '~p/register/register';
+import Blog from '~p/blog/blog';
+import AboutUs from '~p/about/about';
+import Deals from '~p/deals/deals';
 
 interface IRoute {
   name?: string;
@@ -69,6 +72,24 @@ let routes: IRoute[] = [
     name: 'register',
     url: '/register',
     component: <RegisterPage />,
+    exact: true
+  },
+  {
+    name: 'about',
+    url: '/about',
+    component: <AboutUs />,
+    exact: true
+  },
+  {
+    name: 'deals',
+    url: '/deals',
+    component: <Deals />,
+    exact: true
+  },
+  {
+    name: 'blog',
+    url: '/blog',
+    component: <Blog />,
     exact: true
   },
 

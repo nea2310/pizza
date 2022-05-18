@@ -1,19 +1,41 @@
+$footerHeight: 300px;
 .footer {
   * {
     list-style: none;
     text-decoration: none;
     margin: 0;
     padding: 0;
-
-    &:hover,
-    &:visited {
+    a:hover,
+    a:visited {
       color: $colorWheat;
     }
   }
   background-color: #242222;
-  background-image: url("./img/background.jpg");
-  background-repeat: no-repeat;
-  background-size: 30%;
-  height: 300px;
-  color: $colorRed;
+
+  min-height: $footerHeight;
+  display: flex;
+  color: $colorWheat;
+  &__image {
+    width: 30%;
+    background-image: url("./img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+  }
+  &__info {
+    font-weight: bolder;
+    padding: 20px;
+    width: 70%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    gap: 15%;
+    &-column-header {
+      text-transform: uppercase;
+    }
+    &-column-block {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }

@@ -59,6 +59,11 @@ export const UserInfo = (props: Props) => {
           <li className="user-info__link-wrapper">
             <a
               className="user-info__link"
+              onClick={() => true}>Хочу попробовать</a>
+          </li>
+          <li className="user-info__link-wrapper">
+            <a
+              className="user-info__link"
               onClick={() => true}>Мои баллы</a>
           </li>
           <li className="user-info__link-wrapper">
