@@ -22,7 +22,7 @@ if (DP.isAbsPath) pubPath = PATHS.public;
 module.exports = merge(devServ, {
 
   target: 'web',
-  devtool: false,
+  devtool: 'source-map',
   entry: {
     demo: demoM,
   },

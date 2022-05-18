@@ -1,15 +1,14 @@
+const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // Он создает файл CSS для каждого файла JS, который содержит CSS
 // работа с файлами стилей
-
 module.exports = {
   cssLoaders: extra => {
     const loaders = [
       MiniCssExtractPlugin.loader,
-      //'cache-loader',
       {
         loader: 'css-loader',
         options: {
-          sourceMap: false,
+          sourceMap: true,
         }
       },
       {
@@ -43,8 +42,19 @@ module.exports = {
       }
     ];
 
+    const processGlob = {
+      loader: 'sass-resources-loader',
+      options: {
+        resources: [
+          path.join(__dirname, '../src/assets/styles/glob.scss'),
+        ],
+      },
+    };
+
+
     if (extra) {
       loaders.push(extra);
+      loaders.push(processGlob);
     }
 
     return loaders;

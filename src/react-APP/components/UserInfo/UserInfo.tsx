@@ -50,30 +50,30 @@ export const UserInfo = (props: Props) => {
     <div ref={node}>
       <Avatar open={open} setOpen={setOpen} />
       <StyledMenu
-        className="userinfo"
+        className="user-info"
         open={open}>
         <span
-          className="userinfo__name">{`${props.username} ${props.usersurname}`}
+          className="user-info__name">{`${props.username} ${props.usersurname}`}
         </span>
-        <ul className="userinfo__links">
-          <li className="userinfo__link-wrapper">
+        <ul className="user-info__links">
+          <li className="user-info__link-wrapper">
             <a
-              className="userinfo__link"
+              className="user-info__link"
               onClick={() => true}>Мои баллы</a>
           </li>
-          <li className="userinfo__link-wrapper">
+          <li className="user-info__link-wrapper">
             <a
-              className="userinfo__link"
+              className="user-info__link"
               onClick={() => true}>Мои адреса доставки</a>
           </li>
-          <li className="userinfo__link-wrapper">
+          <li className="user-info__link-wrapper">
             <a
-              className="userinfo__link"
+              className="user-info__link"
               onClick={() => true}>Пригласить друга</a>
           </li>
         </ul>
         <button
-          className='userinfo__exit'
+          className='user-info__exit'
           onClick={() => {
             dispatch(userUnset());
           }}

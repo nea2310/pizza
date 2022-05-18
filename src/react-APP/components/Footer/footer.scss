@@ -7,14 +7,13 @@
 
     &:hover,
     &:visited {
-      color: rgb(255, 245, 226);
+      color: $colorWheat;
     }
   }
   background-color: #242222;
-  background-image: url('./img/background.jpg');
+  background-image: url("./img/background.jpg");
   background-repeat: no-repeat;
   background-size: 30%;
   height: 300px;
-  color: #d1481e;
-  
+  color: $colorRed;
 }

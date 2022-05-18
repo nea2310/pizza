@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Routes }
   from 'react-router-dom';
 import routes, { routesMap } from '~r/routes';
-import './app-lesson4.scss';
+import './app.scss';
 
 import { connect } from 'react-redux';
 import { productsFetchData, productsFetchDataFS } from '~s/actions/products';

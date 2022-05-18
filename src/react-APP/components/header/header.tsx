@@ -85,12 +85,10 @@ const Header = () => {
           <NavLink
             className='header__nav-link'
             to={routesMap[key]}>
-            <div className='header__nav-img-wrapper'>
-              <img
-                className='header__nav-img'
-                src={list[key].img} alt="" />
-              {name}
-            </div>
+            <img
+              className='header__nav-img'
+              src={list[key].img} alt="" />
+            {name}
           </NavLink>
         </li>
       );
@@ -101,19 +99,17 @@ const Header = () => {
 
 
   return (
-    <>
-      <header className='header'>
-        <nav className='header__nav'>
-          <ul className='header__nav-list'>
-            {menuItems}
-          </ul>
-        </nav>
-        <div className='header__user'>
-          {loginForm}
-          {cart}
-        </div>
-      </header>
-    </>
+    <header className='header'>
+      <nav className='header__nav'>
+        <ul className='header__nav-list'>
+          {menuItems}
+        </ul>
+      </nav>
+      <div className='header__user'>
+        {loginForm}
+        {cart}
+      </div>
+    </header>
   );
 
 
