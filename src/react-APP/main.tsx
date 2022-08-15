@@ -14,7 +14,7 @@ let store = createStore(
 );
 
 
-export function lesson2() {
+export function initApp() {
   ReactDom.render(
     //пробрасываем склад в провайдер
     <Provider store={store}>
