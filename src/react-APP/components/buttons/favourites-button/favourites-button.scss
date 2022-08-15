@@ -3,17 +3,7 @@
   width: 30px;
   background: transparent;
   border: none;
-  * {
-    list-style: none;
-    text-decoration: none;
-    margin: 0;
-    padding: 0;
 
-    &:hover,
-    &:visited {
-      color: rgb(31, 31, 26);
-    }
-  }
   &_in-fav {
     fill: red;
   }

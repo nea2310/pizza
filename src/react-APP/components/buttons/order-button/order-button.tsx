@@ -1,18 +1,8 @@
-import React, { Dispatch } from 'react';
+import React from 'react';
 import './order-button.scss';
 import { Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { userUpdateFavItems } from '~s/actions/user';
 import { cartAddItem, cartRemoveItem } from '~s/actions/cart';
-
-import {
-  ICartFetchDataSuccess,
-  ICartAddDataSuccess,
-  ICartChangeItemSuccess,
-  ICartRemoveItemSuccess,
-  ICartItemsRaw
-} from '~/interface';
-
 
 export default function (props: any) {
   const dispatch = useDispatch();

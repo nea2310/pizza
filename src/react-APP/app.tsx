@@ -66,15 +66,6 @@ const App = () => {
     dispatch(userFetch());
   }, []);
 
-
-  // useEffect(() => {
-  // if (userDocID)
-  //   dispatch(cartFetchData(userDocID));
-
-  // });
-
-
-
   // eslint-disable-next-line no-undef
   const menuItems: JSX.Element[] = [];
 
