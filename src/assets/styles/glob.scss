@@ -6,6 +6,7 @@ $md: 991px;
 $lg: 1199px;
 $xl: 1440px;
 $xxl: 1920px;
+$xxxl: 2400px;
 
 $colorWheat: rgb(255, 245, 226);
 $colorWhite: rgb(255, 255, 255);
@@ -13,6 +14,20 @@ $colorRed: #d1481e;
 $colorGreen: rgb(113, 255, 161);
 
 /***** Mixins *****/
+
+@mixin visually-hidden() {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
+@mixin wrapper-size() {
+  max-width: $xxxl;
+  width: 100%;
+  margin: auto;
+}
 
 @mixin button-reset-style() {
   background: none;
@@ -31,6 +46,14 @@ $colorGreen: rgb(113, 255, 161);
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+@mixin a-reset-style() {
+  text-decoration: none;
+  &:hover,
+  &:visited {
+    color: $colorWheat;
+  }
 }
 
 @mixin font-h1() {

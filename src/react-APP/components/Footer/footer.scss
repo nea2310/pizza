@@ -1,20 +1,16 @@
 $footerHeight: 300px;
 .footer {
-  * {
-    list-style: none;
-    text-decoration: none;
-    margin: 0;
-    padding: 0;
-    a:hover,
-    a:visited {
-      color: $colorWheat;
-    }
-  }
   background-color: #242222;
 
   min-height: $footerHeight;
   display: flex;
   color: $colorWheat;
+
+  &__wrapper {
+    @include wrapper-size;
+    display: flex;
+  }
+
   &__image {
     width: 30%;
     background-image: url("./img/background.jpg");

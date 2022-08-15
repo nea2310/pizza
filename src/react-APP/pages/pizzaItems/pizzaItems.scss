@@ -1,11 +1,12 @@
 .pizza-items {
+  @include wrapper-size;
   padding: 40px;
   display: flex;
   align-items: flex-start;
 
   &__product-cards {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     width: 100%;
     gap: 20px;
   }
@@ -14,7 +15,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 100%;
     padding: 10px;
     border: 1px solid rgba(0, 0, 0, 0.12);
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
