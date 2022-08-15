@@ -1,20 +1,12 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { observer, inject } from 'mobx-react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
-import './product.scss';
 import E404 from '~c/errors/404/404';
-import { IProps, IProduct } from '~/interface.d';
 import { withParams } from '~/wrapper';
 import ProductSingle from '~c/cards/product-single/product-single';
 import { routesMap } from '~r/routes';
-import { userUpdateFavItems } from '~s/actions/user';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import OrderButton from '~c/buttons/order-button/order-button';
 import './product.scss';
-interface Props extends IProps {
-  params: { [id: string]: number };
-}
 
 const Product = (data: any) => {
   const props: any = useSelector(state => {

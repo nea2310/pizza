@@ -8,10 +8,30 @@ $xl: 1440px;
 $xxl: 1920px;
 
 $colorWheat: rgb(255, 245, 226);
+$colorWhite: rgb(255, 255, 255);
 $colorRed: #d1481e;
 $colorGreen: rgb(113, 255, 161);
 
 /***** Mixins *****/
+
+@mixin button-reset-style() {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin fieldset-reset-style() {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+@mixin ul-reset-style() {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
 @mixin font-h1() {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;

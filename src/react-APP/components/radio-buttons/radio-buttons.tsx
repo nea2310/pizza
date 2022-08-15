@@ -1,24 +1,7 @@
 import './radio-buttons.scss';
 import React from 'react';
-import { useSelector } from 'react-redux';
-
 
 const RadioButtons = ({ onClick, radioName, catName }: any) => {
-
-  const props: any = useSelector(state => {
-    return state;
-  });
-
-  const pizzaItemsFiltered = props.pizzaItems.pizzaItemsFiltered;
-  const currentQuery = props.pizzaItems.currentQuery;
-
-  // const inList = (avl: boolean) => {
-  //   if (currentQuery != radioName) {
-  //     return pizzaItemsFiltered.some((item: any) =>
-  //       item[radioName] === avl);
-  //   } else return true;
-  // };
-
 
   return (
     <fieldset className='radio'>{catName}
@@ -28,16 +11,18 @@ const RadioButtons = ({ onClick, radioName, catName }: any) => {
         >
           <label className='radio-list__item-label'>
             <input
-              className='radio-list__item-radio'
+              className='radio-list__item-radiobutton'
               type="radio"
               name={radioName}
               value="да"
-              //   disabled={!inList(true)}
               onChange={(e) => {
                 const value = e.target.value;
                 onClick(value);
               }}
             />
+            <span
+              className='radio-list__item-radiomark'>
+            </span>
             да
           </label>
         </li>
@@ -47,26 +32,27 @@ const RadioButtons = ({ onClick, radioName, catName }: any) => {
         >
           <label className='radio-list__item-label'>
             <input
-              className='radio-list__item-radio'
+              className='radio-list__item-radiobutton'
               type="radio"
               name={radioName}
               value="нет"
-              //   disabled={!inList(false)}
               onChange={(e) => {
                 const value = e.target.value;
                 onClick(value);
               }}
             />
+            <span
+              className='radio-list__item-radiomark'>
+            </span>
             нет
           </label>
         </li>
-
         <li
           className='radio-list__item'
         >
           <label className='radio-list__item-label'>
             <input
-              className='radio-list__item-radio'
+              className='radio-list__item-radiobutton'
               type="radio"
               name={radioName}
               value="не важно"
@@ -75,6 +61,9 @@ const RadioButtons = ({ onClick, radioName, catName }: any) => {
                 onClick(value);
               }}
             />
+            <span
+              className='radio-list__item-radiomark'>
+            </span>
             не важно
           </label>
         </li>

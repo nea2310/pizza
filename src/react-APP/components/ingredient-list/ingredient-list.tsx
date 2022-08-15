@@ -74,6 +74,9 @@ const IngredientList = ({ onClick }: any) => {
                 onClick(ingredient, isChecked);
               }}
             />
+            <span
+              className='ingredients-list__item-checkmark'>
+            </span>
             {ingredient}
           </label>
         </li>
