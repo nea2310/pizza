@@ -18,8 +18,13 @@ const Header = () => {
   });
 
   const [details, setDetails] = useState(false);
+
+  const contentClassName = details ? 'header__content_active' : '';
+  const contentClasses = ['header__content', contentClassName];
+
   const burgerClassName = details ? 'header__burger-button_active' : '';
   const burgerClasses = ['header__burger-button', burgerClassName];
+
   const name = props.user.user.name;
   const surname = props.user.user.surname;
   const isAuthed = !!props.user.user.token;
@@ -79,9 +84,6 @@ const Header = () => {
           <NavLink
             className='header__nav-link'
             to={routesMap[key]}>
-            <img
-              className='header__nav-img'
-              src={list[key].img} alt="" />
             {name}
           </NavLink>
         </li>
@@ -111,14 +113,16 @@ const Header = () => {
               src={pizzaItemsIMG} alt="" />
           </NavLink>
         </div>
-        <nav className='header__nav'>
-          <ul className='header__nav-list'>
-            {menuItems}
-          </ul>
-        </nav>
-        <div className='header__user'>
-          {loginForm}
-          {cart}
+        <div className={contentClasses.join(' ')}>
+          <nav className='header__nav'>
+            <ul className='header__nav-list'>
+              {menuItems}
+            </ul>
+          </nav>
+          <div className='header__user'>
+            {loginForm}
+            {cart}
+          </div>
         </div>
       </div>
     </header>

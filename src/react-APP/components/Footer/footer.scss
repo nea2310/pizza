@@ -16,7 +16,12 @@ $footerHeight: 300px;
     background-image: url("./img/background.jpg");
     background-repeat: no-repeat;
     background-size: auto 100%;
+
+    @include media-breakpoint-down($sm) {
+      display: none;
+    }
   }
+
   &__info {
     font-weight: bolder;
     padding: 20px;

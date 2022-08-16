@@ -9,6 +9,48 @@ $headerHeight: 150px;
     height: $headerHeight;
     display: flex;
     justify-content: space-between;
+
+    @include media-breakpoint-down($sm) {
+      justify-content: center;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-grow: 1;
+
+    @include media-breakpoint-down($sm) {
+      display: none;
+    }
+  }
+
+  &__content_active {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    position: absolute;
+    z-index: 3;
+    top: $headerHeight;
+    left: 0;
+    right: 0;
+    background-color: $colorRed;
+  }
+
+  &__content_active &__nav-list {
+    flex-direction: column;
+  }
+
+  &__content_active &__nav-item {
+    margin: 20px 0;
+  }
+
+  &__content_active &__user {
+    padding: 0;
+    width: 100%;
+
+    &::before {
+      width: 0;
+    }
   }
 
   &__user {
@@ -45,6 +87,7 @@ $headerHeight: 150px;
   }
 
   &__nav {
+    flex-grow: 1;
     flex-basis: 65%;
     display: flex;
     padding: 0 40px;
@@ -54,6 +97,7 @@ $headerHeight: 150px;
     }
 
     &-list {
+      @include ul-reset-style;
       display: flex;
       flex-grow: 1;
       justify-content: space-between;
@@ -76,7 +120,7 @@ $headerHeight: 150px;
     border-radius: 1px;
     transition: all 0.9s ease 0s;
 
-    @include media-breakpoint-down($md) {
+    @include media-breakpoint-down($sm) {
       background-color: $colorWheat;
       width: 20px;
       height: 2px;
@@ -91,19 +135,19 @@ $headerHeight: 150px;
       display: none;
       cursor: pointer;
 
-      @include media-breakpoint-down($md) {
+      @include media-breakpoint-down($sm) {
         display: block;
         position: absolute;
         width: 20px;
         height: 20px;
-        top: 20px;
-        left: 10px;
+        top: 30px;
+        left: 30px;
       }
 
       &:before,
       &:after {
         transition: all 0.9s ease 0s;
-        @include media-breakpoint-down($md) {
+        @include media-breakpoint-down($sm) {
           border-radius: 1px;
           content: "";
           background-color: $colorWheat;
@@ -116,14 +160,14 @@ $headerHeight: 150px;
       }
 
       &:before {
-        @include media-breakpoint-down($md) {
+        @include media-breakpoint-down($sm) {
           top: 0;
           background-color: $colorWheat;
         }
       }
 
       &:after {
-        @include media-breakpoint-down($md) {
+        @include media-breakpoint-down($sm) {
           bottom: 0;
           background-color: $colorWheat;
         }
@@ -131,14 +175,14 @@ $headerHeight: 150px;
 
       &_active {
         &:before {
-          @include media-breakpoint-down($md) {
+          @include media-breakpoint-down($sm) {
             transform: rotate(45deg);
             top: 9px;
           }
         }
 
         &:after {
-          @include media-breakpoint-down($md) {
+          @include media-breakpoint-down($sm) {
             transform: rotate(-45deg);
             bottom: 9px;
           }
