@@ -5,16 +5,8 @@ import { routesMap } from '~r/routes';
 import { withRouter } from '~/wrapper';
 import { IProps } from '~/interface.d';
 import { connect } from 'react-redux';
-import order from '~/store-1/order';
+
 import { orderChangeField, orderSetLastOrderCache } from '~s/actions/order';
-
-
-interface Props extends IProps {
-  navigate: Function;
-}
-interface State {
-  showModal: boolean
-}
 
 
 class Order extends React.Component<any, any> {

@@ -6,18 +6,9 @@ import { BrowserRouter as Router, Route, Routes }
 import routes, { routesMap } from '~r/routes';
 import './app.scss';
 
-import { connect } from 'react-redux';
-import { productsFetchData, productsFetchDataFS } from '~s/actions/products';
-import { cartFetchData } from '~s/actions/cart';
 import { userFetch } from '~s/actions/user';
 import { pizzaItemsFetchData } from '~s/actions/pizzaItems';
-import base from './firebase';
-import { getDatabase, ref, onValue, set } from "firebase/database";
-import { collection, addDoc } from "firebase/firestore";
-import { useDispatch, useSelector } from 'react-redux';
-import { Login } from '~c/Login/Login';
-import { userUnset } from '~s/actions/user';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Header } from '~c/header/header';
 import { Footer } from '~c/Footer/Footer';
 
@@ -39,29 +30,12 @@ interface IRoutesMap {
 
 const App = () => {
 
-
-  const props: any = useSelector(state => {
-    return state;
-  });
-
-
-
-
-  const isAuthed = !!props.user.user.token;
-  const email = props.user.user.email;
-  const name = props.user.user.name;
-  const surname = props.user.user.surname;
-
-  const userDocID = props.user.user.userDocID;
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    /*запрашиваем продукты с сервера*/
-    dispatch(productsFetchData());
     /*запрашиваем корзину с сервера*/
     dispatch(pizzaItemsFetchData());
-    //  dispatch(cartFetchData());
+
     /*запрашиваем пользователя с сервера*/
     dispatch(userFetch());
   }, []);

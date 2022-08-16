@@ -3,22 +3,11 @@ import {
   ICartAddDataSuccess,
   ICartChangeItemSuccess,
   ICartRemoveItemSuccess,
-  ICartItemsRaw,
   ICartItemRaw,
   ICartItem
 } from '~/interface';
 
-
-import { QuerySnapshot, DocumentData } from '@firebase/firestore-types';
-
 import { Dispatch } from 'react';
-
-import makeRequest from '../../api/helpers/makeRequest';
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword, signOut, onAuthStateChanged
-} from "firebase/auth";
-
 import { getAuth } from "firebase/auth";
 import { firebaseApp } from './../../firebase';
 import {
@@ -27,14 +16,6 @@ import {
 } from "firebase/firestore";
 import db from './../../firebase';
 firebaseApp;
-const authdata = getAuth(); // авторизационные данные Firebase
-
-function getToken() {
-  const token = localStorage.getItem('cartToken');
-  if (token)
-    return token;
-}
-
 
 export function cartFetchDataSuccess(cartItems: Array<ICartItem>):
   ICartFetchDataSuccess {
@@ -44,8 +25,6 @@ export function cartFetchDataSuccess(cartItems: Array<ICartItem>):
   };
 }
 
-
-
 export function cartAddItemSuccess(id: string):
   ICartAddDataSuccess {
   return {
@@ -53,8 +32,6 @@ export function cartAddItemSuccess(id: string):
     id
   };
 }
-
-
 
 export function cartChangeItemSuccess(id: string, cnt: number):
   ICartChangeItemSuccess {
@@ -65,8 +42,6 @@ export function cartChangeItemSuccess(id: string, cnt: number):
   };
 }
 
-
-
 export function cartRemoveItemSuccess(id: string):
   ICartRemoveItemSuccess {
   return {
@@ -75,23 +50,17 @@ export function cartRemoveItemSuccess(id: string):
   };
 }
 
-
-
 export function cartFetchData(user: string) {
   console.log(`Загружаем корзину пользователя ${user}`);
   return (dispatch: Dispatch<ICartFetchDataSuccess>): void => {
     getCart(user)
       .then(cart => {
         if (cart.length) {
-
-
           const cartItems = [];
           const itemsObj = cart[0].items;
           for (let key in itemsObj) {
             cartItems.push({ [key]: itemsObj[key] });
           }
-
-
           dispatch(cartFetchDataSuccess(cartItems));
         }
       });
