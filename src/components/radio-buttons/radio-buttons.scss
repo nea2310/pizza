@@ -1,0 +1,50 @@
+@import "../../assets/styles/glob.scss";
+
+.radio {
+  @include ul-reset-style;
+
+  &-list {
+    padding-inline: 0;
+    margin-block: 0;
+
+    margin-top: 20px;
+    font-weight: initial;
+    display: flex;
+    width: 250px;
+    justify-content: space-between;
+
+    &__item {
+      list-style: none;
+
+      &-label {
+        font-weight: bolder;
+        align-items: center;
+        display: flex;
+        white-space: nowrap;
+        font-size: 1rem;
+      }
+
+      &-radiobutton {
+        @include visually-hidden;
+      }
+
+      &-radiobutton:checked + &-radiomark {
+        box-shadow: inset 0px 0px 0px 3.5px $colorWhite;
+        background: $colorRed;
+      }
+
+      &-radiomark {
+        cursor: pointer;
+        margin-right: 10px;
+        display: block;
+        position: relative;
+        border: 2px solid $colorRed;
+        width: 18.5px;
+        height: 18px;
+        border-radius: 50%;
+        content: "";
+        background-color: $colorWhite;
+      }
+    }
+  }
+}

@@ -1,310 +1,46 @@
-# Range slider Metalamp
-
-## Getting started
-Download the project from https://github.com/nea2310/Metalamp-4th-task
-
-## Usage
-Include styles from /dist/assets/css directory and scripts from /dist/assets/js directory in your project:
-  ```
-        <link href="[path to the file]/plugin.css" rel="stylesheet" type="text/css">
-        <script src="[path to the file]/plugin.js"></script>
-  ```
-## Dependency
-jQuery Core 1.2.0+
-
-## Initialization
-  ```
-<input id = "my-element">
-$('#my-element').Slider([options])
-  ```
-
-## Access to an instance of the plugin
-  ```
-$('#my-element').data('SliderMetaLamp')
-  ```
-## Examples
-
-Initialization with min and max values defined in data-attributes:
-  ```
-<input id = "my-element" data-min="-10" data-max="20">
-$('#my-element').Slider()
-  ```
-
-Initialization with min and max values defined in the configuration object:
-  ```
-<input id = "my-element">
-$('#my-element').Slider({min: -10, max: 20})
-  ```
-## Using events:
-  ```
-$('#my-element').Slider({
-			onStart: (data) => {
-				console.log(data);
-			},
-			onUpdate: (data) => {
-				console.log(data);
-			},
-			onChange: (data) => {
-				console.log(data);
-			}
-		})
-  ```
-## Using API
-  ```
-// Initialize an instance
-const $rangeSlider = $('#my-element').Slider().data('SliderMetaLamp');
-
-// Get configuration of the instance
-const startConf = $rangeSlider.getData();
-
-// Update configuration of the instance
-$rangeSlider.update({from: 2, to: 6});
-
-// Disable the instance
-$rangeSlider.disable();
-
-// Enable the instance
-$rangeSlider.enable();
-
-// Destroy the instance
-$rangeSlider.destroy();
-  ```
-
-## Values validation
-
-* If value of a numeric parameter is passed as a string which can be converted to number, it will be converted to number:  
-{min: '10'} -> {min: 10}. In any other case it will be defaulded: {min: '10 deg'} -> {min: 0}.
-
-* If any numeric parameter value (e.g. min, max, etc.) isn't compatible with its dependant parameters values (e.g. max value is smaller than min value {min: 10, max: 0}) - incorrect parameter will be defaulted: {min: 10, max: 0} -> {min: 10, max: 20}.
-
-* If value of a boolean parameter:
-	- is passed as 'true' (string), it will be converted to true (boolean): {bar: 'true'} -> {bar: true};
-	- is passed as 'false' (string), it will be converted to false (boolean): {bar: 'false'} -> {bar: false};
-	- any other non-boolean value will be converted to false (boolean): {bar: 10} -> {bar: false};
-
-* If value of a string parameter doesn't match any of its possible values - it will be defaulted:
-{scalebase: 10} -> {scalebase: 'step'};
-
-
-## Configuration object interface
-  ```
- {
-	min?: number
-	max?: number
-	from?: number
-	to?: number
-	vertical?: boolean
-	range?: boolean
-	bar?: boolean
-	tip?: boolean
-	scale?: boolean
-	scaleBase?: string
-	step?: number
-	interval?: number
-	sticky?: boolean
-	shiftOnKeyDown?: number
-	shiftOnKeyHold?: number
-	onStart?: Function
-	onChange?: Function
-	onUpdate?: Function
-}
-  ```
-
-
-## Options
-
-* **min** - minimal value of the slider  
-Type: number  
-Can be negative: yes  
-Can be zero: yes  
-Can be fractional: yes  
-Default: 0  
-Setting via configuration object: {min: -10}  
-Setting via data-attribute: data-min="-10"  
-
-
-* **max** - maximal value of the slider  
-Type: number  
-Can be negative: yes  
-Can be zero: yes  
-Can be fractional: yes  
-Default: min value plus 10  
-Setting via configuration object: {max: 10}  
-Setting via data-attribute: data-max="10"  
-
-
-* **from** - left/bottom control position (in double mode); control position (in single mode)  
-Type: number  
-Can be negative: yes  
-Can be zero: yes  
-Can be fractional: yes  
-Default: equals to min value  
-Setting via configuration object: {from: 10}  
-Setting via data-attribute: data-from="10"  
-
-
-* **to** - right/top control position (in double mode)  
-Type: number  
-Can be negative: yes  
-Can be zero: yes  
-Can be fractional: yes  
-Default: equals to max value  
-Setting via configuration object: {to: 10}  
-Setting via data-attribute: data-to="10"  
-
-
-* **scalebase** - the approach of scale breaking into gaps  
-Type: string  
-Possible values:  
-	- "step" - scale is broken into gaps where each gap is equal to the amount of units set in the parameter "step"  
-	- "interval" - scale is brogen into amount of gaps set in the parameter "interval"  
-Default: "step"  
-
-
-* **step** - number of units between two neighbor scale marks  
-Type: number  
-Can be negative: no  
-Can be zero: no  
-Can be fractional: yes  
-Default: equals to 1/2 of the slider track  
-Setting via configuration object: {step: 1}  
-Setting via data-attribute: data-step="1"  
-Applicable only together with scaleBase equal to "step"  
-
-
-* **interval** - number of units between two neighbor scale marks  
-Type: number  
-Can be negative: no  
-Can be zero: no  
-Can be fractional: yes  
-Default: equals to 1/2 of the slider track  
-Setting via configuration object: {interval: 10}  
-Setting via data-attribute: data-interval="10"  
-Applicable only together with scaleBase equal to "interval"  
-
-
-* **shiftonkeydown** - number of positions, the control shifts on a single push of a key (arrow left/right/up/down) on a keyboard  
-Type: number  
-Can be negative: no  
-Can be zero: no  
-Can be fractional: if scalebase = step: yes; if scalebase = interval: no  
-Default: equals to 1/2 of the slider track  
-Setting via configuration object: {shiftonkeydown: 1}  
-Setting via data-attribute: data-shiftonkeydown="1"  
+# Getting Started with Create React App
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-* **shiftonkeydown** - number of positions, the control shifts on a hold of a key (arrow left/right/up/down) on a keyboard  
-Type: number  
-Can be negative: no  
-Can be zero: no  
-Can be fractional: if scalebase = step: yes; if scalebase = interval: no  
-Default: equals to 1/2 of the slider track  
-Setting via configuration object: {shiftonkeyhold: 2}  
-Setting via data-attribute: data-shiftonkeyhold="2"  
+## Available Scripts
 
+In the project directory, you can run:
 
-* **vertical** - vertical or horyzontal view of the slider  
-Type: boolean  
-Default: false  
-Setting via configuration object: {vertical: true}  
-Setting via data-attribute: data-vertical="true"  
+### `npm start`
 
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-* **range** - double (two controls) or single (one control) view of the slider  
-Type: boolean  
-Default: true  
-Setting via configuration object: {range: false}  
-Setting via data-attribute: data-range="false"  
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
+### `npm test`
 
-* **sticky** - mode of control movement along the slider track: smooth mooving (non-sticky) or jumping from one scale-mark to another  
-Type: boolean  
-Default: false  
-Setting via configuration object: {sticky: true}  
-Setting via data-attribute: data-sticky="true"  
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### `npm run build`
 
-* **scale** - mode of slider scale (visible or hidden)  
-Type: boolean  
-Default: true  
-Setting via configuration object: {scale: false}  
-Setting via data-attribute: data-scale="false"  
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-* **bar** - mode of slider progress-bar (visible or hidden)  
-Type: boolean  
-Default: true  
-Setting via configuration object: {bar: false}  
-Setting via data-attribute: data-bar="false"  
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `npm run eject`
 
-* **tip** - mode of slider tips (visible or hidden)  
-Type: boolean  
-Default: true  
-Setting via configuration object: {tip: false}  
-Setting via data-attribute: data-tip="false"  
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## Events
-* **onStart(data)** - callback on the first start of the plugin  
-data - configuration object matching configuration object interface  
-Type: function  
-Default: null  
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-* **onChange(data)** - callback on each user’s interaction with the plugin  
-data - configuration object matching configuration object interface  
-Type: function  
-Default: null  
+## Learn More
 
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-* **onUpdate(data)**- callback on "update" public API method calling  
-data - configuration object matching configuration object interface  
-Type: function  
-Default: null  
-
-
-## API
-
-* **getData()**
-Returns configuration object matching configuration object interface  
-
-* **update(data)**
-data - configuration object matching configuration object interface  
-Updates plugin configuration  
-
-* **disable()**
-Blocks the plugin
-
-* **enable()**
-Unblocks previously blocked plugin
-
-* **destroy()**
-Deletes an instance of the plugin and removes its elements from DOM
-
-
-## Project build 
-
-* Node version v14.18.1
-
-* Install dependencies:
-  ``` npm i ```
-
-* Run on a devserver:
-  ```npm start```  
-go to http://localhost:8080/
-
-* Production build (plugin plus demonstration page):
-  ```npm run build```
-
-* Production build (plugin only):
-  ```npm run plugin```
-
-* Run testing:
-  ```npm run test```
-  
-## UML 
-<a href = "./UML/uml.png">UML class diagram</a>
-
-
-# pizza
+To learn React, check out the [React documentation](https://reactjs.org/).

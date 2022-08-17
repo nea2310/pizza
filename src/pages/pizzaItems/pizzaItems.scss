@@ -1,0 +1,76 @@
+@import "../../assets/styles/glob";
+
+.pizza-items {
+  @include wrapper-size;
+  padding: 40px;
+  display: flex;
+  align-items: flex-start;
+
+  @include media-breakpoint-down($sm) {
+    padding: 20px;
+  }
+
+  &__product-cards {
+    @include ul-reset-style;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    gap: 20px;
+
+    @include media-breakpoint-down($xxl) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include media-breakpoint-down($xl) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include media-breakpoint-down($md) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    @include media-breakpoint-down($sm) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  &__product-card-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+    @include media-breakpoint-down($sm) {
+      padding: 0;
+    }
+  }
+
+  &__order-button {
+    margin: 10px auto;
+  }
+
+  &__favourites-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  &__filter {
+    margin-right: 40px;
+    font-weight: bolder;
+    font-size: 1.5rem;
+
+    @include media-breakpoint-down($sm) {
+      display: none;
+    }
+
+    &-spicy,
+    &-lent {
+      margin-top: 40px;
+    }
+  }
+}
