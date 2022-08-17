@@ -1,7 +1,6 @@
-import React from 'react';
-import './order-button.scss';
 import { Button } from 'react-bootstrap';
-import { useAppSelector, useAppDispatch } from '../../../hooks'
+import './order-button.scss';
+import { useAppDispatch } from '../../../hooks'
 import { cartAddItem, cartRemoveItem } from '../../../store/actions/cart';
 
 export default function (props: any) {

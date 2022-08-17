@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 interface Props {
@@ -10,21 +9,19 @@ interface Props {
   onClick: () => void,
 }
 
-export default class extends React.Component<Props> {
-  static defaultProps = {
+export default function (props: Props) {
+
+  const defaultProps = {
     onClick: function () { },
     nativeProps: {}
   }
 
-  static propTypes = {
+  const propTypes = {
     onClick: PropTypes.func,
   }
 
-
-  render() {
-    return (
-      <button {...this.props.nativeProps}
-        onClick={this.props.onClick}>{this.props.buttonName}</button>
-    );
-  }
+  return (
+    <button {...props.nativeProps}
+      onClick={props.onClick}>{props.buttonName}</button>
+  );
 }
