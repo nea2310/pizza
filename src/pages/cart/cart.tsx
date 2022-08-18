@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { navigate } from "@reach/router";
 import './cart.scss';
 import { routesMap } from '../../routes/routes';
 import AppMinMax from '../../components/inputs/minmax/minmax';
@@ -10,6 +11,8 @@ const Cart = () => {
   const props: any = useAppSelector(state => {
     return state;
   });
+
+  const navigate = useNavigate();
 
   const pizzaItemsAll = props.pizzaItems.pizzaItemsAll;
   const cartItems = props.cart.cartItems;
@@ -88,12 +91,22 @@ const Cart = () => {
       <h3>Сумма заказа: {total} </h3>
       <hr />
       <div className='cart__btns'>
-        <Link to={routesMap.home} className="btn btn-warning">
+        <button
+          className="btn btn-warning"
+          onClick={() => {
+            navigate(routesMap.home)
+          }}
+        >
           На главную
-        </Link>
-        <Link to={routesMap.order} className="btn btn-primary">
+        </button>
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            navigate(routesMap.order, { state: { total } })
+          }}
+        >
           Заказать
-        </Link>
+        </button>
       </div>
     </div>
   );

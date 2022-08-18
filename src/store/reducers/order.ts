@@ -39,20 +39,17 @@ let initialState: {
 
 
 function change(state: any, name: any, value: any) {
-  const formData = { ...state.formData };
-  const field = formData[name];
-  field.value = value;
-  field.valid = field.validator(field.value);
+
+  const valid = state.formData[name].validator(value)
+  const newField = { ...state.formData[name], value, valid };
+  const formData = { ...state.formData, [name]: newField };
   const formValid = Object.values(formData).every((field: any) => field.valid);
   return { ...state, formData, formValid };
 }
 
-
 function setLastOrderCache(state: any) {
-  console.log('setLastOrderCache');
 
   let lastOrderCache = { ...state.lastOrderCache };
-
   lastOrderCache.name = state.formData.name.value;
   lastOrderCache.phone = state.formData.phone.value;
   lastOrderCache.email = state.formData.email.value;
@@ -61,7 +58,6 @@ function setLastOrderCache(state: any) {
 
 
 function setDetailed(state: any = initialState, cartItemsDetailed: any) {
-  console.log('SET DETAILED');
   return { ...state, cartItemsDetailed };
 }
 
@@ -78,7 +74,6 @@ const reducer = function (state: any = initialState, action: any) {
     default:
       return state;
   }
-
 };
 
 export default reducer;

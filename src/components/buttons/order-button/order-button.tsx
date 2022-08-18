@@ -4,6 +4,8 @@ import { useAppDispatch } from '../../../hooks'
 import { cartAddItem, cartRemoveItem } from '../../../store/actions/cart';
 
 export default function (props: any) {
+  console.log(props);
+
   const dispatch = useAppDispatch();
   let isAdding = true;
   let type = "success";

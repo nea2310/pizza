@@ -7,8 +7,6 @@ type Props = {
   setOpen: (isOpen: boolean) => void;
 };
 const avatar = require('./img/avatar.png');
-console.log(avatar);
-
 
 const Avatar = (props: Props) => (
   <StyledAvatar
