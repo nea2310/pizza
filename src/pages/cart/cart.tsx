@@ -1,5 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { navigate } from "@reach/router";
+import { useNavigate } from 'react-router-dom';
 import './cart.scss';
 import { routesMap } from '../../routes/routes';
 import AppMinMax from '../../components/inputs/minmax/minmax';

@@ -272,7 +272,4 @@ export interface ICartData {
 
 }
 
-// export {
-//   IOrder,
-//   IProps, IProduct, ICart, IProducts, IRootstore, IData, IFormData, ICartData
-// };
+export type TConst = { state: { total: number } };

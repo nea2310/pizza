@@ -5,7 +5,9 @@ import { routesMap } from '../../routes/routes';
 import { orderChangeField, orderSetLastOrderCache } from '../../store/actions/order';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
-type TConst = { state: { total: number } };
+import {
+  TConst
+} from '../../interface.d';
 
 export default function () {
 
@@ -24,15 +26,10 @@ export default function () {
 
   const [isShown, setShown] = useState(false);
 
-
-
-  const pizzaItemsAll = props.pizzaItems.pizzaItemsAll;
-  const cartItems = props.cart.cartItems;
-
   const confirm = () => {
     setShown(false);
     dispatch(orderSetLastOrderCache());
-    navigate(routesMap.result);
+    navigate(routesMap.result, { state: { total } });
   };
 
   let orderModel = props.order;
