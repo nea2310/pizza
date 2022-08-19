@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import './cart.scss';
 import { routesMap } from '../../routes/routes';
-import AppMinMax from '../../components/inputs/minmax/minmax';
+import AppMinMax from '../../components/inputs/minmax/AppMinMax';
 
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { cartChangeItem, cartRemoveItem } from '../../store/actions/cart';
@@ -93,7 +93,7 @@ const Cart = () => {
         <button
           className="btn btn-warning"
           onClick={() => {
-            navigate(routesMap.home)
+            navigate(routesMap.pizzaItems)
           }}
         >
           На главную

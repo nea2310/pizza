@@ -1,10 +1,16 @@
-import React from 'react';
-import './product-card.scss';
 import { Link } from 'react-router-dom';
+import './product-card.scss';
 import { urlBuilder } from '../../../routes/routes';
 
-export default function (props: any) {
+type TProps = {
+  image: string;
+  isavl: any;
+  name: string;
+  pizzaid: string;
+  price: number;
+};
 
+export default function (props: TProps) {
 
   return (
     <>

@@ -1,7 +1,6 @@
-import Home from '../pages/home/home';
 import Cart from '../pages/cart/cart';
 import Order from '../pages/order/order';
-import Result from '../pages/result/result';
+import Result from '../pages/result/Result';
 import Page404 from '../pages/error404/error404';
 import Product from '../pages/product/product';
 import LoginPage from '../pages/login/login';
@@ -28,12 +27,6 @@ let routes: IRoute[] = [
     name: 'pizzaItems',
     url: '/',
     component: <PizzaItems />,
-    exact: true
-  },
-  {
-    name: 'home',
-    url: '/home',
-    component: <Home />,
     exact: true
   },
   {

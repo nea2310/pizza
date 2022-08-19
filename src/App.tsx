@@ -1,7 +1,6 @@
 
 import { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { BrowserRouter as Router, Route, Routes }
+import { BrowserRouter as Router, Route, Routes, NavLink }
   from 'react-router-dom';
 import routes, { routesMap } from './routes/routes';
 import './App.scss';
@@ -9,8 +8,9 @@ import './App.scss';
 import { userFetch } from './store/actions/user';
 import { pizzaItemsFetchData } from './store/actions/pizzaItems';
 import { useAppDispatch } from './hooks';
-import { Header } from './components/header/header';
-import { Footer } from './components/Footer/Footer';
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
+
 
 
 

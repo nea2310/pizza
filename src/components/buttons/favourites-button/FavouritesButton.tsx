@@ -3,11 +3,17 @@ import './favourites-button.scss';
 import { useAppDispatch } from '../../../hooks';
 import { userUpdateFavItems } from '../../../store/actions/user';
 
+type TProps = {
+  infav: boolean;
+  userdocid: any;
+  pizzaid: string;
+};
 
-export default function (props: any) {
+export default function (props: TProps) {
+
   const dispatch = useAppDispatch();
   const btnRef = useRef<SVGSVGElement>() as RefObject<SVGSVGElement>;
-  const toggleFav = (elem: any) => {
+  const toggleFav = (elem: SVGSVGElement) => {
     if (elem.classList) {
       elem.classList.toggle('favourites-button_in-fav');
     }
@@ -23,7 +29,7 @@ export default function (props: any) {
   return (
     <button className='favourites-button'
       onClick={() => {
-        if (!btnRef) return;
+        if (!btnRef || !btnRef.current) return;
         toggleFav(btnRef.current);
         dispatch(userUpdateFavItems(
           props.userdocid,

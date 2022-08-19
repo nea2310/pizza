@@ -3,8 +3,14 @@ import './order-button.scss';
 import { useAppDispatch } from '../../../hooks'
 import { cartAddItem, cartRemoveItem } from '../../../store/actions/cart';
 
-export default function (props: any) {
-  console.log(props);
+type TProps = {
+  incart: boolean;
+  isavl: any;
+  userdocid: any;
+  pizzaid: string;
+};
+
+export default function (props: TProps) {
 
   const dispatch = useAppDispatch();
   let isAdding = true;
@@ -19,7 +25,7 @@ export default function (props: any) {
     isAdding = false;
     type = "danger";
     text = "Отменить заказ";
-    handleClick = (user: any, pizza: any) => {
+    handleClick = (user: string, pizza: string) => {
       dispatch(cartRemoveItem(user, pizza));
     };
   }

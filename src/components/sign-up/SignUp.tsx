@@ -1,12 +1,13 @@
 
-import { RegisterForm } from '../../components/register-form/register-form';
+import { RegisterForm } from '../register-form/RegisterForm';
 import { useAppSelector, useAppDispatch } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
 import { userReg } from '../../store/actions/user';
+import { IStore } from '../../interface';
 
 const SignUp = () => {
 
-  const props: any = useAppSelector(state => {
+  const props: IStore = useAppSelector(state => {
     return state;
   });
   /*проверяем, авторизован ли пользователь*/

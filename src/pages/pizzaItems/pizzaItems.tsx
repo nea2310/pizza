@@ -1,20 +1,16 @@
 import { useState } from 'react';
 import './pizzaItems.scss';
-import {
-  pizzaItemsFilter,
-} from '../../store/actions/pizzaItems';
+import FavouritesButton from '../../components/buttons/favourites-button/FavouritesButton';
+import { IngredientList } from '../../components/ingredient-list/IngredientList';
+import OrderButton from '../../components/buttons/order-button/OrderButton';
+import ProductCard from '../../components/cards/product-card/ProductCard';
+import { RadioButtons } from '../../components/radio-buttons/RadioButtons';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-
-import { IngredientList } from '../../components/ingredient-list/ingredient-list';
-import { RadioButtons } from '../../components/radio-buttons/radio-buttons';
-
-import FavouritesButton from '../../components/buttons/favourites-button/favourites-button';
-import OrderButton from '../../components/buttons/order-button/order-button';
-import ProductCard from '../../components/cards/product-card/product-card';
-
+import { IStore, IPizzaDetails } from '../../interface';
+import { pizzaItemsFilter } from '../../store/actions/pizzaItems';
 
 const PizzaItems = () => {
-  const props: any = useAppSelector(state => {
+  const props: IStore = useAppSelector(state => {
     return state;
   });
 
@@ -26,7 +22,7 @@ const PizzaItems = () => {
   const pizzaItemsFiltered = props.pizzaItems.pizzaItemsFiltered;
   const pizzaItemsAll = props.pizzaItems.pizzaItemsAll;
 
-  const [ingredientsChosen, setIngredientsChosen] = useState([]);
+  const [ingredientsChosen, setIngredientsChosen] = useState(['']);
   const [spicyChosen, setSpicyChosen] = useState('');
   const [lentChosen, setLentChosen] = useState('');
 
@@ -35,14 +31,14 @@ const PizzaItems = () => {
   let pizzaItemsCards = null;
   if (pizzaItemsFiltered.length) {
     pizzaItemsCards = pizzaItemsFiltered.map(
-      (pizzaItem: any) => {
+      (pizzaItem: IPizzaDetails) => {
         let inFav = false;
         /*проверить, находится ли эта пицца в избранном*/
         if (fav) {
           inFav =
             fav.some(
-              (favItem: any) => {
-                return pizzaItem.id === favItem;
+              (favItemID: string) => {
+                return pizzaItem.id === favItemID;
               });
         }
 
@@ -52,7 +48,7 @@ const PizzaItems = () => {
         if (cart) {
           inCart =
             cart.some(
-              (cartItem: any) => {
+              (cartItem: { [name: string]: number }) => {
                 return pizzaItem.id in cartItem;
               });
         }
@@ -100,9 +96,9 @@ const PizzaItems = () => {
   }
 
 
-  const filterByIngredient = (ingredient: never, isChecked: boolean) => {
+  const filterByIngredient = (ingredient: string, isChecked: boolean) => {
 
-    let arr = [...ingredientsChosen];
+    let arr: Array<string> = [...ingredientsChosen];
     if (isChecked) {
       arr.push(ingredient);
     } else {
@@ -151,7 +147,7 @@ const PizzaItems = () => {
         <div className='pizza-items__filter'>
           <div className='pizza-items__filter-ingredients'>
             <IngredientList
-              onClick={(ingredient: never, isChecked: any) =>
+              onClick={(ingredient: string, isChecked: boolean) =>
                 filterByIngredient(ingredient, isChecked)}
             /></div>
           <div className='pizza-items__filter-spicy'>

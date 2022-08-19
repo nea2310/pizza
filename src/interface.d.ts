@@ -191,8 +191,65 @@ export interface IAppMinMaxProps {
   onChange: (cnt: number) => Dispatch;
 }
 
+interface IField {
+  errorText: string;
+  label: string;
+  valid: boolean | null;
+  validator: (val: string) => boolean;
+  value: string;
+}
+
+export interface IPizzaDetails {
+  available: boolean;
+  id: string;
+  image: string;
+  ingredients: Array<string>;
+  lent: boolean;
+  meat: boolean;
+  name: string;
+  price: number;
+  spicy: boolean;
+}
 
 export interface IStore {
+
+  cart: {
+    cartItems: Array<{ [name: string]: number }>;
+    total: number
+  }
+  order: {
+    formValid: boolean,
+    cartItemsDetailed: Array<any>,
+    lastOrderCache: {
+      email: string;
+      name: string;
+      phone: string;
+    },
+    formData: {
+      email: IField;
+      name: IField;
+      phone: IField;
+    }
+  }
+  pizzaItems: {
+    pizzaItemsAll: Array<IPizzaDetails>;
+    pizzaItemsFiltered: Array<IPizzaDetails>;
+    ingredientsChosen: Array<string>;
+    ingredientsAll: Array<string>;
+    currentQuery: string;
+  }
+  productItems: any;
+  user: {
+    user: {
+      email: string;
+      favourites: Array<string>;
+      id: string;
+      name: string;
+      surname: string;
+      token: string;
+      userDocID: string;
+    }
+  }
 
 }
 

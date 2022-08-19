@@ -1,7 +1,17 @@
-import React from 'react';
+import { LinkProps } from 'react-router-dom';
 import './product-single.scss';
 
-export default function (props: any) {
+type TProps = {
+  backUrl: string;
+  image: string;
+  ingredients: Array<string>;
+  linkComponent: React.ForwardRefExoticComponent<LinkProps & React.RefAttributes<HTMLAnchorElement>>;
+  name: string;
+  price: number;
+};
+
+export default function (props: TProps) {
+
   const ingredients = props.ingredients.join(', ');
 
   return (
@@ -13,7 +23,7 @@ export default function (props: any) {
 
       <div className='product-single__img-wrapper'>
         <img className='product-single__img'
-          src={props.image} alt={props.title} />
+          src={props.image} alt={props.name} />
       </div>
 
       <div className='product-single__price'>

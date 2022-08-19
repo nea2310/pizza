@@ -1,7 +1,12 @@
 import './radio-buttons.scss';
-import React from 'react';
 
-const RadioButtons = ({ onClick, radioName, catName }: any) => {
+type TProps = {
+  radioName: string;
+  catName: string;
+  onClick: (value: string) => void;
+}
+
+const RadioButtons = ({ onClick, radioName, catName }: TProps) => {
 
   return (
     <fieldset className='radio'>{catName}

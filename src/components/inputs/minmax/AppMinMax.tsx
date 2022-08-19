@@ -2,16 +2,13 @@
 т.е. вызывать методы дочернего компонента снаружи (из родительского компонента) напрямую
 */
 
-import './minmax.scss';
 import React, { RefObject, useRef } from 'react';
-import { IAppLazyInputRef, IAppMinMaxProps } from '../../../interface';
+import './minmax.scss';
 import AppLazyInputWithRef from '../lazy/lazy';
-
-
+import { IAppLazyInputRef, IAppMinMaxProps } from '../../../interface';
 
 const AppMinMax = (props: IAppMinMaxProps) => {
   const lazyInput = useRef<IAppLazyInputRef>() as RefObject<IAppLazyInputRef>;
-
 
   const increase = () => {
     set(props.cnt + 1);
@@ -69,7 +66,6 @@ const AppMinMax = (props: IAppMinMaxProps) => {
       <button onClick={increase}>+</button>
     </div>
   );
-
 };
 
 

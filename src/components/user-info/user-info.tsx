@@ -1,11 +1,9 @@
-
-import './userinfo.scss';
 import { useState, useRef, RefObject, useEffect } from "react";
 import styled from "styled-components";
+import './user-info.scss';
+import Avatar from "../avatar/Avatar";
 import { useAppDispatch } from '../../hooks';
 import { userUnset } from '../../store/actions/user';
-
-import Avatar from "../Avatar/Avatar";
 
 
 const useOnClickOutside = (

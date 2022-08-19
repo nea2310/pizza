@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import E404 from '../../components/errors/404/404';
 import { withParams } from '../../wrapper';
-import ProductSingle from '../../components/cards/product-single/product-single';
+import ProductSingle from '../../components/cards/product-single/ProductSingle';
 import { routesMap } from '../../routes/routes';
 import { useAppSelector } from '../../hooks';
-import OrderButton from '../../components/buttons/order-button/order-button';
+import OrderButton from '../../components/buttons/order-button/OrderButton';
 import './product.scss';
 
 const Product = (data: any) => {

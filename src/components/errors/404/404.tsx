@@ -1,6 +1,5 @@
-import React from 'react';
-import { routesMap } from '../../../routes/routes';
 import { Link } from 'react-router-dom';
+import { routesMap } from '../../../routes/routes';
 
 export default function () {
   return (

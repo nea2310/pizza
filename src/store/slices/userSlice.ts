@@ -16,8 +16,6 @@ const userSlice = createSlice({
       state.id = action.payload.id;
     },
     removeUser(state) {
-      console.log(state);
-
       state.email = null;
       state.token = null;
       state.id = null;
