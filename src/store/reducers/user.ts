@@ -1,6 +1,6 @@
-import { IUserActions } from './../../interface';
+import { IUserActions, IUserDataInitial } from './../../interface';
 
-let initialState: { user: any } =
+let initialState: { user: IUserDataInitial } =
 {
   user: {
     email: null,
@@ -13,9 +13,7 @@ let initialState: { user: any } =
   }
 };
 
-
-
-function set(state: any = initialState,
+function set(state = initialState,
   payload: any) {
   console.log('SETTING USER');
 
@@ -26,9 +24,9 @@ function set(state: any = initialState,
   return { ...state, user };
 }
 
-function unset(state: any) {
+function unset(state: typeof initialState) {
   console.log('UNSETTING USER');
-  const user: any = {
+  const user = {
     email: null,
     token: null,
     id: null,
@@ -40,16 +38,14 @@ function unset(state: any) {
   return { ...state, user };
 }
 
-function addFav(state: any, favourites: Array<string>) {
+function addFav(state: typeof initialState, favourites: Array<string>) {
 
   console.log('USER_ADD_FAV');
   const user = { ...state.user, favourites };
   return { ...state, user };
 }
 
-
-
-const reducer = function (state: any = initialState, action: IUserActions) {
+const reducer = function (state = initialState, action: IUserActions) {
 
 
   switch (action.type) {

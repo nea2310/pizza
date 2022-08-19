@@ -4,6 +4,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { routesMap } from '../../routes/routes';
 import { orderChangeField, orderSetLastOrderCache } from '../../store/actions/order';
 import { useAppDispatch, useAppSelector } from '../../hooks';
+import { IStore, IPizzaDetailsPartial } from '../../interface';
 
 import {
   TConst
@@ -16,7 +17,7 @@ export default function () {
 
   const { total } = (useLocation() as TConst).state;
 
-  const props: any = useAppSelector(state => {
+  const props: IStore = useAppSelector(state => {
     return state;
   });
 
@@ -55,17 +56,17 @@ export default function () {
     );
   }
 
-  let productsRows = orderModel.cartItemsDetailed.map(
-    (product: any) => {
+  let productsRows = orderModel.orderItemsDetailed.map(
+    (product: IPizzaDetailsPartial) => {
       return (
         <tr key={product.id}>
-          <td>{product.title}</td>
-          <td>{product.price}</td>
-          <td>{product.cnt}</td>
-          <td>{product.price * product.cnt}</td>
+          <td>{product.name}</td>
+          <td>{`${product.cnt} шт.`}</td>
+          <td>{`${product.price} руб. за 1 штуку`}</td>
         </tr>
       );
     });
+
 
   return (
     <div>
@@ -96,7 +97,7 @@ export default function () {
               {productsRows}
             </tbody>
           </table>
-          <strong>Total: {total}</strong>
+          <strong>Итого: {`${total} руб.`}</strong>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShown(false)}>

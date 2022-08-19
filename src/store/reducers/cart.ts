@@ -1,21 +1,19 @@
-import { ICartActions } from './../../interface';
+import { ICartActions, ICartItem } from './../../interface';
 
-
-let initialState: { cartItems: any, total: 0 } = {
+let initialState: { cartItems: Array<ICartItem>, total: 0 } = {
   cartItems: [],
   total: 0,
 };
 
 
-function load(state: any = initialState, items: any) {
-  // localStorage.setItem('cartToken', token);
+function load(state: typeof initialState = initialState, items: Array<ICartItem>) {
   console.log('LOADING CART');
   let cartItems = [...items];
 
   return { ...state, cartItems }; // cartItems - добавляем тот ключ в state, который хотим обновить
 }
 
-function add(state: any = initialState, id: any) {
+function add(state: typeof initialState = initialState, id: string) {
   console.log('ADDING');
   {/*задублируем существующую корзину и запушим в нее добавленный товар*/
     let cartItems = [...state.cartItems];
@@ -24,12 +22,12 @@ function add(state: any = initialState, id: any) {
   }
 }
 
-function remove(state: any, id: any) {
+function remove(state: typeof initialState, id: string) {
   console.log('REMOVING');
   /*получим все элементы массива, кроме того, у которого ключ совпадает с id пиццы*/
 
   let cartItems = state.cartItems.filter(
-    (el: any) => {
+    (el: ICartItem) => {
       return !(id in el);
     });
   /*state.cartItems = cartItems - так писать нельзя, в этом случае будет мутация ключа state */
@@ -37,11 +35,12 @@ function remove(state: any, id: any) {
 
 }
 
-function change(state: any, id: any, cnt: any) {
+function change(state: typeof initialState, id: string, cnt: number) {
   console.log('CHANGING');
   /*получаем новый массив всех продуктов, не мутируя текущий стейт*/
   let cartItems = state.cartItems.map(
-    (el: any) => {
+    (el: ICartItem) => {
+
       if (id in el) {
         el[id] = cnt;
       }
@@ -50,7 +49,7 @@ function change(state: any, id: any, cnt: any) {
   return { ...state, cartItems };
 }
 
-const reducer = function (state: any = initialState, action: ICartActions) {
+const reducer = function (state: typeof initialState = initialState, action: ICartActions) {
 
   switch (action.type) {
     case 'CART_FETCH_DATA_SUCCESS':

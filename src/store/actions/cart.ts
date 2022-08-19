@@ -1,4 +1,12 @@
 import {
+  collection, addDoc, getDocs, setDoc, doc,
+  query, where, getDoc, updateDoc, DocumentData
+} from "firebase/firestore";
+import { Dispatch } from 'react';
+
+import db, { firebaseApp } from './../../firebase';
+
+import {
   ICartFetchDataSuccess,
   ICartAddDataSuccess,
   ICartChangeItemSuccess,
@@ -7,14 +15,6 @@ import {
   ICartItem
 } from './../../interface';
 
-import { Dispatch } from 'react';
-import { firebaseApp } from './../../firebase';
-import {
-  collection, addDoc, getDocs, setDoc, doc,
-  query, where, getDoc, updateDoc, DocumentData
-} from "firebase/firestore";
-import db from './../../firebase';
-// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 firebaseApp;
 
 export function cartFetchDataSuccess(cartItems: Array<ICartItem>):
@@ -67,7 +67,6 @@ export function cartFetchData(user: string) {
   };
 }
 
-
 export function cartAddItem(user: string, pizzaItem: string) {
   // getState - второй параметр, который принимает thunk
   return (dispatch: Dispatch<ICartAddDataSuccess>) => {
@@ -97,9 +96,6 @@ export function cartAddItem(user: string, pizzaItem: string) {
   };
 }
 
-
-
-
 export function cartChangeItem(user: string, pizzaItem: string, cnt: number) {
   return (dispatch: Dispatch<ICartChangeItemSuccess>): void => {
     console.log(`Пользователь ${user} 
@@ -121,8 +117,6 @@ export function cartChangeItem(user: string, pizzaItem: string, cnt: number) {
       });
   };
 }
-
-
 
 export function cartRemoveItem(user: string, pizzaItem: string) {
   return (dispatch: Dispatch<ICartRemoveItemSuccess>): void => {
@@ -152,10 +146,6 @@ export function cartRemoveItem(user: string, pizzaItem: string) {
       });
   };
 }
-
-
-
-
 
 const getCart = async (user: string) => {
   const cartRef = collection(db, "cart");// cartRef - ссылка на коллекцию по названию коллекции (метод collection)

@@ -1,14 +1,14 @@
-import Cart from '../pages/cart/cart';
+import Cart from '../pages/cart/Cart';
 import Order from '../pages/order/order';
 import Result from '../pages/result/Result';
-import Page404 from '../pages/error404/error404';
-import Product from '../pages/product/product';
-import LoginPage from '../pages/login/login';
+import Page404 from '../pages/error404/Error404';
+import Product from '../pages/product/Product';
+import LoginPage from '../pages/login-page/LoginPage';
 import PizzaItems from '../pages/pizzaItems/pizzaItems';
-import RegisterPage from '../pages/register/register';
-import Blog from '../pages/blog/blog';
-import AboutUs from '../pages/about/about';
-import Deals from '../pages/deals/deals';
+import RegisterPage from '../pages/register-page/RegisterPage';
+import Blog from '../pages/blog/Blog';
+import AboutUs from '../pages/about/About';
+import Deals from '../pages/deals/Deals';
 
 interface IRoute {
   name?: string;

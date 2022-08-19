@@ -148,7 +148,6 @@ export interface IUserRegData {
 }
 
 export interface IUserData {
-
   email: string;
   token: string;
   id: string;
@@ -156,7 +155,16 @@ export interface IUserData {
   surname: string;
   userDocID: string;
   favourites?: Array<string>;
+}
 
+export interface IUserDataInitial {
+  email: string | null;
+  token: string | null;
+  id: string | null;
+  name: string | null;
+  surname: string | null;
+  userDocID: string | null;
+  favourites?: Array<string> | null;
 }
 
 
@@ -166,6 +174,33 @@ export interface IUserDataToUpdate {
   id: string;
   dispatch: TDispatch;
 }
+
+
+
+/******************ORDER ACTIONS******************/
+
+export type IOrderActions =
+  IOrderChange |
+  IOrderSetLastOrderCache |
+  IOrderSetDetailed;
+
+export interface IOrderChange {
+  type: 'ORDER_CHANGE';
+  name: string;
+  value: string;
+}
+
+
+export interface IOrderSetLastOrderCache {
+  type: 'ORDER_SET_CACHE';
+}
+
+
+export interface IOrderSetDetailed {
+  type: 'ORDER_SET_DETAILED';
+  items: Array<IPizzaDetailsPartial>;
+}
+
 
 
 
@@ -211,25 +246,33 @@ export interface IPizzaDetails {
   spicy: boolean;
 }
 
+interface IPizzaDetailsExtended extends Omit<IPizzaDetails, 'available'> { cnt: number; available?: boolean | undefined }
+export type IPizzaDetailsPartial = Partial<IPizzaDetailsExtended>
+
+export interface IFormData {
+  email: IField;
+  name: IField;
+  phone: IField;
+  [index: string]: IField;
+}
+
+export interface ILastOrderCache {
+  email: string;
+  name: string;
+  phone: string;
+}
+
 export interface IStore {
 
   cart: {
-    cartItems: Array<{ [name: string]: number }>;
+    cartItems: Array<ICartItem>;
     total: number
   }
   order: {
     formValid: boolean,
-    cartItemsDetailed: Array<any>,
-    lastOrderCache: {
-      email: string;
-      name: string;
-      phone: string;
-    },
-    formData: {
-      email: IField;
-      name: IField;
-      phone: IField;
-    }
+    orderItemsDetailed: Array<IPizzaDetails>,
+    lastOrderCache: ILastOrderCache,
+    formData: IFormData
   }
   pizzaItems: {
     pizzaItemsAll: Array<IPizzaDetails>;
@@ -238,7 +281,6 @@ export interface IStore {
     ingredientsAll: Array<string>;
     currentQuery: string;
   }
-  productItems: any;
   user: {
     user: {
       email: string;
@@ -262,11 +304,11 @@ export interface IData {
   } | {}
 }
 
-export interface IFormData { // почему это работает???
+export interface IFormData {
   [key: string]: {
     label: string;
     value: string;
-    validator: (val: string) => boolean; // почему val считается неиспользуемой переменной?
+    validator: (val: string) => boolean;
     errorText: string;
     valid: null | boolean;
   }
@@ -323,7 +365,7 @@ export interface IRootstore {
 }
 
 export interface ICartData {
-  cart: { [id: string]: number }[];
+  cart: Array<ICartItem>;
   needUpdate: boolean;
   token: string;
 

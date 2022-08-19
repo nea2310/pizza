@@ -6,7 +6,7 @@ import OrderButton from '../../components/buttons/order-button/OrderButton';
 import ProductCard from '../../components/cards/product-card/ProductCard';
 import { RadioButtons } from '../../components/radio-buttons/RadioButtons';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { IStore, IPizzaDetails } from '../../interface';
+import { IStore, IPizzaDetails, ICartItem } from '../../interface';
 import { pizzaItemsFilter } from '../../store/actions/pizzaItems';
 
 const PizzaItems = () => {
@@ -48,7 +48,7 @@ const PizzaItems = () => {
         if (cart) {
           inCart =
             cart.some(
-              (cartItem: { [name: string]: number }) => {
+              (cartItem: ICartItem) => {
                 return pizzaItem.id in cartItem;
               });
         }
@@ -81,7 +81,6 @@ const PizzaItems = () => {
             />
           </div>
 
-
           <div className='pizza-items__favourites-button favourites-button'>
             <FavouritesButton
               infav={inFav}
@@ -89,8 +88,6 @@ const PizzaItems = () => {
               pizzaid={pizzaItem.id}
             />
           </div>
-
-
         </li >;
       });
   }
@@ -115,7 +112,6 @@ const PizzaItems = () => {
       currentQuery: 'ingredients'
     }));
   };
-
 
   const filterBySpicy = (value: string) => {
     setSpicyChosen(value);

@@ -1,12 +1,14 @@
+import { IFormData, ILastOrderCache, IPizzaDetails, IField, IPizzaDetailsPartial, IOrderActions } from '../../interface';
+
 
 let initialState: {
-  formData: any,
-  lastOrderCache: any,
+  formData: IFormData,
+  lastOrderCache: ILastOrderCache,
   formValid: boolean,
-  cartItemsDetailed: any
+  orderItemsDetailed: Array<IPizzaDetails>
 } = {
   formValid: false,
-  cartItemsDetailed: [],
+  orderItemsDetailed: [],
   lastOrderCache: {
     name: '',
     phone: '',
@@ -16,21 +18,21 @@ let initialState: {
     name: {
       value: '',
       label: 'Name',
-      validator: (val: any) => /^[aA-zZ ]{2,}$/.test(val),
+      validator: (val) => /^[aA-zZ ]{2,}$/.test(val),
       errorText: 'Латинские символы, не менее двух',
       valid: null
     },
     phone: {
       value: '',
       label: 'Phone',
-      validator: (val: any) => /^[0-9]{7,15}$/.test(val),
+      validator: (val) => /^[0-9]{7,15}$/.test(val),
       errorText: 'От 7 до 15 цифр',
       valid: null
     },
     email: {
       value: '',
       label: 'Email',
-      validator: (val: any) => /^.+@.+$/.test(val),
+      validator: (val) => /^.+@.+$/.test(val),
       errorText: 'Собака',
       valid: null
     }
@@ -38,16 +40,18 @@ let initialState: {
 };
 
 
-function change(state: any, name: any, value: any) {
+function change(state: typeof initialState, name: string, value: string) {
 
   const valid = state.formData[name].validator(value)
   const newField = { ...state.formData[name], value, valid };
   const formData = { ...state.formData, [name]: newField };
-  const formValid = Object.values(formData).every((field: any) => field.valid);
+  const formValid = Object.values(formData).every((field: IField) => {
+    return field.valid
+  });
   return { ...state, formData, formValid };
 }
 
-function setLastOrderCache(state: any) {
+function setLastOrderCache(state: typeof initialState) {
 
   let lastOrderCache = { ...state.lastOrderCache };
   lastOrderCache.name = state.formData.name.value;
@@ -57,13 +61,14 @@ function setLastOrderCache(state: any) {
 }
 
 
-function setDetailed(state: any = initialState, cartItemsDetailed: any) {
-  return { ...state, cartItemsDetailed };
+function setDetailed(state = initialState, orderItemsDetailed: Array<IPizzaDetailsPartial>) {
+  return { ...state, orderItemsDetailed };
 }
 
 
 
-const reducer = function (state: any = initialState, action: any) {
+const reducer = function (state = initialState, action: IOrderActions) {
+  console.log('action>>>', action);
   switch (action.type) {
     case 'ORDER_CHANGE':
       return change(state, action.name, action.value);

@@ -1,5 +1,6 @@
+import { IPizzaDetailsPartial } from '../../interface'
 
-export function orderChangeField(name: any, value: any) {
+export function orderChangeField(name: string, value: string) {
   return {
     type: 'ORDER_CHANGE',
     name,
@@ -7,7 +8,9 @@ export function orderChangeField(name: any, value: any) {
   };
 }
 
-export function cartItemsDetailed(items: any) {
+export function orderItemsDetailed(items: Array<IPizzaDetailsPartial>) {
+  console.log('items>>>', items);
+
   return {
     type: 'ORDER_SET_DETAILED',
     items,
