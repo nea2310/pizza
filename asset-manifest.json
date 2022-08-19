@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/nea2310.github.io/pizza/static/css/main.d18640a6.css",
+    "main.js": "/nea2310.github.io/pizza/static/js/main.6f5ba78b.js",
+    "static/js/787.35e17436.chunk.js": "/nea2310.github.io/pizza/static/js/787.35e17436.chunk.js",
+    "static/media/background.jpg": "/nea2310.github.io/pizza/static/media/background.3e2d5d54f76e9edcf19e.jpg",
+    "static/media/Montserrat-Regular.ttf": "/nea2310.github.io/pizza/static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
+    "static/media/Montserrat-Bold.ttf": "/nea2310.github.io/pizza/static/media/Montserrat-Bold.079ca05d3ded9bc107ab.ttf",
+    "static/media/Montserrat-Bold.woff": "/nea2310.github.io/pizza/static/media/Montserrat-Bold.f29395fabb87619d91d3.woff",
+    "static/media/Montserrat-Regular.woff": "/nea2310.github.io/pizza/static/media/Montserrat-Regular.0628470654fffe5acf32.woff",
+    "static/media/Montserrat-Regular.woff2": "/nea2310.github.io/pizza/static/media/Montserrat-Regular.45f49083ea5b1b5a7eb3.woff2",
+    "static/media/Montserrat-Bold.woff2": "/nea2310.github.io/pizza/static/media/Montserrat-Bold.e74ccb712abc3cd5c5ad.woff2",
+    "static/media/logo.png": "/nea2310.github.io/pizza/static/media/logo.9415f7d8a2a9a418f254.png",
+    "static/media/cart-shopping.svg": "/nea2310.github.io/pizza/static/media/cart-shopping.b9e3df451bbfae8161e08eaa27212cba.svg",
+    "index.html": "/nea2310.github.io/pizza/index.html",
+    "main.d18640a6.css.map": "/nea2310.github.io/pizza/static/css/main.d18640a6.css.map",
+    "main.6f5ba78b.js.map": "/nea2310.github.io/pizza/static/js/main.6f5ba78b.js.map",
+    "787.35e17436.chunk.js.map": "/nea2310.github.io/pizza/static/js/787.35e17436.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d18640a6.css",
+    "static/js/main.6f5ba78b.js"
+  ]
+}
