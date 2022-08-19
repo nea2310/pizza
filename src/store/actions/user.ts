@@ -25,7 +25,7 @@ import {
   IUserRegData
 } from
   './../../interface';
-// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+
 firebaseApp;
 const authdata = getAuth();
 
