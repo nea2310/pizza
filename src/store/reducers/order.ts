@@ -18,31 +18,36 @@ let initialState: {
     name: {
       value: '',
       label: 'Name',
-      validator: (val) => /^[aA-zZ ]{2,}$/.test(val),
+      validator: '^[aA-zZ ]{2,}$',
       errorText: 'Латинские символы, не менее двух',
       valid: null
     },
     phone: {
       value: '',
       label: 'Phone',
-      validator: (val) => /^[0-9]{7,15}$/.test(val),
+      validator: '^[0-9]{7,15}$',
       errorText: 'От 7 до 15 цифр',
       valid: null
     },
     email: {
       value: '',
       label: 'Email',
-      validator: (val) => /^.+@.+$/.test(val),
+      validator: '^.+@.+$',
       errorText: 'Собака',
       valid: null
     }
   }
 };
 
-
 function change(state: typeof initialState, name: string, value: string) {
-
-  const valid = state.formData[name].validator(value)
+  /*это не оптимальный способ валидации. Ранее в объекте стейта хранилась функция в поле validator 
+  (вида validator: (val) => /^.+@.+$/.test(val)),
+  соответственно, не нужно было каждый раз создавать регулярное выражение и функцию.
+  Но т.к. функция и рег. выражения являются несереализуемыми, то редакс выбрасывает предупреждение о том, что в стейте хранится 
+  несереализуемое значение*/
+  const validator = new RegExp(state.formData[name].validator);
+  const fun = (val: string) => validator.test(val);
+  const valid = fun(value);
   const newField = { ...state.formData[name], value, valid };
   const formData = { ...state.formData, [name]: newField };
   const formValid = Object.values(formData).every((field: IField) => {

@@ -230,7 +230,7 @@ interface IField {
   errorText: string;
   label: string;
   valid: boolean | null;
-  validator: (val: string) => boolean;
+  validator: string;
   value: string;
 }
 
