@@ -40,12 +40,12 @@ function change(state: typeof initialState, id: string, cnt: number) {
   /*получаем новый массив всех продуктов, не мутируя текущий стейт*/
   let cartItems = state.cartItems.map(
     (el: ICartItem) => {
-
       if (id in el) {
-        el[id] = cnt;
+        el = { ...el, cnt }
       }
       return el;
     });
+
   return { ...state, cartItems };
 }
 

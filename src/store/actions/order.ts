@@ -9,8 +9,6 @@ export function orderChangeField(name: string, value: string) {
 }
 
 export function orderItemsDetailed(items: Array<IPizzaDetailsPartial>) {
-  console.log('items>>>', items);
-
   return {
     type: 'ORDER_SET_DETAILED',
     items,

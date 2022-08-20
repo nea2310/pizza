@@ -68,7 +68,6 @@ function setDetailed(state = initialState, orderItemsDetailed: Array<IPizzaDetai
 
 
 const reducer = function (state = initialState, action: IOrderActions) {
-  console.log('action>>>', action);
   switch (action.type) {
     case 'ORDER_CHANGE':
       return change(state, action.name, action.value);
