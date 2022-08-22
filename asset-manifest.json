@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/nea2310.github.io/pizza/static/css/main.d18640a6.css",
-    "main.js": "/nea2310.github.io/pizza/static/js/main.6f5ba78b.js",
+    "main.js": "/nea2310.github.io/pizza/static/js/main.e35bdec7.js",
     "static/js/787.35e17436.chunk.js": "/nea2310.github.io/pizza/static/js/787.35e17436.chunk.js",
     "static/media/background.jpg": "/nea2310.github.io/pizza/static/media/background.3e2d5d54f76e9edcf19e.jpg",
     "static/media/Montserrat-Regular.ttf": "/nea2310.github.io/pizza/static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
@@ -14,11 +14,11 @@
     "static/media/cart-shopping.svg": "/nea2310.github.io/pizza/static/media/cart-shopping.b9e3df451bbfae8161e08eaa27212cba.svg",
     "index.html": "/nea2310.github.io/pizza/index.html",
     "main.d18640a6.css.map": "/nea2310.github.io/pizza/static/css/main.d18640a6.css.map",
-    "main.6f5ba78b.js.map": "/nea2310.github.io/pizza/static/js/main.6f5ba78b.js.map",
+    "main.e35bdec7.js.map": "/nea2310.github.io/pizza/static/js/main.e35bdec7.js.map",
     "787.35e17436.chunk.js.map": "/nea2310.github.io/pizza/static/js/787.35e17436.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d18640a6.css",
-    "static/js/main.6f5ba78b.js"
+    "static/js/main.e35bdec7.js"
   ]
 }
