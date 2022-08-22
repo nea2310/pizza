@@ -51,6 +51,7 @@ $colorGreen: rgb(113, 255, 161);
 }
 
 @mixin a-reset-style() {
+  color: $colorWheat;
   text-decoration: none;
   &:hover,
   &:visited {

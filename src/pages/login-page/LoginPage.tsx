@@ -1,13 +1,14 @@
 
 import { Link } from 'react-router-dom';
+import './login-page.scss'
 import { Login } from '../../components/login/Login';
 
 const LoginPage = () => {
   return (
-    <div>
-      <h1>Login</h1>
+    <div className='login-page'>
+      <h1 className='login-page__header'>Войти</h1>
       <Login />
-      <p>or <Link to={'/register'}>register</Link></p>
+      <p>или <Link to={'/register'}>Зарегистрироваться</Link></p>
     </div>
   );
 };

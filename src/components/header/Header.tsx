@@ -42,11 +42,10 @@ export default function () {
       </div >
     ) :
       (<div className='header__auth'>
-        <p className='header__auth-link'><Link to={'/login'}>Войти</Link></p>
-        <p>Еще не зарегистрированы?</p>
-        <p
-          className='header__auth-link'>
-          <Link to={'/register'}>Зарегистрироваться</Link></p>
+        <span><Link className='header__auth-link' to={'/login'}>Войти</Link></span>
+        <span className='header__auth-text'>Еще не зарегистрированы?</span>
+        <span>
+          <Link className='header__auth-link' to={'/register'}>Зарегистрироваться</Link></span>
       </div>);
 
   const cart = (

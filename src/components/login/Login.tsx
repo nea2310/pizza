@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Form } from '../form/Form';
+import { Form } from '../login-form/LoginForm';
 import { userSet } from '../../store/actions/user';
 import { useAppSelector, useAppDispatch } from '../../hooks';
 import { IStore } from '../../interface';

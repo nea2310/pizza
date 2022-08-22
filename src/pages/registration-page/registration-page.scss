@@ -1,0 +1,11 @@
+@import "../../assets/styles/glob";
+
+.registration-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__header {
+    margin: 20px 0;
+  }
+}

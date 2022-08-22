@@ -1,5 +1,5 @@
 
-import { RegisterForm } from '../register-form/RegisterForm';
+import { RegisterForm } from '../registration-form/RegistrationForm';
 import { useAppSelector, useAppDispatch } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
 import { userReg } from '../../store/actions/user';
@@ -25,7 +25,7 @@ const SignUp = () => {
 
   return (
     <RegisterForm
-      title="register"
+      title="Зарегистрироваться"
       handleClick={(name, surname, email, pass) =>
         dispatch(userReg({ name, surname, email, pass }))}
     />

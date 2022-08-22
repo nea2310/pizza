@@ -37,19 +37,16 @@ export default function () {
   const userModel = props.user.user;
   let formFields = [];
 
-  console.log('orderModel>>>', orderModel);
-
   for (let name in orderModel.formData) {
     let field = orderModel.formData[name];
 
-
     formFields.push(
+
       <Form.Group key={name} controlId={'order-form-' + name}>
         <Form.Label>{field.label}</Form.Label>
         <Form.Control
           type="text"
-          // value={field.value}
-          value={userModel[`${field.label[0].toLowerCase()}${field.label.substring(1)}`]}
+          value={field.value}
           onChange={(e) => dispatch(orderChangeField(name, e.target.value))}
         />
         {field.valid === null || field.valid ? '' :
@@ -59,8 +56,6 @@ export default function () {
         }
       </Form.Group>
     );
-    // console.log('field.value>>>', field.value);
-    // console.log('field.valid>>>', field.valid);
   }
 
   let productsRows = orderModel.orderItemsDetailed.map(

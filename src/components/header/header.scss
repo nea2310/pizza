@@ -76,8 +76,15 @@ $headerHeight: 150px;
 
   &__auth {
     margin: 10px;
+    display: flex;
+    flex-direction: column;
     &-link {
+      @include a-reset-style;
       font-weight: bolder;
+    }
+    &-text {
+      padding-top: 20px;
+      color: $colorWheat;
     }
   }
 

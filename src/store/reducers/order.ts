@@ -40,10 +40,10 @@ let initialState: {
 };
 
 function setUser(state: typeof initialState, name: string, email: string) {
-  console.log('!!!setUser!!!');
 
-  const newName = { ...state.formData.name, name };
-  const newEmail = { ...state.formData.email, email };
+
+  const newName = { ...state.formData.name, value: name, valid: true };
+  const newEmail = { ...state.formData.email, value: email, valid: true };
   const formData = { ...state.formData, name: newName, email: newEmail };
   return { ...state, formData };
 }

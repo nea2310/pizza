@@ -1,0 +1,22 @@
+@import "../../assets/styles/glob.scss";
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+
+  &__input {
+    margin-bottom: 20px;
+    border: 2px solid $colorRed;
+    border-radius: 2px;
+    &:focus,
+    &:hover {
+      outline: 1px solid $colorRed;
+    }
+  }
+
+  &__button {
+    align-self: center;
+  }
+}

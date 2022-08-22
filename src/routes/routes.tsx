@@ -5,7 +5,7 @@ import Page404 from '../pages/error404/Error404';
 import Product from '../pages/product/Product';
 import LoginPage from '../pages/login-page/LoginPage';
 import PizzaItems from '../pages/pizzaItems/pizzaItems';
-import RegisterPage from '../pages/register-page/RegisterPage';
+import RegisterPage from '../pages/registration-page/RegistrationPage';
 import Blog from '../pages/blog/Blog';
 import AboutUs from '../pages/about/About';
 import Deals from '../pages/deals/Deals';
