@@ -62,7 +62,7 @@ function updateDocByUserID(userDataToUpdate: IUserDataToUpdate) {
     })
     .then((userRec) => {
       dispatch(cartFetchData(userRec.userDocID));
-      dispatch(orderSetUser('nameFromDB', 'emailFromDB'));
+      dispatch(orderSetUser(userRec.name, userRec.email));
       //вызываем action для обновления стейта
       return dispatch(userSetSuccess({
         name: userRec.name,
