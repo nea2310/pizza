@@ -114,7 +114,9 @@ export type ICartItemsRaw = ICartItemRaw[] | [];
 /******************USER ACTIONS******************/
 
 export type TDispatch = Dispatch<IUserSetSuccess |
-  ((dispatch: Dispatch<ICartFetchDataSuccess>) => void)>
+  ((dispatch: Dispatch<ICartFetchDataSuccess>) => void) |
+  any
+>
 
 export type IUserActions =
   IUserSetSuccess |
@@ -180,9 +182,17 @@ export interface IUserDataToUpdate {
 /******************ORDER ACTIONS******************/
 
 export type IOrderActions =
+  IOrderUserSet |
   IOrderChange |
   IOrderSetLastOrderCache |
   IOrderSetDetailed;
+
+
+export interface IOrderUserSet {
+  type: 'ORDER_SET_USER';
+  name: string;
+  email: string;
+}
 
 export interface IOrderChange {
   type: 'ORDER_CHANGE';
@@ -290,6 +300,8 @@ export interface IStore {
       surname: string;
       token: string;
       userDocID: string;
+      [index: string]: string;
+
     }
   }
 

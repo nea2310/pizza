@@ -1,5 +1,14 @@
 import { IPizzaDetailsPartial } from '../../interface'
 
+export function orderSetUser(name: string, email: string) {
+  return {
+    type: 'ORDER_SET_USER',
+    name,
+    email
+  };
+}
+
+
 export function orderChangeField(name: string, value: string) {
   return {
     type: 'ORDER_CHANGE',

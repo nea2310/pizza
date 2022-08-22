@@ -39,6 +39,16 @@ let initialState: {
   }
 };
 
+function setUser(state: typeof initialState, name: string, email: string) {
+  console.log('!!!setUser!!!');
+
+  const newName = { ...state.formData.name, name };
+  const newEmail = { ...state.formData.email, email };
+  const formData = { ...state.formData, name: newName, email: newEmail };
+  return { ...state, formData };
+}
+
+
 function change(state: typeof initialState, name: string, value: string) {
   /*это не оптимальный способ валидации. Ранее в объекте стейта хранилась функция в поле validator 
   (вида validator: (val) => /^.+@.+$/.test(val)),
@@ -74,6 +84,8 @@ function setDetailed(state = initialState, orderItemsDetailed: Array<IPizzaDetai
 
 const reducer = function (state = initialState, action: IOrderActions) {
   switch (action.type) {
+    case 'ORDER_SET_USER':
+      return setUser(state, action.name, action.email);
     case 'ORDER_CHANGE':
       return change(state, action.name, action.value);
     case 'ORDER_SET_CACHE':

@@ -16,6 +16,8 @@ import db from './../../firebase'; // авторизационные данны�
 
 import { cartFetchData } from './cart';
 
+import { orderSetUser } from './order';
+
 import {
   IUserSetSuccess, IUserData,
   IUserUnsetSuccess,
@@ -60,6 +62,7 @@ function updateDocByUserID(userDataToUpdate: IUserDataToUpdate) {
     })
     .then((userRec) => {
       dispatch(cartFetchData(userRec.userDocID));
+      dispatch(orderSetUser('emailFromDB', 'emailFromDB'));
       //вызываем action для обновления стейта
       return dispatch(userSetSuccess({
         name: userRec.name,
