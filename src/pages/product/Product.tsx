@@ -24,11 +24,11 @@ const Product = (data: IData) => {
   const product =
     props.pizzaItems.pizzaItemsAll.find((item: IPizzaDetails) => item.id == id);
   const cart = props.cart;
-  const userDocID = props.user.user.userDocID;
+  const userDocID = props.user.userDocID;
 
   let inCart: boolean = false;
   if (cart != undefined) {
-    inCart = Boolean(cart.cartItems.find((item) => item[id]));
+    inCart = Boolean(cart.cartItems.find((item: any) => item[id]));
   }
 
   if (!id) {

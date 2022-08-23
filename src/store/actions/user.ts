@@ -1,30 +1,34 @@
 import { Dispatch } from 'react';
-
 import {
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword, signOut, onAuthStateChanged
+  createUserWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  getAuth,
 } from "firebase/auth";
-
-import { getAuth } from "firebase/auth";
-import { firebaseApp } from './../../firebase';
+// db - авторизационные данные Firebase
+import db, { firebaseApp } from './../../firebase';
 import {
-  collection, addDoc, getDocs, setDoc, doc,
-  query, where, getDoc, DocumentData
+  collection,
+  addDoc,
+  getDocs,
+  setDoc,
+  doc,
+  query,
+  where,
+  getDoc,
+  DocumentData,
 } from "firebase/firestore";
-import db from './../../firebase'; // авторизационные данные Firebase
-
-
-import { cartFetchData } from './cart';
-
+import { cartFetchData, cartUnsetSuccess } from './cart';
 import { orderSetUser } from './order';
-
 import {
   IUserSetSuccess, IUserData,
   IUserUnsetSuccess,
   IUserAddFavItemSuccess,
   IUserDataToUpdate,
-  TDispatch,
-  IUserRegData
+  IUserRegData,
+  ICartUnsetSuccess,
+  TDispatchUnion
 } from
   './../../interface';
 
@@ -49,60 +53,14 @@ export function userUnsetSuccess(): IUserUnsetSuccess {
   };
 }
 
-
-function updateDocByUserID(userDataToUpdate: IUserDataToUpdate) {
-  const { email, token, id, dispatch } = userDataToUpdate;
-  const q =
-    query(collection(db, "users"), where("id", "==", id));
-  return getDocs(q)
-    .then((user) => {
-      /*получаем пользователя по ключу uid, поэтому запись может быть только одна*/
-      const doc = user.docs[0];
-      return { ...doc.data(), userDocID: doc.id } as IUserData;
-    })
-    .then((userRec) => {
-      dispatch(cartFetchData(userRec.userDocID));
-      dispatch(orderSetUser(userRec.name, userRec.email));
-      //вызываем action для обновления стейта
-      return dispatch(userSetSuccess({
-        name: userRec.name,
-        surname: userRec.surname,
-        email,
-        token,
-        id,
-        userDocID: userRec.userDocID,
-        favourites: userRec.favourites
-      }
-      ));
-    });
-}
-
-
-/*Получить залогиненного пользователя*/
-export function userFetch() {
-  return (
-    // eslint-disable-next-line max-len
-    dispatch: TDispatch) => {
-    /*проверяем, залогинен ли пользователь*/
-    onAuthStateChanged(authdata, (user) => {
-      /*если залогинен - получаем его данные из таблицы users c помощью API getDocs*/
-      if (user) {
-        const emailFromDB = user.email ? user.email : '';
-        updateDocByUserID(
-          {
-            email: emailFromDB,
-            token: user.refreshToken,
-            id: user.uid,
-            dispatch
-          }
-        );
-      } else {
-        return;
-      }
-    });
+export function userAddFavItemSuccess(favourites: Array<string>):
+  IUserAddFavItemSuccess {
+  return {
+    type: 'USER_ADD_FAV',
+    payload: { favourites },
   };
-}
 
+}
 
 /*зарегистрироваться новому пользователю*/
 export function userReg(
@@ -137,13 +95,10 @@ export function userReg(
   };
 }
 
-
 /*залогиниться существующему пользователю*/
 export function userSet(email: string, password: string) {
-  return (
-    // eslint-disable-next-line max-len
-    dispatch: TDispatch) => {
-    signInWithEmailAndPassword(authdata, email, password)
+  return (dispatch: TDispatchUnion) => {
+    return signInWithEmailAndPassword(authdata, email, password)
       .then(({ user }) => {
         const emailFromDB = user.email ? user.email : '';
         updateDocByUserID({
@@ -152,36 +107,77 @@ export function userSet(email: string, password: string) {
           id: user.uid,
           dispatch
         });
-      }
-      )
+      })
       .catch(console.error);
   };
 }
 
 /*разлогиниться существующему пользователю*/
 export function userUnset() {
-  return (dispatch: Dispatch<IUserUnsetSuccess>) => {
+  return (dispatch: Dispatch<IUserUnsetSuccess | ICartUnsetSuccess>) => {
     return signOut(authdata).then(() => {
       // вызываем API Firebase
       dispatch(userUnsetSuccess());
-    }).catch(() => {
-      alert('Invalid user');
+    })
+      .then(() => dispatch(cartUnsetSuccess()))
+      .catch(() => {
+        alert('Invalid user');
+      });
+  };
+}
+
+
+/*Получить залогиненного пользователя*/
+export function userFetch() {
+  return (dispatch: TDispatchUnion) => {
+    /*проверяем, залогинен ли пользователь*/
+    onAuthStateChanged(authdata, (user) => {
+      /*если залогинен - получаем его данные из таблицы users c помощью API getDocs*/
+      if (user) {
+        const emailFromDB = user.email ? user.email : '';
+        updateDocByUserID(
+          {
+            email: emailFromDB,
+            token: user.refreshToken,
+            id: user.uid,
+            dispatch
+          }
+        );
+      } else {
+        return;
+      }
     });
   };
 }
 
 
-export function userAddFavItemSuccess(favourites: Array<string>):
-  IUserAddFavItemSuccess {
-  return {
-    type: 'USER_ADD_FAV',
-    payload: { favourites },
-  };
-
+/*обновить данные пользователя в стейте*/
+function updateDocByUserID(userDataToUpdate: IUserDataToUpdate) {
+  const { email, token, id, dispatch } = userDataToUpdate;
+  const q =
+    query(collection(db, "users"), where("id", "==", id));
+  return getDocs(q)
+    .then((user) => {
+      /*получаем пользователя по ключу uid, поэтому запись может быть только одна*/
+      const doc = user.docs[0];
+      return { ...doc.data(), userDocID: doc.id } as IUserData;
+    })
+    .then((userRec) => {
+      dispatch(cartFetchData(userRec.userDocID));
+      dispatch(orderSetUser(userRec.name, userRec.email));
+      //вызываем action для обновления стейта
+      return dispatch(userSetSuccess({
+        name: userRec.name,
+        surname: userRec.surname,
+        email,
+        token,
+        id,
+        userDocID: userRec.userDocID,
+        favourites: userRec.favourites
+      }
+      ));
+    });
 }
-
-
-
 
 /*обновить избранное*/
 export function userUpdateFavItems(
@@ -209,13 +205,9 @@ export function userUpdateFavItems(
         /*Если удаляем из избранного*/
         else {
           console.log('УДАЛЯЕМ ИЗ ИЗБРАННОГО');
-
-
           const id = favourites.indexOf(String(pizzaItem), 0);
           favourites.splice(id, 1);
         }
-
-
         return favourites;
       })
       .then((favourites) => setDoc(userRef,

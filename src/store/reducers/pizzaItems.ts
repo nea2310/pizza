@@ -1,10 +1,10 @@
 import {
-  IPizzaItemsState,
+  IPizzaItemsPayload,
   IPizzaItem,
   IPizzaItemsActions
 } from './../../interface';
 
-let initialState: IPizzaItemsState = {
+let initialState = {
   pizzaItemsAll: [],
   pizzaItemsFiltered: [],
   ingredientsChosen: [],
@@ -12,71 +12,76 @@ let initialState: IPizzaItemsState = {
   currentQuery: ''
 };
 
-const reducer = function (state: IPizzaItemsState = initialState,
+function fetchPizzaItems(state = initialState, pizzaItemsAll: Array<IPizzaItem>) {
+
+  //список всех ингредиентов (с дублями)
+  const ingredientsRaw: Array<string> = [];
+  pizzaItemsAll.forEach((item: IPizzaItem) =>
+    item.ingredients.forEach((item: string) => ingredientsRaw.push(item))
+  );
+  //список всех ингредиентов (убираем дубли)
+  const ingredientsAll =
+    ingredientsRaw.filter((item: string, pos: number) =>
+      ingredientsRaw.indexOf(item) == pos
+    );
+
+  return {
+    ...state,
+    pizzaItemsAll,
+    pizzaItemsFiltered: pizzaItemsAll,
+    ingredientsAll
+  };
+}
+
+function filterPizzaItems(state = initialState, payload: IPizzaItemsPayload) {
+  const { pizzaItemsFiltered,
+    ingredientsChosen,
+    spicyChosen,
+    lentChosen,
+    currentQuery,
+  } = payload;
+
+  let filterSpicy;
+  switch (spicyChosen) {
+    case 'да':
+      filterSpicy = true;
+      break;
+    case 'нет':
+      filterSpicy = false;
+      break;
+  }
+
+  let filterLent;
+  switch (lentChosen) {
+    case 'да':
+      filterLent = true;
+      break;
+    case 'нет':
+      filterLent = false;
+      break;
+  }
+
+  return {
+    ...state,
+    ingredientsChosen,
+    spicyChosen,
+    pizzaItemsFiltered,
+    currentQuery,
+    filterSpicy,
+    filterLent
+  };
+}
+
+const reducer = function (state = initialState,
   action: IPizzaItemsActions) {
   switch (action.type) {
+
     case 'PIZZAITEMS_FETCH_DATA_SUCCESS': {
-      let newState = { ...state };
-      let pizzaItemsAll = action.pizzaItems;
-      const ingredientsRaw: Array<string> = [];
-      pizzaItemsAll.forEach((item: IPizzaItem) =>
-        item.ingredients.forEach((item: string) => ingredientsRaw.push(item))
-      );
-
-
-
-      //список всех ингредиентов
-      const ingredientsAll =
-        ingredientsRaw.filter((item: string, pos: number) =>
-          ingredientsRaw.indexOf(item) == pos
-        );
-
-      const pizzaItemsFiltered = action.pizzaItems;
-
-      return {
-        ...newState,
-        pizzaItemsAll,
-        pizzaItemsFiltered,
-        ingredientsAll
-      };
+      return fetchPizzaItems(state, action.pizzaItems)
     }
 
     case 'PIZZAITEMS_FILTER': {
-      let newState = { ...state };
-      const { pizzaItemsFiltered } = action.payload;
-      const { ingredientsChosen } = action.payload;
-      const { spicyChosen } = action.payload;
-      const { lentChosen } = action.payload;
-      const { currentQuery } = action.payload;
-      let filterSpicy;
-      switch (spicyChosen) {
-        case 'да':
-          filterSpicy = true;
-          break;
-        case 'нет':
-          filterSpicy = false;
-          break;
-      }
-
-      let filterLent;
-      switch (lentChosen) {
-        case 'да':
-          filterLent = true;
-          break;
-        case 'нет':
-          filterLent = false;
-          break;
-      }
-
-      return {
-        ...newState,
-        ingredientsChosen,
-        spicyChosen,
-        pizzaItemsFiltered,
-        currentQuery,
-        filterSpicy,
-        filterLent
-      };
+      return filterPizzaItems(state, action.payload);
     }
 
     default:

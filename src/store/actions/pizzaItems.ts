@@ -39,6 +39,7 @@ export function pizzaItemsFilterSuccess(pizzaItemsFiltered: Array<IPizzaItem>,
   };
 }
 
+
 export function pizzaItemsFetchData() {
   return (dispatch: Dispatch<IPizzaItemsFetchDataSuccess>) => {
     return getDocs(collection(db, "pizza"))

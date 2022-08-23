@@ -23,9 +23,9 @@ export default function () {
   const burgerClassName = details ? 'header__burger-button_active' : '';
   const burgerClasses = ['header__burger-button', burgerClassName];
 
-  const name = props.user.user.name;
-  const surname = props.user.user.surname;
-  const isAuthed = !!props.user.user.token;
+  const name = props.user.name;
+  const surname = props.user.surname;
+  const isAuthed = !!props.user.token;
   const cartImg = require('./img/cart-shopping.svg').default;
 
 

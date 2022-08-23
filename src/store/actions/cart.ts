@@ -11,6 +11,7 @@ import {
   ICartAddDataSuccess,
   ICartChangeItemSuccess,
   ICartRemoveItemSuccess,
+  ICartUnsetSuccess,
   ICartItemRaw,
   ICartItem
 } from './../../interface';
@@ -47,6 +48,12 @@ export function cartRemoveItemSuccess(id: string):
   return {
     type: 'CART_REMOVE_ITEM',
     id
+  };
+}
+
+export function cartUnsetSuccess(): ICartUnsetSuccess {
+  return {
+    type: 'CART_UNSET',
   };
 }
 
@@ -143,6 +150,28 @@ export function cartRemoveItem(user: string, pizzaItem: string) {
           //обновить стейт
           .then(() => dispatch(cartRemoveItemSuccess(pizzaItem)))
           ;
+      });
+  };
+}
+
+
+export function cartClear(user: string) {
+  return (dispatch: Dispatch<ICartUnsetSuccess>): void => {
+    console.log(`Очищаем корзину пользователя ${user}`);
+    getCart(user)
+      .then(cart => {
+        const docRef = doc(db, "cart", cart[0].id);
+        getDoc(docRef)
+          .then(() => {
+            //очистить корзину
+            updateDoc(docRef,
+              {
+                items: {}
+              }
+            );
+          })
+          //обновить стейт
+          .then(() => dispatch(cartUnsetSuccess()))
       });
   };
 }

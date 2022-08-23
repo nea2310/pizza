@@ -5,7 +5,8 @@ import React, { Dispatch } from 'react';
 /******************PIZZAITEMS ACTIONS******************/
 
 export type IPizzaItemsActions =
-  IPizzaItemsFetchDataSuccess | IPizzaItemsFilterSuccess;
+  IPizzaItemsFetchDataSuccess |
+  IPizzaItemsFilterSuccess;
 
 
 export interface IPizzaItemsFetchDataSuccess {
@@ -14,17 +15,17 @@ export interface IPizzaItemsFetchDataSuccess {
 }
 
 
-
+export interface IPizzaItemsPayload {
+  spicyChosen: string;
+  lentChosen: string;
+  ingredientsChosen: Array<string>;
+  currentQuery: string;
+  pizzaItemsFiltered: Array<IPizzaItem>;
+}
 
 export interface IPizzaItemsFilterSuccess {
   type: 'PIZZAITEMS_FILTER';
-  payload: {
-    spicyChosen: string;
-    lentChosen: string;
-    ingredientsChosen: Array<string>;
-    currentQuery: string;
-    pizzaItemsFiltered: Array<IPizzaItem>;
-  }
+  payload: IPizzaItemsPayload;
 }
 
 
@@ -71,7 +72,8 @@ export type ICartActions =
   ICartFetchDataSuccess |
   ICartAddDataSuccess |
   ICartChangeItemSuccess |
-  ICartRemoveItemSuccess;
+  ICartRemoveItemSuccess |
+  ICartUnsetSuccess;
 
 
 export interface ICartFetchDataSuccess {
@@ -96,6 +98,11 @@ export interface ICartRemoveItemSuccess {
   type: 'CART_REMOVE_ITEM';
   id: string;
 }
+
+export interface ICartUnsetSuccess {
+  type: 'CART_UNSET';
+}
+
 export interface ICartItem {
   [key: string]: number
 }
@@ -113,10 +120,9 @@ export type ICartItemsRaw = ICartItemRaw[] | [];
 
 /******************USER ACTIONS******************/
 
-export type TDispatch = Dispatch<IUserSetSuccess |
-  ((dispatch: Dispatch<ICartFetchDataSuccess>) => void) |
-  any
->
+export type TDispatchUnion = Dispatch<IUserSetSuccess | IOrderUserSet |
+  ((dispatch: Dispatch<ICartFetchDataSuccess>) => void)
+>;
 
 export type IUserActions =
   IUserSetSuccess |
@@ -169,12 +175,11 @@ export interface IUserDataInitial {
   favourites?: Array<string> | null;
 }
 
-
 export interface IUserDataToUpdate {
   email: string;
   token: string;
   id: string;
-  dispatch: TDispatch;
+  dispatch: TDispatchUnion;
 }
 
 
@@ -210,11 +215,6 @@ export interface IOrderSetDetailed {
   type: 'ORDER_SET_DETAILED';
   items: Array<IPizzaDetailsPartial>;
 }
-
-
-
-
-
 
 
 export interface IAppLazyInputRef {
@@ -292,23 +292,16 @@ export interface IStore {
     currentQuery: string;
   }
   user: {
-    user: {
-      email: string;
-      favourites: Array<string>;
-      id: string;
-      name: string;
-      surname: string;
-      token: string;
-      userDocID: string;
-      [index: string]: string;
-
-    }
+    email: string;
+    favourites: Array<string>;
+    id: string;
+    name: string;
+    surname: string;
+    token: string;
+    userDocID: string;
+    [index: string]: string;
   }
-
 }
-
-
-
 
 export interface IData {
   [key: string]: {

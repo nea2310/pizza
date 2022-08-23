@@ -11,7 +11,7 @@ const SignUp = () => {
     return state;
   });
   /*проверяем, авторизован ли пользователь*/
-  const isAuthed = !!props.user.user.token;
+  const isAuthed = !!props.user.token;
 
   // const auth = getAuth(); // auth - данные для коннекта с firebase
   const dispatch = useAppDispatch();

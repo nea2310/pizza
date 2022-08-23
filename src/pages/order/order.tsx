@@ -3,6 +3,7 @@ import { Form, Button, Modal } from 'react-bootstrap';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { routesMap } from '../../routes/routes';
 import { orderChangeField, orderSetLastOrderCache } from '../../store/actions/order';
+import { cartClear } from '../../store/actions/cart';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { IStore, IPizzaDetailsPartial } from '../../interface';
 
@@ -21,6 +22,9 @@ export default function () {
     return state;
   });
 
+  const { userDocID } = props.user;
+
+
   const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
@@ -30,6 +34,9 @@ export default function () {
   const confirm = () => {
     setShown(false);
     dispatch(orderSetLastOrderCache());
+    //очистить корзину
+    dispatch(cartClear(userDocID));
+
     navigate(routesMap.result, { state: { total } });
   };
 

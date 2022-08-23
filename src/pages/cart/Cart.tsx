@@ -20,7 +20,7 @@ const Cart = () => {
   const pizzaItemsAll = props.pizzaItems.pizzaItemsAll;
   const cartItems = props.cart.cartItems;
   const dispatch = useAppDispatch();
-  const userDocID = props.user.user.userDocID;
+  const userDocID = props.user.userDocID;
 
   const getProductsDetailed = () => {
     if (pizzaItemsAll.length) {

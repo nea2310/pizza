@@ -1,30 +1,23 @@
-import { IUserActions, IUserDataInitial } from './../../interface';
+import { IUserActions, IUserData } from './../../interface';
 
-let initialState: { user: IUserDataInitial } =
-{
-  user: {
-    email: null,
-    token: null,
-    id: null,
-    name: null,
-    surname: null,
-    userDocID: null,
-    favourites: null
-  }
+let initialState = {
+  email: null,
+  token: null,
+  id: null,
+  name: null,
+  surname: null,
+  userDocID: null,
+  favourites: null
 };
 
 function set(state = initialState,
-  payload: any) {
+  payload: IUserData) {
   console.log('SETTING USER');
 
-  const user = {
-    ...state.user,
-    ...payload
-  };
-  return { ...state, user };
+  return { ...state, ...payload };
 }
 
-function unset(state: typeof initialState) {
+function unset(state = initialState) {
   console.log('UNSETTING USER');
   const user = {
     email: null,
@@ -35,23 +28,20 @@ function unset(state: typeof initialState) {
     docID: null,
     favourites: null
   };
-  return { ...state, user };
+  return { ...state, ...user };
 }
 
-function addFav(state: typeof initialState, favourites: Array<string>) {
+function addFav(state = initialState, favourites: Array<string>) {
 
   console.log('USER_ADD_FAV');
-  const user = { ...state.user, favourites };
+  const user = { ...state, favourites };
   return { ...state, user };
 }
 
 const reducer = function (state = initialState, action: IUserActions) {
-
-
   switch (action.type) {
     case 'USER_SET':
-      return set(state,
-        action.payload);
+      return set(state, action.payload);
     case 'USER_UNSET':
       return unset(state);
     case 'USER_ADD_FAV':

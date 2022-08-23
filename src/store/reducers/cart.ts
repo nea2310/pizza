@@ -6,14 +6,14 @@ let initialState: { cartItems: Array<ICartItem>, total: 0 } = {
 };
 
 
-function load(state: typeof initialState = initialState, items: Array<ICartItem>) {
+function load(state = initialState, items: Array<ICartItem>) {
   console.log('LOADING CART');
   let cartItems = [...items];
 
   return { ...state, cartItems }; // cartItems - добавляем тот ключ в state, который хотим обновить
 }
 
-function add(state: typeof initialState = initialState, id: string) {
+function add(state = initialState, id: string) {
   console.log('ADDING');
   {/*задублируем существующую корзину и запушим в нее добавленный товар*/
     let cartItems = [...state.cartItems];
@@ -22,7 +22,7 @@ function add(state: typeof initialState = initialState, id: string) {
   }
 }
 
-function remove(state: typeof initialState, id: string) {
+function remove(state = initialState, id: string) {
   console.log('REMOVING');
   /*получим все элементы массива, кроме того, у которого ключ совпадает с id пиццы*/
 
@@ -35,13 +35,15 @@ function remove(state: typeof initialState, id: string) {
 
 }
 
-function change(state: typeof initialState, id: string, cnt: number) {
+
+function change(state = initialState, id: string, cnt: number) {
+
   console.log('CHANGING');
   /*получаем новый массив всех продуктов, не мутируя текущий стейт*/
   let cartItems = state.cartItems.map(
     (el: ICartItem) => {
       if (id in el) {
-        el = { ...el, cnt }
+        el = { [id]: cnt }
       }
       return el;
     });
@@ -49,8 +51,17 @@ function change(state: typeof initialState, id: string, cnt: number) {
   return { ...state, cartItems };
 }
 
-const reducer = function (state: typeof initialState = initialState, action: ICartActions) {
+function unset(state = initialState) {
 
+  console.log('UNSET');
+  /*Обнуляем массив продуктов в корзине*/
+
+  const cartItems: Array<ICartItem> = []
+  return { ...state, cartItems };
+}
+
+
+const reducer = function (state = initialState, action: ICartActions) {
   switch (action.type) {
     case 'CART_FETCH_DATA_SUCCESS':
       return load(state, action.cartItems);
@@ -60,6 +71,10 @@ const reducer = function (state: typeof initialState = initialState, action: ICa
       return remove(state, action.id);
     case 'CART_CHANGE_CNT':
       return change(state, action.id, action.cnt);
+    case 'CART_UNSET':
+      return unset(state);
+    // case 'CART_CLEAR':
+    //   return clear(state);
     default:
       return state;
   }

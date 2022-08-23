@@ -1,6 +1,14 @@
-import { IPizzaDetailsPartial } from '../../interface'
+import {
+  IPizzaDetailsPartial,
+  IOrderUserSet,
+  IOrderChange,
+  IOrderSetDetailed,
+  IOrderSetLastOrderCache
+} from '../../interface'
 
-export function orderSetUser(name: string, email: string) {
+
+/*нужно типизировать возвращаемое значение для правильной работы типа TDispatchUnion*/
+export function orderSetUser(name: string, email: string): IOrderUserSet {
   return {
     type: 'ORDER_SET_USER',
     name,
@@ -9,7 +17,7 @@ export function orderSetUser(name: string, email: string) {
 }
 
 
-export function orderChangeField(name: string, value: string) {
+export function orderChangeField(name: string, value: string): IOrderChange {
   return {
     type: 'ORDER_CHANGE',
     name,
@@ -17,14 +25,14 @@ export function orderChangeField(name: string, value: string) {
   };
 }
 
-export function orderItemsDetailed(items: Array<IPizzaDetailsPartial>) {
+export function orderItemsDetailed(items: Array<IPizzaDetailsPartial>): IOrderSetDetailed {
   return {
     type: 'ORDER_SET_DETAILED',
     items,
   };
 }
 
-export function orderSetLastOrderCache() {
+export function orderSetLastOrderCache(): IOrderSetLastOrderCache {
   return {
     type: 'ORDER_SET_CACHE',
   };

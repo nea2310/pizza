@@ -1,4 +1,11 @@
-import { IFormData, ILastOrderCache, IPizzaDetails, IField, IPizzaDetailsPartial, IOrderActions } from '../../interface';
+import {
+  IFormData,
+  ILastOrderCache,
+  IPizzaDetails,
+  IField,
+  IPizzaDetailsPartial,
+  IOrderActions
+} from '../../interface';
 
 
 let initialState: {
@@ -39,9 +46,7 @@ let initialState: {
   }
 };
 
-function setUser(state: typeof initialState, name: string, email: string) {
-
-
+function setUser(state = initialState, name: string, email: string) {
   const newName = { ...state.formData.name, value: name, valid: true };
   const newEmail = { ...state.formData.email, value: email, valid: true };
   const formData = { ...state.formData, name: newName, email: newEmail };
@@ -49,7 +54,7 @@ function setUser(state: typeof initialState, name: string, email: string) {
 }
 
 
-function change(state: typeof initialState, name: string, value: string) {
+function change(state = initialState, name: string, value: string) {
   /*это не оптимальный способ валидации. Ранее в объекте стейта хранилась функция в поле validator 
   (вида validator: (val) => /^.+@.+$/.test(val)),
   соответственно, не нужно было каждый раз создавать регулярное выражение и функцию.
@@ -66,8 +71,7 @@ function change(state: typeof initialState, name: string, value: string) {
   return { ...state, formData, formValid };
 }
 
-function setLastOrderCache(state: typeof initialState) {
-
+function setLastOrderCache(state = initialState) {
   let lastOrderCache = { ...state.lastOrderCache };
   lastOrderCache.name = state.formData.name.value;
   lastOrderCache.phone = state.formData.phone.value;

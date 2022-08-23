@@ -15,14 +15,14 @@ const PizzaItems = () => {
   });
 
   const dispatch = useAppDispatch();
-  const userDocID = props.user.user.userDocID;
-  const fav = props.user.user.favourites; // проверить, есть ли избранное
+  const userDocID = props.user.userDocID;
+  const fav = props.user.favourites; // проверить, есть ли избранное
   const cart = props.cart.cartItems; // проверить, есть ли избранное
   const ingredientsAll = props.pizzaItems.ingredientsAll;
   const pizzaItemsFiltered = props.pizzaItems.pizzaItemsFiltered;
   const pizzaItemsAll = props.pizzaItems.pizzaItemsAll;
 
-  const [ingredientsChosen, setIngredientsChosen] = useState(['']);
+  const [ingredientsChosen, setIngredientsChosen] = useState<Array<string>>([]);
   const [spicyChosen, setSpicyChosen] = useState('');
   const [lentChosen, setLentChosen] = useState('');
 
