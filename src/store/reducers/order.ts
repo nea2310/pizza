@@ -18,8 +18,8 @@ let initialState: {
     name: {
       value: '',
       label: 'Name',
-      validator: '^[aA-zZ ]{2,}$',
-      errorText: 'Латинские символы, не менее двух',
+      validator: '^[a-zA-ZА-Яа-яёЁ ]{2,}$',
+      errorText: 'Русские или латинские символы, не менее двух',
       valid: null
     },
     phone: {
