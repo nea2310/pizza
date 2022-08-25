@@ -12,8 +12,6 @@ type TProps = {
 
 export default function (props: TProps) {
 
-  console.log('order button props:   ', props);
-
   const dispatch = useAppDispatch();
   let isAdding = true;
   let type = "success";

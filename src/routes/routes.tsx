@@ -9,6 +9,7 @@ import RegisterPage from '../pages/registration-page/RegistrationPage';
 import Blog from '../pages/blog/Blog';
 import AboutUs from '../pages/about/About';
 import Deals from '../pages/deals/Deals';
+import Favourites from '../pages/favourites/Favourites';
 
 interface IRoute {
   name?: string;
@@ -83,7 +84,12 @@ const routes: IRoute[] = [
     component: <Blog />,
     exact: true
   },
-
+  {
+    name: 'favourites',
+    url: '/favourites',
+    component: <Favourites />,
+    exact: true
+  },
   {
     url: '*',
     component: <Page404 />

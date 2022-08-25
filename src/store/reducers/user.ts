@@ -32,10 +32,9 @@ function unset(state = initialState) {
 }
 
 function addFav(state = initialState, favourites: Array<string>) {
-
   console.log('USER_ADD_FAV');
-  const user = { ...state, favourites };
-  return { ...state, user };
+
+  return { ...state, favourites };
 }
 
 const reducer = function (state = initialState, action: IUserActions) {

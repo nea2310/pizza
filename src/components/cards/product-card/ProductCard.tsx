@@ -12,8 +12,6 @@ type TProps = {
 
 export default function (props: TProps) {
 
-  console.log('product props:   ', props);
-
   let isAvl = null;
   if (!props.isavl) {
     isAvl = <span> Нет в наличии</span>;

@@ -1,4 +1,5 @@
 import { useState, useRef, RefObject, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import './user-info.scss';
 import Avatar from "../avatar/Avatar";
@@ -53,9 +54,9 @@ export const UserInfo = (props: Props) => {
         </span>
         <ul className="user-info__links">
           <li className="user-info__link-wrapper">
-            <a
+            <Link
               className="user-info__link"
-              onClick={() => true}>Хочу попробовать</a>
+              to={'/favourites'}>Избранное</Link>
           </li>
           <li className="user-info__link-wrapper">
             <a

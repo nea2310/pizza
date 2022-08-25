@@ -78,6 +78,7 @@ export function userReg(
             email: data.email,
             token: user.refreshToken,
             id: user.uid,
+            favourites: [''],
           };
           /*добавляем пользователя в таблицу users*/
           addDoc(collection(db, "users"), userRec)
@@ -184,6 +185,8 @@ export function userUpdateFavItems(
   user: string,
   pizzaItem: string,
   isAdding: boolean) {
+  console.log('isAdding>>>', isAdding);
+
   // eslint-disable-next-line max-len
   console.log(`Пользователь ${user} обновляет купон с ID ${pizzaItem}`);
   const userRef = doc(db, 'users', user);
@@ -196,6 +199,7 @@ export function userUpdateFavItems(
         let favourites = data.favourites;
         /*Если добавляем в  избранное*/
         if (isAdding) {
+          console.log('ДОБАВЛЯЕМ В ИЗБРАННОЕ');
           if (favourites) {
             favourites.push(pizzaItem);
           } else {

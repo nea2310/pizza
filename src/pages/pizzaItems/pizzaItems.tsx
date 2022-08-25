@@ -40,7 +40,10 @@ const PizzaItems = () => {
               (favItemID: string) => {
                 return pizzaItem.id === favItemID;
               });
+
         }
+
+
 
         let inCart = false;
         /*проверить, находится ли эта пицца в корзине*/
