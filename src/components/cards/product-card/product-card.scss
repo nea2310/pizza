@@ -47,4 +47,14 @@
     margin: 10px;
     align-self: flex-start;
   }
+
+  &__order-button {
+    margin: 10px auto;
+  }
+
+  &__favourites-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
 }

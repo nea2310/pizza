@@ -56,36 +56,20 @@ const PizzaItems = () => {
               });
         }
 
-        return <li
-          className='pizza-items__product-card-wrapper'
-          key={pizzaItem.id}>
-          <div className='pizza-items__product-card product-card'>
+        return (
+          <li className='pizza-items__product-card-wrapper'
+            key={pizzaItem.id}>
             <ProductCard
               pizzaid={pizzaItem.id}
               isavl={pizzaItem.available}
               name={pizzaItem.name}
               image={pizzaItem.image}
               price={pizzaItem.price}
-            />
-          </div>
-
-          <div className='pizza-items__order-button order-button'>
-            <OrderButton
               incart={inCart}
               userdocid={userDocID}
-              pizzaid={pizzaItem.id}
-              isavl={pizzaItem.available}
-            />
-          </div>
-
-          <div className='pizza-items__favourites-button favourites-button'>
-            <FavouritesButton
               infav={inFav}
-              userdocid={userDocID}
-              pizzaid={pizzaItem.id}
             />
-          </div>
-        </li >;
+          </li >)
       });
   }
 

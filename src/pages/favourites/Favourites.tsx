@@ -47,40 +47,24 @@ const Favourites = () => {
             });
       }
 
-      if (inFav) return <li
-        className='pizza-items__product-card-wrapper'
-        key={pizzaItem.id}>
-        <div className='pizza-items__product-card product-card'>
+      if (inFav) return (
+        <li className='favourites__product-card-wrapper'
+          key={pizzaItem.id}>
           <ProductCard
             pizzaid={pizzaItem.id}
             isavl={pizzaItem.available}
             name={pizzaItem.name}
             image={pizzaItem.image}
             price={pizzaItem.price}
-          />
-        </div>
-
-        <div className='pizza-items__order-button order-button'>
-          <OrderButton
             incart={inCart}
             userdocid={userDocID}
-            pizzaid={pizzaItem.id}
-            isavl={pizzaItem.available}
-          />
-        </div>
-
-        <div className='pizza-items__favourites-button favourites-button'>
-          <FavouritesButton
             infav={inFav}
-            userdocid={userDocID}
-            pizzaid={pizzaItem.id}
           />
-        </div>
-      </li >;
+        </li >)
     });
 
   return (
-    <ul className='pizza-items__product-cards'>
+    <ul className='favourites__product-cards'>
       {pizzaItemsCards}
     </ul>
   );

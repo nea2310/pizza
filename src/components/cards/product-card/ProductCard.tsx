@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
 import './product-card.scss';
+
+import FavouritesButton from '../../../components/buttons/favourites-button/FavouritesButton';
+import OrderButton from '../../../components/buttons/order-button/OrderButton';
 import { urlBuilder } from '../../../routes/routes';
 
 type TProps = {
@@ -8,6 +11,10 @@ type TProps = {
   name: string;
   pizzaid: string;
   price: number;
+  incart: boolean;
+  userdocid: string;
+  infav: boolean;
+
 };
 
 export default function (props: TProps) {
@@ -18,21 +25,40 @@ export default function (props: TProps) {
   }
   return (
     <>
-      <Link className='product-card__link'
-        to={urlBuilder('productPage', { id: props.pizzaid })}>
-        <h4
-          className='product-card__header'>{props.name}</h4>
-        <div className='product-card__img-wrapper'>
-          <img
-            className='product-card__img'
-            src={props.image} alt="" />
+      <div className='product-card'>
+        <Link className='product-card__link'
+          to={urlBuilder('productPage', { id: props.pizzaid })}>
+          <h4
+            className='product-card__header'>{props.name}</h4>
+          <div className='product-card__img-wrapper'>
+            <img
+              className='product-card__img'
+              src={props.image} alt="" />
+          </div>
+
+        </Link>
+        <div className='product-card__info'>
+          <strong className='product-card__price'>
+            Цена: {props.price}р.</strong>
+          <strong className='product-card__avl'>{isAvl}</strong>
         </div>
 
-      </Link>
-      <div className='product-card__info'>
-        <strong className='product-card__price'>
-          Цена: {props.price}р.</strong>
-        <strong className='product-card__avl'>{isAvl}</strong>
+        <div className='product-card_order-button'>
+          <OrderButton
+            incart={props.incart}
+            userdocid={props.userdocid}
+            pizzaid={props.pizzaid}
+            isavl={props.isavl}
+          />
+        </div>
+
+        <div className='product-card__favourites-button'>
+          <FavouritesButton
+            infav={props.infav}
+            userdocid={props.userdocid}
+            pizzaid={props.pizzaid}
+          />
+        </div>
       </div>
     </>
   );
