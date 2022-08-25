@@ -48,7 +48,8 @@ const AppMinMax = (props: IAppMinMaxProps) => {
     let realCnt = set(isNaN(cnt) ? props.min : cnt);
 
     if (realCnt.toString() !== e.target.value) {
-      const element = lazyInput.current as IAppLazyInputRef;
+      const element = lazyInput.current;
+      if (!element) return;
       element.setValue(String(realCnt));
     }
   };

@@ -5,7 +5,7 @@ import { userUpdateFavItems } from '../../../store/actions/user';
 
 type TProps = {
   infav: boolean;
-  userdocid: any;
+  userdocid: string;
   pizzaid: string;
 };
 

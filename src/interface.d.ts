@@ -223,9 +223,9 @@ export interface IAppLazyInputRef {
 
 export interface IAppLazyInputProps {
   nativeProps: { type: string, name?: string, className: string },
-  value: number | string,
-  onChange: (e: React.FocusEvent<HTMLInputElement>) => void,
-  ref: any
+  value: number | string;
+  onChange: (e: React.FocusEvent<HTMLInputElement>) => void;
+  ref: IAppLazyInputRef;
 }
 
 
@@ -256,7 +256,7 @@ export interface IPizzaDetails {
   spicy: boolean;
 }
 
-interface IPizzaDetailsExtended extends Omit<IPizzaDetails, 'available'> { cnt: number; available?: boolean | undefined }
+export interface IPizzaDetailsExtended extends Omit<IPizzaDetails, 'available'> { cnt: number; available?: boolean | undefined }
 export type IPizzaDetailsPartial = Partial<IPizzaDetailsExtended>
 
 export interface IFormData {
@@ -319,15 +319,6 @@ export interface IFormData {
   }
 }
 
-export interface IProps {
-  products?: any,
-  stores?: {
-    cart: ICart,
-    order: IOrder,
-    products: IProducts,
-  }
-}
-
 export interface IOrder {
   formData: IFormData;
   change: Function;
@@ -359,14 +350,6 @@ export interface ICart { // надо ли описывать все поля в 
 export interface IProducts { // надо ли описывать все поля в cart, products и order?
   getById: Function;
   items: Array;
-}
-
-export interface IRootstore {
-  cart: ICart;
-  products: IProducts;
-  order: IOrder;
-  api: any;
-  storage: Storage;
 }
 
 export interface ICartData {

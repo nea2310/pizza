@@ -52,7 +52,7 @@ const Product = (data: IData) => {
           incart={inCart}
           userdocid={userDocID}
           pizzaid={product.id}
-          isavl={!product.available}
+          isavl={product.available}
         />
       </div>
     </section>;

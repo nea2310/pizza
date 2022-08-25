@@ -15,6 +15,8 @@ import { IAppLazyInputRef, IAppLazyInputProps } from '../../../interface';
 const AppLazyInput: ForwardRefRenderFunction<IAppLazyInputRef,
   IAppLazyInputProps> =
   ((props, ref) => {
+    console.log('props>>>', props.ref);
+
     /*запоминаем в стейт текущее значение value из пропсов*/
     const [val, setVal] = useState(String(props.value));
     /*Если props.value меняется - вызываем коллбэк*/

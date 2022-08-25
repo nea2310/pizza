@@ -13,7 +13,6 @@ import Deals from '../pages/deals/Deals';
 interface IRoute {
   name?: string;
   url: string
-  // eslint-disable-next-line no-undef
   component: JSX.Element,
   exact?: boolean
 }
@@ -22,7 +21,7 @@ interface IRoutesMap {
   [index: string]: string;
 }
 
-let routes: IRoute[] = [
+const routes: IRoute[] = [
   {
     name: 'pizzaItems',
     url: '/',
@@ -91,20 +90,18 @@ let routes: IRoute[] = [
   }
 ];
 
-let routesMap = {} as IRoutesMap;
+const routesMap: IRoutesMap = {};
 
 routes.forEach((route) => {
-  // eslint-disable-next-line no-prototype-builtins
   if (route.hasOwnProperty('name') && route.name) {
     routesMap[route.name] = route.url;
   }
 });
 
-let urlBuilder = function (name: any, params: any) {
+const urlBuilder = function (name: string, params: { [key: string]: string }): string {
 
-  // eslint-disable-next-line no-prototype-builtins
   if (!routesMap.hasOwnProperty(name)) {
-    return null;
+    return '';
   }
 
   let url = routesMap[name]; // news/:id

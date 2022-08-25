@@ -53,19 +53,13 @@ const PizzaItems = () => {
               });
         }
 
-
-        let isAvl = null;
-        if (!pizzaItem.available) {
-          isAvl = <span> Нет в наличии</span>;
-        }
-
         return <li
           className='pizza-items__product-card-wrapper'
           key={pizzaItem.id}>
           <div className='pizza-items__product-card product-card'>
             <ProductCard
               pizzaid={pizzaItem.id}
-              isavl={isAvl}
+              isavl={pizzaItem.available}
               name={pizzaItem.name}
               image={pizzaItem.image}
               price={pizzaItem.price}
@@ -77,7 +71,7 @@ const PizzaItems = () => {
               incart={inCart}
               userdocid={userDocID}
               pizzaid={pizzaItem.id}
-              isavl={isAvl}
+              isavl={pizzaItem.available}
             />
           </div>
 

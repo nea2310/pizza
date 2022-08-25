@@ -4,7 +4,7 @@ import { urlBuilder } from '../../../routes/routes';
 
 type TProps = {
   image: string;
-  isavl: any;
+  isavl: boolean;
   name: string;
   pizzaid: string;
   price: number;
@@ -12,10 +12,16 @@ type TProps = {
 
 export default function (props: TProps) {
 
+  console.log('product props:   ', props);
+
+  let isAvl = null;
+  if (!props.isavl) {
+    isAvl = <span> Нет в наличии</span>;
+  }
   return (
     <>
       <Link className='product-card__link'
-        to={urlBuilder('productPage', { id: props.pizzaid }) as string}>
+        to={urlBuilder('productPage', { id: props.pizzaid })}>
         <h4
           className='product-card__header'>{props.name}</h4>
         <div className='product-card__img-wrapper'>
@@ -28,7 +34,7 @@ export default function (props: TProps) {
       <div className='product-card__info'>
         <strong className='product-card__price'>
           Цена: {props.price}р.</strong>
-        <strong className='product-card__avl'>{props.isavl}</strong>
+        <strong className='product-card__avl'>{isAvl}</strong>
       </div>
     </>
   );

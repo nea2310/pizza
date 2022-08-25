@@ -5,12 +5,14 @@ import { cartAddItem, cartRemoveItem } from '../../../store/actions/cart';
 
 type TProps = {
   incart: boolean;
-  isavl: any;
-  userdocid: any;
+  isavl: boolean;
+  userdocid: string;
   pizzaid: string;
 };
 
 export default function (props: TProps) {
+
+  console.log('order button props:   ', props);
 
   const dispatch = useAppDispatch();
   let isAdding = true;
@@ -33,7 +35,7 @@ export default function (props: TProps) {
   return (
     <Button
       variant={type}
-      disabled={props.isavl}
+      disabled={!props.isavl}
       onClick={() => handleClick(props.userdocid,
         props.pizzaid)}
     >
