@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, PayloadAction, AnyAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {
   IField,
   IPizzaDetailsPartial,
@@ -54,6 +54,7 @@ const orderSlice = createSlice({
 
     orderChangeField(state, action: PayloadAction<{ name: string, value: string }>) {
       const { name, value } = action.payload;
+
       const validator = new RegExp(state.formData[name].validator);
       const checkValue = (value: string) => validator.test(value);
       const valid = checkValue(value);
@@ -62,6 +63,7 @@ const orderSlice = createSlice({
       const formValid = Object.values(formData).every((field: IField) => {
         return field.valid
       });
+
       state.formData = formData;
       state.formValid = formValid;
     },
