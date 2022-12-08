@@ -1,6 +1,6 @@
 @import "../../assets/styles/glob";
 
-.favourites {
+.favorites {
   &__product-cards {
     @include ul-reset-style;
     display: grid;

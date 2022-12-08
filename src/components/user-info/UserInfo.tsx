@@ -4,7 +4,7 @@ import styled from "styled-components";
 import './user-info.scss';
 import Avatar from "../avatar/Avatar";
 import { useAppDispatch } from '../../hooks';
-import { userUnset } from '../../store/actions/user';
+import { userUnset } from '../../store/slices/userSlice';
 
 
 const useOnClickOutside = (
@@ -34,10 +34,13 @@ transform: ${({ open }) =>
     (open ? "translateX(0)" : "translateX(200%)")};
     `;
 type Props = {
-  username: string;
-  usersurname: string
+  username: string | null;
+  usersurname: string | null
+
 }
-export const UserInfo = (props: Props) => {
+
+const UserInfo: React.FC<Props> = (props) => {
+
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState<boolean>(false);
   const close = () => setOpen(false);
@@ -56,7 +59,7 @@ export const UserInfo = (props: Props) => {
           <li className="user-info__link-wrapper">
             <Link
               className="user-info__link"
-              to={'/favourites'}>Избранное</Link>
+              to={'/favorites'}>Избранное</Link>
           </li>
           <li className="user-info__link-wrapper">
             <a

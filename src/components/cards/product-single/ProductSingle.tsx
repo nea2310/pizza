@@ -10,7 +10,7 @@ type TProps = {
   price: number;
 };
 
-export default function (props: TProps) {
+const ProductSingle: React.FC<TProps> = (props) => {
 
   const ingredients = props.ingredients.join(', ');
 
@@ -36,3 +36,5 @@ export default function (props: TProps) {
     </div>
   );
 }
+
+export default ProductSingle;

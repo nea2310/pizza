@@ -12,9 +12,7 @@ You may see this warning because you've called styled inside another component.
 To resolve this only create new StyledComponents outside of any render method and function component. */
 
 const StyledAvatar = styled.button<{ open: boolean }>``;
-
-export default function (props: TProps) {
-
+const Avatar: React.FC<TProps> = (props) => {
 
   const avatarImage = require('./img/avatar.png');
 
@@ -28,5 +26,7 @@ export default function (props: TProps) {
       <img className='avatar__image' src={avatarImage}></img>
     </StyledAvatar>)
 };
+
+export default Avatar;
 
 

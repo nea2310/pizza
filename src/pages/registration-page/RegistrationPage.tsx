@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom';
 import './registration-page.scss';
-import { SignUp } from '../../components/registration/Registration';
+import Registration from '../../components/registration/Registration';
 
-const RegisterPage = () => {
+const RegistrationPage: React.FC = () => {
+
   return (
     <div className='registration-page'>
       <h1 className='registration-page__header'>Регистрация</h1>
-      <SignUp />
+      <Registration />
       <p> Уже зарегистрированы? <Link to={'/login'}>Войти</Link></p>
     </div>
   );
 };
 
 
-export default RegisterPage;
+export default RegistrationPage;

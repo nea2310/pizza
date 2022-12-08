@@ -5,15 +5,15 @@ interface FormProps {
   title: string;
   handleClick: (
     email: string,
-    pass: string,
+    password: string,
     name: string,
     surname: string) => void
 }
 
 
-const RegisterForm: FC<FormProps> = ({ title, handleClick }) => {
+const RegistrationForm: FC<FormProps> = ({ title, handleClick }) => {
   const [email, setEmail] = useState('');
-  const [pass, setPass] = useState('');
+  const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
 
@@ -29,8 +29,8 @@ const RegisterForm: FC<FormProps> = ({ title, handleClick }) => {
       <input
         className="registration-form__input"
         type="password"
-        value={pass}
-        onChange={(e) => setPass(e.target.value)}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
         placeholder="password"
       />
       <input
@@ -48,7 +48,7 @@ const RegisterForm: FC<FormProps> = ({ title, handleClick }) => {
         placeholder="surname"
       />
       <button className='registration-form__button btn btn-warning'
-        onClick={() => handleClick(name, surname, email, pass)}
+        onClick={() => handleClick(name, surname, email, password)}
       >
         {title}
       </button>
@@ -56,4 +56,4 @@ const RegisterForm: FC<FormProps> = ({ title, handleClick }) => {
   );
 };
 
-export { RegisterForm };
+export default RegistrationForm;

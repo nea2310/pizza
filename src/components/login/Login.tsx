@@ -1,20 +1,13 @@
 import { useNavigate } from 'react-router-dom';
-import { Form } from '../login-form/LoginForm';
-import { userSet } from '../../store/actions/user';
+import Form from '../login-form/LoginForm';
 import { useAppSelector, useAppDispatch } from '../../hooks';
-import { IStore } from '../../interface';
+import { setUser } from '../../store/slices/userSlice';
 
+const Login: React.FC = () => {
 
-
-const Login = () => {
-
-  const props: IStore = useAppSelector(state => {
-    return state;
-  });
-
+  const { token } = useAppSelector(state => state.user);
   /*проверяем, авторизован ли пользователь*/
-  const isAuthed = !!props.user.token;
-  //const auth = getAuth(); // auth - данные для коннекта с firebase
+  const isAuthed = !!token;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -26,9 +19,9 @@ const Login = () => {
   return (
     <Form
       title="sign in"
-      handleClick={(email, pass) => dispatch(userSet(email, pass))}
+      handleClick={(email, password) => dispatch(setUser({ email, password }))}
     />
   );
 };
 
-export { Login };
+export default Login;

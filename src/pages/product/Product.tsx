@@ -1,12 +1,13 @@
+import './product.scss';
+
+import E404 from '../../components/errors/e-404/E404';
+import { IPizzaDetails } from '../../interface';
 import { Link } from 'react-router-dom';
-import E404 from '../../components/errors/404/404';
-import { withParams } from '../../wrapper';
+import OrderButton from '../../components/buttons/order-button/OrderButton';
 import ProductSingle from '../../components/cards/product-single/ProductSingle';
 import { routesMap } from '../../routes/routes';
 import { useAppSelector } from '../../hooks';
-import { IStore, IPizzaDetails } from '../../interface';
-import OrderButton from '../../components/buttons/order-button/OrderButton';
-import './product.scss';
+import { withParams } from '../../wrapper';
 
 interface IData {
   params: {
@@ -14,27 +15,23 @@ interface IData {
   }
 }
 
-const Product = (data: IData) => {
-
-  const props: IStore = useAppSelector(state => {
-    return state;
-  });
+const Product: React.FC<IData> = (data) => {
 
   const id = data.params.id;
-  const product =
-    props.pizzaItems.pizzaItemsAll.find((item: IPizzaDetails) => item.id == id);
-  const cart = props.cart;
-  const userDocID = props.user.userDocID;
+  const { pizzaItemsAll } = useAppSelector(state => state.pizzaItems.data);
+  const product = pizzaItemsAll.find((item: IPizzaDetails) => item.id == id);
+  const cart = useAppSelector(state => state.cart.cartItems);
+  const { userDocID } = useAppSelector(state => state.user);
 
   let inCart: boolean = false;
   if (cart != undefined) {
-    inCart = Boolean(cart.cartItems.find((item: any) => item[id]));
+    inCart = Boolean(cart.find((item: any) => item[id]));
   }
 
   if (!id) {
     return <E404 />;
   }
-  else if (product) {
+  else if (product && userDocID) {
     return <section className='product-page'>
       <div className='product-page__product-single product-single'>
         <ProductSingle
@@ -57,7 +54,8 @@ const Product = (data: IData) => {
       </div>
     </section>;
 
-  } else return null;
+  } else
+    return null;
 };
 
 export default withParams(Product);

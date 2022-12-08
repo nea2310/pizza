@@ -1,19 +1,15 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './header.scss';
-import UserInfo from '../user-info/user-info';
+import UserInfo from '../user-info/UserInfo';
 import { useAppSelector } from '../../hooks';
-import { IStore } from '../../interface';
 import { routesMap } from '../../routes/routes';
 
 interface IRoutesMap {
   [index: string]: { name: string; };
 }
 
-export default function () {
-  const props: IStore = useAppSelector(state => {
-    return state;
-  });
+const Header: React.FC = () => {
 
   const [details, setDetails] = useState(false);
 
@@ -22,10 +18,9 @@ export default function () {
 
   const burgerClassName = details ? 'header__burger-button_active' : '';
   const burgerClasses = ['header__burger-button', burgerClassName];
+  const { token, name, surname } = useAppSelector(state => state.user);
 
-  const name = props.user.name;
-  const surname = props.user.surname;
-  const isAuthed = !!props.user.token;
+  const isAuthed = !!token;
   const cartImg = require('./img/cart-shopping.svg').default;
 
 
@@ -125,6 +120,8 @@ export default function () {
     </header>
   );
 };
+
+export default Header;
 
 
 

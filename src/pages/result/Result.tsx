@@ -1,16 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
-import { routesMap } from '../../routes/routes';
 import { useAppSelector } from '../../hooks';
-import { TConst, IStore } from '../../interface';
+import { TConst } from '../../interface';
+import { routesMap } from '../../routes/routes';
 
-export default function () {
+const Result: React.FC = () => {
 
   const { total } = (useLocation() as TConst).state;
-  const props: IStore = useAppSelector(state => {
-    return state;
-  });
-
-  const orderModel = props.order;
+  const orderModel = useAppSelector(state => state.order);
 
   return (
     <div>
@@ -25,3 +21,5 @@ export default function () {
     </div>
   );
 }
+
+export default Result;

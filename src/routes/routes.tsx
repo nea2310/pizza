@@ -1,7 +1,7 @@
 import Cart from '../pages/cart/Cart';
 import Order from '../pages/order/order';
 import Result from '../pages/result/Result';
-import Page404 from '../pages/error404/Error404';
+import Page404 from '../pages/error-404/Error404';
 import Product from '../pages/product/Product';
 import LoginPage from '../pages/login-page/LoginPage';
 import PizzaItems from '../pages/pizzaItems/pizzaItems';
@@ -9,7 +9,7 @@ import RegisterPage from '../pages/registration-page/RegistrationPage';
 import Blog from '../pages/blog/Blog';
 import AboutUs from '../pages/about/About';
 import Deals from '../pages/deals/Deals';
-import Favourites from '../pages/favourites/Favourites';
+import Favorites from '../pages/favorites/Favorites';
 
 interface IRoute {
   name?: string;
@@ -85,9 +85,9 @@ const routes: IRoute[] = [
     exact: true
   },
   {
-    name: 'favourites',
-    url: '/favourites',
-    component: <Favourites />,
+    name: 'favorites',
+    url: '/favorites',
+    component: <Favorites />,
     exact: true
   },
   {

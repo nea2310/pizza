@@ -5,9 +5,9 @@ import { BrowserRouter as Router, Route, Routes, NavLink }
 import routes, { routesMap } from './routes/routes';
 import './App.scss';
 
-import { userFetch } from './store/actions/user';
-import { pizzaItemsFetchData } from './store/actions/pizzaItems';
-import { useAppDispatch } from './hooks';
+import { fetchUser } from './store/slices/userSlice';
+import { fetchPizzaItems } from './store/slices/pizzaItemsSlice';
+import { useAppDispatch, useAppSelector } from './hooks';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 
@@ -34,10 +34,10 @@ const App = () => {
 
   useEffect(() => {
     /*запрашиваем корзину с сервера*/
-    dispatch(pizzaItemsFetchData());
+    dispatch(fetchPizzaItems());
 
     /*запрашиваем пользователя с сервера*/
-    dispatch(userFetch());
+    dispatch(fetchUser());
   }, []);
 
   // eslint-disable-next-line no-undef
@@ -69,8 +69,6 @@ const App = () => {
     />;
   });
 
-
-
   return (
     <Router>
       <Header />
@@ -82,8 +80,6 @@ const App = () => {
       <Footer />
     </Router>
   );
-
 };
-
 
 export default App;

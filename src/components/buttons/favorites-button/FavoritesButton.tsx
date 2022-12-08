@@ -1,7 +1,7 @@
 import { RefObject, useRef, useState } from 'react';
-import './favourites-button.scss';
+import './favorites-button.scss';
 import { useAppDispatch } from '../../../hooks';
-import { userUpdateFavItems } from '../../../store/actions/user';
+import { updateUserFavItems } from '../../../store/slices/userSlice';
 
 type TProps = {
   infav: boolean;
@@ -9,7 +9,7 @@ type TProps = {
   pizzaid: string;
 };
 
-export default function (props: TProps) {
+const FavoritesButton: React.FC<TProps> = (props) => {
 
   const dispatch = useAppDispatch();
   const btnRef = useRef<SVGSVGElement>() as RefObject<SVGSVGElement>;
@@ -17,24 +17,27 @@ export default function (props: TProps) {
 
   const toggleFav = (elem: SVGSVGElement) => {
     if (elem.classList) {
-      elem.classList.toggle('favourites-button_in-fav');
+      elem.classList.toggle('favorites-button_in-fav');
     }
     setIsAdding(!isAdding);
   };
 
   let classname = '';
   if (!isAdding) {
-    classname = 'favourites-button_in-fav';
+    classname = 'favorites-button_in-fav';
   }
 
   return (
-    <button className='favourites-button'
+    <button className='favorites-button'
       onClick={() => {
         if (!btnRef || !btnRef.current) return;
 
-        dispatch(userUpdateFavItems(
-          props.userdocid,
-          props.pizzaid, isAdding));
+        dispatch(updateUserFavItems(
+          {
+            user: props.userdocid,
+            pizzaItem: props.pizzaid,
+            isAdding
+          }));
         toggleFav(btnRef.current);
       }
       }>
@@ -42,3 +45,5 @@ export default function (props: TProps) {
     </button>
   );
 }
+
+export default FavoritesButton;

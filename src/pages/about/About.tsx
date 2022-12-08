@@ -1,6 +1,6 @@
 import './about.scss';
 
-const AboutUs = () => {
+const AboutUs: React.FC = () => {
 
   return (
     <div>

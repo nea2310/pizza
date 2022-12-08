@@ -1,33 +1,3 @@
-import React, { Dispatch } from 'react';
-
-
-
-/******************PIZZAITEMS ACTIONS******************/
-
-export type IPizzaItemsActions =
-  IPizzaItemsFetchDataSuccess |
-  IPizzaItemsFilterSuccess;
-
-
-export interface IPizzaItemsFetchDataSuccess {
-  type: 'PIZZAITEMS_FETCH_DATA_SUCCESS';
-  pizzaItems: Array<IPizzaItem>;
-}
-
-
-export interface IPizzaItemsPayload {
-  spicyChosen: string;
-  lentChosen: string;
-  ingredientsChosen: Array<string>;
-  currentQuery: string;
-  pizzaItemsFiltered: Array<IPizzaItem>;
-}
-
-export interface IPizzaItemsFilterSuccess {
-  type: 'PIZZAITEMS_FILTER';
-  payload: IPizzaItemsPayload;
-}
-
 
 export interface IPizzaItem {
   available: boolean;
@@ -41,68 +11,6 @@ export interface IPizzaItem {
   spicy: boolean;
 }
 
-
-
-export interface IFilterData {
-  currentQuery: string;
-  ingredientsAll: Array<string>;
-  ingredientsChosen: Array<string>;
-  lentChosen: string;
-  pizzaItemsAll: Array<IPizzaItem>;
-  spicyChosen: string;
-}
-
-
-/******************PIZZAITEMS REDUCERS******************/
-export interface IPizzaItemsState {
-  pizzaItemsAll: Array<IPizzaItem>;
-  pizzaItemsFiltered: Array<IPizzaItem>;
-  ingredientsChosen: Array<string>;
-  ingredientsAll: Array<string>;
-  currentQuery: string;
-  filterSpicy?: boolean;
-  filterLent?: boolean;
-  spicyChosen?: boolean;
-}
-
-
-/******************CART ACTIONS******************/
-
-export type ICartActions =
-  ICartFetchDataSuccess |
-  ICartAddDataSuccess |
-  ICartChangeItemSuccess |
-  ICartRemoveItemSuccess |
-  ICartUnsetSuccess;
-
-
-export interface ICartFetchDataSuccess {
-  type: 'CART_FETCH_DATA_SUCCESS';
-  cartItems: Array<ICartItem>;
-}
-
-export interface ICartAddDataSuccess {
-  type: 'CART_ADD_ITEM';
-  id: string;
-}
-
-
-export interface ICartChangeItemSuccess {
-  type: 'CART_CHANGE_CNT';
-  id: string;
-  cnt: number;
-}
-
-
-export interface ICartRemoveItemSuccess {
-  type: 'CART_REMOVE_ITEM';
-  id: string;
-}
-
-export interface ICartUnsetSuccess {
-  type: 'CART_UNSET';
-}
-
 export interface ICartItem {
   [key: string]: number
 }
@@ -112,110 +20,6 @@ export interface ICartItemRaw {
   id: string;
   items: ICartItem
 }
-
-export type ICartItemsRaw = ICartItemRaw[] | [];
-
-
-
-
-/******************USER ACTIONS******************/
-
-export type TDispatchUnion = Dispatch<IUserSetSuccess | IOrderUserSet |
-  ((dispatch: Dispatch<ICartFetchDataSuccess>) => void)
->;
-
-export type IUserActions =
-  IUserSetSuccess |
-  IUserUnsetSuccess |
-  IUserAddFavItemSuccess;
-
-
-export interface IUserSetSuccess {
-  type: 'USER_SET';
-  payload: IUserData
-}
-
-export interface IUserUnsetSuccess {
-  type: 'USER_UNSET';
-}
-
-
-
-export interface IUserAddFavItemSuccess {
-  type: 'USER_ADD_FAV';
-  payload: {
-    favourites: Array<string>;
-  }
-}
-
-export interface IUserRegData {
-  email: string;
-  pass: string;
-  name: string;
-  surname: string
-}
-
-export interface IUserData {
-  email: string;
-  token: string;
-  id: string;
-  name: string;
-  surname: string;
-  userDocID: string;
-  favourites?: Array<string>;
-}
-
-export interface IUserDataInitial {
-  email: string | null;
-  token: string | null;
-  id: string | null;
-  name: string | null;
-  surname: string | null;
-  userDocID: string | null;
-  favourites?: Array<string> | null;
-}
-
-export interface IUserDataToUpdate {
-  email: string;
-  token: string;
-  id: string;
-  dispatch: TDispatchUnion;
-}
-
-
-
-/******************ORDER ACTIONS******************/
-
-export type IOrderActions =
-  IOrderUserSet |
-  IOrderChange |
-  IOrderSetLastOrderCache |
-  IOrderSetDetailed;
-
-
-export interface IOrderUserSet {
-  type: 'ORDER_SET_USER';
-  name: string;
-  email: string;
-}
-
-export interface IOrderChange {
-  type: 'ORDER_CHANGE';
-  name: string;
-  value: string;
-}
-
-
-export interface IOrderSetLastOrderCache {
-  type: 'ORDER_SET_CACHE';
-}
-
-
-export interface IOrderSetDetailed {
-  type: 'ORDER_SET_DETAILED';
-  items: Array<IPizzaDetailsPartial>;
-}
-
 
 export interface IAppLazyInputRef {
   setValue(val: string): void;
@@ -272,91 +76,142 @@ export interface ILastOrderCache {
   phone: string;
 }
 
-export interface IStore {
-
-  cart: {
-    cartItems: Array<ICartItem>;
-    total: number
-  }
-  order: {
-    formValid: boolean,
-    orderItemsDetailed: Array<IPizzaDetails>,
-    lastOrderCache: ILastOrderCache,
-    formData: IFormData
-  }
-  pizzaItems: {
-    pizzaItemsAll: Array<IPizzaDetails>;
-    pizzaItemsFiltered: Array<IPizzaDetails>;
-    ingredientsChosen: Array<string>;
-    ingredientsAll: Array<string>;
-    currentQuery: string;
-  }
-  user: {
-    email: string;
-    favourites: Array<string>;
-    id: string;
-    name: string;
-    surname: string;
-    token: string;
-    userDocID: string;
-    [index: string]: string;
-  }
-}
-
-export interface IData {
-  [key: string]: {
-    value: string;
-  } | {}
-}
-
-export interface IFormData {
-  [key: string]: {
-    label: string;
-    value: string;
-    validator: (val: string) => boolean;
-    errorText: string;
-    valid: null | boolean;
-  }
-}
-
-export interface IOrder {
-  formData: IFormData;
-  change: Function;
-  formValid: boolean;
-  data: IData;
-  setLastOrderCache: Function;
-}
-
-export interface IProduct {
-  id: number;
-  name?: string;
-  price: number;
-  cnt?: number;
-  rest: number;
-  title?: string;
-}
-
-export interface ICart { // надо ли описывать все поля в cart, products и order?
-  productsDetailed: Array;
-  change: Function;
-  remove: Function;
-  total: number;
-  totalItems: number;
-  inCart: Function;
-  add: Function;
-  clean: Function;
-}
-
-export interface IProducts { // надо ли описывать все поля в cart, products и order?
-  getById: Function;
-  items: Array;
-}
-
-export interface ICartData {
-  cart: Array<ICartItem>;
-  needUpdate: boolean;
-  token: string;
-
-}
-
 export type TConst = { state: { total: number } };
+
+
+/****************типы для cartSlice***********************/
+
+interface ICartState {
+  cartItems: ICartItem[],
+  total: number,
+  status: string | null,
+  error: string | null
+}
+
+interface ICartAddItemArgs {
+  user: string;
+  pizzaItem: string;
+}
+
+
+interface IСartChangeItemArgs {
+  user: string;
+  pizzaItem: string;
+  cnt: number;
+}
+
+/****************типы для orderSlice***********************/
+
+interface IOrderState {
+  formValid: boolean,
+  orderItemsDetailed: Array<IPizzaDetailsPartial>,
+  lastOrderCache: ILastOrderCache,
+  formData: IFormData,
+  status: string | null,
+  error: string | null
+}
+
+/****************типы для pizzaItemsSlice***********************/
+
+interface IPizzaItemsState {
+  data: {
+    pizzaItemsAll: IPizzaItem[],
+    ingredientsAll: string[],
+    pizzaItemsFiltered: IPizzaItem[],
+    ingredientsSelected: string[],
+    currentQuery: string,
+    lentSelected: string,
+    spicySelected: string,
+  },
+  status: string | null,
+  error: string | null
+}
+
+interface IFetchPizzaItemsReturn {
+  pizzaItemsAll: IPizzaItem[],
+  pizzaItemsFiltered: IPizzaItem[],
+  ingredientsAll: string[]
+}
+
+interface IFilterPizzaItemsArgs {
+  ingredientsAll: string[],
+  pizzaItemsAll: IPizzaItem[],
+  ingredientsSelected: string[],
+  currentQuery: string
+  lentSelected: string,
+  spicySelected: string,
+}
+
+interface IFilterPizzaItemsReturn {
+  pizzaItemsFiltered: IPizzaItem[],
+  filterSpicy: boolean,
+  filterLent: boolean,
+  ingredientsSelected: string[],
+  currentQuery: string,
+}
+
+interface IFilterData {
+  key: string,
+  operator: WhereFilterOp,
+  value: string[] | boolean,
+  errorMessage: string
+}
+
+/****************типы для userSlice***********************/
+
+interface IUserDataToUpdate {
+  email: string;
+  token: string;
+  id: string;
+}
+
+interface IUserData {
+  email: string;
+  token: string;
+  id: string;
+  name: string;
+  surname: string;
+  userDocID: string;
+  favorites: string[] | [];
+}
+
+interface IUserRegArgs {
+  email: string;
+  password: string;
+  name: string;
+  surname: string;
+}
+
+interface IUserRegReturn {
+  name: string;
+  surname: string;
+  email: string;
+  token: string;
+  id: string;
+  favorites: string[] | [];
+  userDocID: string
+}
+
+interface IUserSetArgs {
+  email: string;
+  password: string;
+}
+
+interface IUserUpdateFavItemsArgs {
+  user: string;
+  pizzaItem: string;
+  isAdding: boolean;
+}
+
+interface IUserState {
+  email: string | null,
+  token: string | null,
+  id: string | null,
+  name: string | null,
+  surname: string | null,
+  userDocID: string | null,
+  favorites: string[] | [];
+  status: string | null,
+  error: string | null
+}
+

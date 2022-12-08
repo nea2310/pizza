@@ -1,26 +1,13 @@
-import { useEffect, useState } from 'react';
-import './favourites.scss';
-import FavouritesButton from '../../components/buttons/favourites-button/FavouritesButton';
-import { IngredientList } from '../../components/ingredient-list/IngredientList';
-import OrderButton from '../../components/buttons/order-button/OrderButton';
+import './favorites.scss';
 import ProductCard from '../../components/cards/product-card/ProductCard';
-import { RadioButtons } from '../../components/radio-buttons/RadioButtons';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { IStore, IPizzaDetails, ICartItem } from '../../interface';
-import { pizzaItemsFilter } from '../../store/actions/pizzaItems';
+import { useAppSelector } from '../../hooks';
+import { ICartItem, IPizzaDetails } from '../../interface';
 
-const Favourites = () => {
-  const props: IStore = useAppSelector(state => {
-    return state;
-  });
+const Favorites: React.FC = () => {
 
-  const dispatch = useAppDispatch();
-
-  const fav = props.user.favourites;
-  const pizzaItemsAll = props.pizzaItems.pizzaItemsAll;
-  const userDocID = props.user.userDocID;
-  const cart = props.cart.cartItems;
-
+  const { userDocID, favorites } = useAppSelector(state => state.user);
+  const { pizzaItemsAll } = useAppSelector(state => state.pizzaItems.data);
+  const cart = useAppSelector(state => state.cart.cartItems);
 
   /*создаем карточки купонов*/
   let pizzaItemsCards = null;
@@ -28,9 +15,9 @@ const Favourites = () => {
     (pizzaItem: IPizzaDetails) => {
       let inFav = false;
       /*проверить, находится ли эта пицца в избранном*/
-      if (fav) {
+      if (favorites) {
         inFav =
-          fav.some(
+          favorites.some(
             (favItemID: string) => {
               return pizzaItem.id === favItemID;
             });
@@ -47,8 +34,8 @@ const Favourites = () => {
             });
       }
 
-      if (inFav) return (
-        <li className='favourites__product-card-wrapper'
+      if (inFav && userDocID) return (
+        <li className='favorites__product-card-wrapper'
           key={pizzaItem.id}>
           <ProductCard
             pizzaid={pizzaItem.id}
@@ -64,11 +51,11 @@ const Favourites = () => {
     });
 
   return (
-    <ul className='favourites__product-cards'>
+    <ul className='favorites__product-cards'>
       {pizzaItemsCards}
     </ul>
   );
 };
 
 
-export default Favourites;
+export default Favorites;

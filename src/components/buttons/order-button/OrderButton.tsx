@@ -1,7 +1,7 @@
 import { Button } from 'react-bootstrap';
 import './order-button.scss';
 import { useAppDispatch } from '../../../hooks'
-import { cartAddItem, cartRemoveItem } from '../../../store/actions/cart';
+import { addCartItem, removeCartItem } from '../../../store/slices/cartSlice';
 
 type TProps = {
   incart: boolean;
@@ -10,23 +10,23 @@ type TProps = {
   pizzaid: string;
 };
 
-export default function (props: TProps) {
+const OrderButton: React.FC<TProps> = (props) => {
 
   const dispatch = useAppDispatch();
   let isAdding = true;
   let type = "success";
   let text = "Заказать";
 
-  let handleClick = (user: string, pizza: string) => {
-    dispatch(cartAddItem(user, pizza));
+  let handleClick = (user: string, pizzaItem: string) => {
+    dispatch(addCartItem({ user, pizzaItem }));
   };
 
   if (props.incart) {
     isAdding = false;
     type = "danger";
     text = "Отменить заказ";
-    handleClick = (user: string, pizza: string) => {
-      dispatch(cartRemoveItem(user, pizza));
+    handleClick = (user: string, pizzaItem: string) => {
+      dispatch(removeCartItem({ user, pizzaItem }));
     };
   }
 
@@ -41,3 +41,6 @@ export default function (props: TProps) {
     </Button>
   );
 }
+
+export default OrderButton;
+

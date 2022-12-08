@@ -12,7 +12,7 @@ import React, {
 
 import { IAppLazyInputRef, IAppLazyInputProps } from '../../../interface';
 
-const AppLazyInput: ForwardRefRenderFunction<IAppLazyInputRef,
+const LazyInput: ForwardRefRenderFunction<IAppLazyInputRef,
   IAppLazyInputProps> =
   ((props, ref) => {
 
@@ -71,7 +71,7 @@ const AppLazyInput: ForwardRefRenderFunction<IAppLazyInputRef,
 /*Если функция обернута в forwardRef, в ней становится доступен аргумент ref - 
 это тот самый ref, который передаем в аргумент useImperativeHandle
 */
-export default forwardRef(AppLazyInput);
+export default forwardRef(LazyInput);
 
 
 

@@ -1,56 +1,49 @@
 import { useState } from 'react';
 import './pizzaItems.scss';
-import FavouritesButton from '../../components/buttons/favourites-button/FavouritesButton';
-import { IngredientList } from '../../components/ingredient-list/IngredientList';
-import OrderButton from '../../components/buttons/order-button/OrderButton';
+import IngredientList from '../../components/ingredient-list/IngredientList';
 import ProductCard from '../../components/cards/product-card/ProductCard';
-import { RadioButtons } from '../../components/radio-buttons/RadioButtons';
+import RadioButtons from '../../components/radio-buttons/RadioButtons';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { IStore, IPizzaDetails, ICartItem } from '../../interface';
-import { pizzaItemsFilter } from '../../store/actions/pizzaItems';
+import { IPizzaDetails, ICartItem } from '../../interface';
+import { filterPizzaItems } from '../../store/slices/pizzaItemsSlice';
 
-const PizzaItems = () => {
-  const props: IStore = useAppSelector(state => {
-    return state;
-  });
+const PizzaItems: React.FC = () => {
 
   const dispatch = useAppDispatch();
-  const userDocID = props.user.userDocID;
-  const fav = props.user.favourites; // проверить, есть ли избранное
-  const cart = props.cart.cartItems; // проверить, есть ли избранное
-  const ingredientsAll = props.pizzaItems.ingredientsAll;
-  const pizzaItemsFiltered = props.pizzaItems.pizzaItemsFiltered;
-  const pizzaItemsAll = props.pizzaItems.pizzaItemsAll;
 
-  const [ingredientsChosen, setIngredientsChosen] = useState<Array<string>>([]);
-  const [spicyChosen, setSpicyChosen] = useState('');
-  const [lentChosen, setLentChosen] = useState('');
+  const { status, error, data } = useAppSelector(state => state.pizzaItems);
+  const { userDocID, favorites } = useAppSelector(state => state.user);
+  const { cartItems } = useAppSelector(state => state.cart);
+
+  const userDocIDString = userDocID as string;
+  const { pizzaItemsFiltered, ingredientsAll, pizzaItemsAll } = data;
 
 
-  /*создаем карточки купонов*/
+  const [ingredientsSelected, setIngredientsSelected] = useState<Array<string>>([]);
+  const [spicySelected, setspicySelected] = useState('');
+  const [lentSelected, setlentSelected] = useState('');
+
+  /*создаем карточки товаров*/
   let pizzaItemsCards = null;
   if (pizzaItemsFiltered.length) {
     pizzaItemsCards = pizzaItemsFiltered.map(
       (pizzaItem: IPizzaDetails) => {
         let inFav = false;
         /*проверить, находится ли эта пицца в избранном*/
-        if (fav) {
+        if (favorites) {
           inFav =
-            fav.some(
+            favorites.some(
               (favItemID: string) => {
                 return pizzaItem.id === favItemID;
               });
-
         }
-
-
 
         let inCart = false;
         /*проверить, находится ли эта пицца в корзине*/
 
-        if (cart) {
+        if (cartItems) {
           inCart =
-            cart.some(
+            cartItems.some(
               (cartItem: ICartItem) => {
                 return pizzaItem.id in cartItem;
               });
@@ -66,7 +59,7 @@ const PizzaItems = () => {
               image={pizzaItem.image}
               price={pizzaItem.price}
               incart={inCart}
-              userdocid={userDocID}
+              userdocid={userDocIDString}
               infav={inFav}
             />
           </li >)
@@ -75,19 +68,18 @@ const PizzaItems = () => {
 
 
   const filterByIngredient = (ingredient: string, isChecked: boolean) => {
-
-    let arr: Array<string> = [...ingredientsChosen];
+    let arr: Array<string> = [...ingredientsSelected];
     if (isChecked) {
       arr.push(ingredient);
     } else {
       arr.splice(arr.indexOf(ingredient), 1);
     }
-    setIngredientsChosen(arr);
+    setIngredientsSelected(arr);
 
-    dispatch(pizzaItemsFilter({
-      lentChosen: lentChosen,
-      spicyChosen: spicyChosen,
-      ingredientsChosen: arr,
+    dispatch(filterPizzaItems({
+      lentSelected: lentSelected,
+      spicySelected: spicySelected,
+      ingredientsSelected: arr,
       ingredientsAll,
       pizzaItemsAll,
       currentQuery: 'ingredients'
@@ -95,11 +87,11 @@ const PizzaItems = () => {
   };
 
   const filterBySpicy = (value: string) => {
-    setSpicyChosen(value);
-    dispatch(pizzaItemsFilter({
-      lentChosen: lentChosen,
-      spicyChosen: value,
-      ingredientsChosen: ingredientsChosen,
+    setspicySelected(value);
+    dispatch(filterPizzaItems({
+      lentSelected: lentSelected,
+      spicySelected: value,
+      ingredientsSelected: ingredientsSelected,
       ingredientsAll,
       pizzaItemsAll,
       currentQuery: 'spicy'
@@ -107,11 +99,11 @@ const PizzaItems = () => {
   };
 
   const filterByLent = (value: string) => {
-    setLentChosen(value);
-    dispatch(pizzaItemsFilter({
-      lentChosen: value,
-      spicyChosen: spicyChosen,
-      ingredientsChosen: ingredientsChosen,
+    setlentSelected(value);
+    dispatch(filterPizzaItems({
+      lentSelected: value,
+      spicySelected: spicySelected,
+      ingredientsSelected: ingredientsSelected,
       ingredientsAll,
       pizzaItemsAll,
       currentQuery: 'lent'
@@ -119,6 +111,9 @@ const PizzaItems = () => {
   };
   return (
     <>
+
+      {status === 'loading' && <h2>Loading...</h2>}
+      {error && <h2>Error occured: {error}</h2>}
       <section className='pizza-items'>
 
         <div className='pizza-items__filter'>

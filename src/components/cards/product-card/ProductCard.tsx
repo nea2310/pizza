@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './product-card.scss';
 
-import FavouritesButton from '../../../components/buttons/favourites-button/FavouritesButton';
+import FavoritesButton from '../../../components/buttons/favorites-button/FavoritesButton';
 import OrderButton from '../../../components/buttons/order-button/OrderButton';
 import { urlBuilder } from '../../../routes/routes';
 
@@ -14,10 +14,9 @@ type TProps = {
   incart: boolean;
   userdocid: string;
   infav: boolean;
-
 };
 
-export default function (props: TProps) {
+const ProductCard: React.FC<TProps> = (props) => {
 
   let isAvl = null;
   if (!props.isavl) {
@@ -52,8 +51,8 @@ export default function (props: TProps) {
           />
         </div>
 
-        <div className='product-card__favourites-button'>
-          <FavouritesButton
+        <div className='product-card__favorites-button'>
+          <FavoritesButton
             infav={props.infav}
             userdocid={props.userdocid}
             pizzaid={props.pizzaid}
@@ -63,3 +62,5 @@ export default function (props: TProps) {
     </>
   );
 }
+
+export default ProductCard;

@@ -1,6 +1,6 @@
 import './blog.scss';
 
-const Blog = () => {
+const Blog: React.FC = () => {
 
   return (
     <div>

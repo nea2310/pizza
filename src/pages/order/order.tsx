@@ -1,28 +1,21 @@
 import { useState } from 'react';
-import { Form, Button, Modal } from 'react-bootstrap';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { routesMap } from '../../routes/routes';
-import { orderChangeField, orderSetLastOrderCache } from '../../store/actions/order';
-import { cartClear } from '../../store/actions/cart';
+import { Button, Form, Modal } from 'react-bootstrap';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { IStore, IPizzaDetailsPartial } from '../../interface';
+import { TConst, IPizzaDetailsPartial } from '../../interface';
+import { clearCart } from '../../store/slices/cartSlice';
+import { orderChangeField, orderSetLastOrderCache } from '../../store/slices/orderSlice';
+import { routesMap } from '../../routes/routes';
 
-import {
-  TConst
-} from '../../interface.d';
 
-export default function () {
+const Order: React.FC = () => {
 
-  // useLocation - используется для извлечения пропсов, передаваемых странице во втором параметре функции navigate 
-  // (см. страницу cart -->  onClick={() => { navigate(routesMap.order, { state: { total } }) })
+  /* useLocation - используется для извлечения пропсов, передаваемых странице во втором параметре функции navigate 
+   (см. страницу cart -->  onClick={() => { navigate(routesMap.order, { state: { total } }) }) */
 
   const { total } = (useLocation() as TConst).state;
-
-  const props: IStore = useAppSelector(state => {
-    return state;
-  });
-
-  const { userDocID } = props.user;
+  const { userDocID } = useAppSelector(state => state.user);
+  const orderModel = useAppSelector(state => state.order);
 
 
   const dispatch = useAppDispatch();
@@ -34,14 +27,14 @@ export default function () {
   const confirm = () => {
     setShown(false);
     dispatch(orderSetLastOrderCache());
-    //очистить корзину
-    dispatch(cartClear(userDocID));
+    /* очистить корзину */
+    if (userDocID) {
+      dispatch(clearCart(userDocID));
+    }
 
     navigate(routesMap.result, { state: { total } });
   };
 
-  let orderModel = props.order;
-  const userModel = props.user.user;
   let formFields = [];
 
   for (let name in orderModel.formData) {
@@ -54,7 +47,7 @@ export default function () {
         <Form.Control
           type="text"
           value={field.value}
-          onChange={(e) => dispatch(orderChangeField(name, e.target.value))}
+          onChange={(event) => dispatch(orderChangeField({ name, value: event.target.value }))}
         />
         {field.valid === null || field.valid ? '' :
           <Form.Text className="text-muted">
@@ -78,6 +71,7 @@ export default function () {
 
 
   return (
+
     <div>
       <h2>Order</h2>
       <hr />
@@ -120,3 +114,5 @@ export default function () {
     </div>
   );
 }
+
+export default Order;

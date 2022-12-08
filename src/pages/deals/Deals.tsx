@@ -1,6 +1,6 @@
 import './deals.scss';
 
-const Deals = () => {
+const Deals: React.FC = () => {
 
   return (
     <div>

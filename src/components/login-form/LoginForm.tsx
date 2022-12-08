@@ -4,12 +4,12 @@ import './login-form.scss'
 
 interface FormProps {
   title: string;
-  handleClick: (email: string, pass: string) => void
+  handleClick: (email: string, password: string) => void
 }
 
-const Form: FC<FormProps> = ({ title, handleClick }) => {
+const LoginForm: FC<FormProps> = ({ title, handleClick }) => {
   const [email, setEmail] = useState('');
-  const [pass, setPass] = useState('');
+  const [password, setPassword] = useState('');
 
   return (
     <div className='login-form'>
@@ -23,13 +23,13 @@ const Form: FC<FormProps> = ({ title, handleClick }) => {
       <input
         className='login-form__input'
         type="password"
-        value={pass}
-        onChange={(e) => setPass(e.target.value)}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
         placeholder="password"
       />
       <button
         className='login-form__button btn btn-warning'
-        onClick={() => handleClick(email, pass)}
+        onClick={() => handleClick(email, password)}
       >
         {title}
       </button>
@@ -37,4 +37,4 @@ const Form: FC<FormProps> = ({ title, handleClick }) => {
   );
 };
 
-export { Form };
+export default LoginForm;

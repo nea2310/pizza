@@ -6,7 +6,7 @@ type TProps = {
   onClick: (value: string) => void;
 }
 
-const RadioButtons = ({ onClick, radioName, catName }: TProps) => {
+const RadioButtons: React.FC<TProps> = ({ onClick, radioName, catName }) => {
 
   return (
     <fieldset className='radio'>{catName}
@@ -77,4 +77,4 @@ const RadioButtons = ({ onClick, radioName, catName }: TProps) => {
   );
 };
 
-export { RadioButtons };
+export default RadioButtons;

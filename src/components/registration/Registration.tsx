@@ -1,19 +1,15 @@
 
-import { RegisterForm } from '../registration-form/RegistrationForm';
-import { useAppSelector, useAppDispatch } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
-import { userReg } from '../../store/actions/user';
-import { IStore } from '../../interface';
+import RegistrationForm from '../registration-form/RegistrationForm';
+import { useAppSelector, useAppDispatch } from '../../hooks';
+import { registerUser } from '../../store/slices/userSlice';
 
-const SignUp = () => {
+const Registration: React.FC = () => {
 
-  const props: IStore = useAppSelector(state => {
-    return state;
-  });
   /*проверяем, авторизован ли пользователь*/
-  const isAuthed = !!props.user.token;
+  const { token } = useAppSelector(state => state.user);
 
-  // const auth = getAuth(); // auth - данные для коннекта с firebase
+  const isAuthed = !!token;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -24,12 +20,12 @@ const SignUp = () => {
   }
 
   return (
-    <RegisterForm
+    <RegistrationForm
       title="Зарегистрироваться"
-      handleClick={(name, surname, email, pass) =>
-        dispatch(userReg({ name, surname, email, pass }))}
+      handleClick={(name, surname, email, password) =>
+        dispatch(registerUser({ name, surname, email, password }))}
     />
   );
 };
 
-export { SignUp };
+export default Registration;

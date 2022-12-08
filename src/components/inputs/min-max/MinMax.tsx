@@ -3,11 +3,13 @@
 */
 
 import React, { RefObject, useRef } from 'react';
-import './minmax.scss';
-import AppLazyInputWithRef from '../lazy/lazy';
+import './min-max.scss';
+import AppLazyInputWithRef from '../lazy-input/LazyInput';
 import { IAppLazyInputRef, IAppMinMaxProps } from '../../../interface';
 
-const AppMinMax = (props: IAppMinMaxProps) => {
+
+const MinMax: React.FC<IAppMinMaxProps> = (props) => {
+
   const lazyInput = useRef<IAppLazyInputRef>() as RefObject<IAppLazyInputRef>;
 
   const increase = () => {
@@ -70,4 +72,4 @@ const AppMinMax = (props: IAppMinMaxProps) => {
 };
 
 
-export default AppMinMax;
+export default MinMax;

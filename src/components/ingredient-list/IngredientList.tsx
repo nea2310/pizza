@@ -1,33 +1,30 @@
-
-
 import { useEffect, useState, useRef, RefObject } from 'react';
 import './ingredient-list.scss';
 import { useAppSelector } from '../../hooks';
-import { IStore, IPizzaDetails } from '../../interface';
+import { IPizzaDetails } from '../../interface';
 
 type TProps = {
   onClick: (ingredient: string, isChecked: boolean) => void
 }
-
-const IngredientList = ({ onClick }: TProps) => {
-
-  const props: IStore = useAppSelector(state => {
-    return state;
-  });
+const IngredientList: React.FC<TProps> = ({ onClick }) => {
 
   const mapTemp: string[] = [];
-  const ingredientsAll = props.pizzaItems.ingredientsAll;
-  const pizzaItemsFiltered = props.pizzaItems.pizzaItemsFiltered;
-  const currentQuery = props.pizzaItems.currentQuery;
+
+  const { ingredientsAll, pizzaItemsFiltered, currentQuery } = useAppSelector(state => state.pizzaItems.data);
+
+
   const [map, setMap] = useState(ingredientsAll);
 
   const ingredientsAvl: string[] = [];
 
-  pizzaItemsFiltered.forEach((item: IPizzaDetails) => {
-    item.ingredients.forEach((ingr: string) => {
-      ingredientsAvl.push(ingr);
+  if (pizzaItemsFiltered.length) {
+
+    pizzaItemsFiltered.forEach((item: IPizzaDetails) => {
+      item.ingredients.forEach((ingr: string) => {
+        ingredientsAvl.push(ingr);
+      });
     });
-  });
+  }
 
   const inList = (ingredient: string) => {
     if (currentQuery) {
@@ -86,6 +83,7 @@ const IngredientList = ({ onClick }: TProps) => {
   );
 
   return (
+
     <ul className='ingredients-list'
       ref={refList}
     > Ингредиент
@@ -94,5 +92,5 @@ const IngredientList = ({ onClick }: TProps) => {
   );
 };
 
-export { IngredientList };
+export default IngredientList;
 
