@@ -1,26 +1,29 @@
-import registerUser from "../slices/userSlice";
+import {registerUser} from '../slices/userSlice';
+jest.mock('firebase/firestore');
+jest.mock('firebase/auth');
 
-const initialState = {
-  email: null,
-  token: null,
-  id: null,
-  name: null,
-  surname: null,
-  userDocID: null,
-  favorites: [],
-  status: null,
-  error: null
-};
 
 describe('registerUser thunk', () => {
   it('should register user with resolved response', async () => {
-    const mockUser = '';
 
+
+    const dispatch = jest.fn();
+    const thunk = registerUser({ 
+    name: 'TestName', 
+    surname: 'TestSurname', 
+    email: 'test@test.com', 
+    password: 'testPassword' 
+  },
+)
+
+
+await thunk (dispatch, () => {}, () => {});
+const { calls } = dispatch.mock;
+expect(calls).toHaveLength(2);
+const [start, end] = calls;
+expect(start[0].type).toBe('user/registerUser/pending');
+
+console.log(end);
   })
-
-  it('should register user with rejected response', async () => {
-
-  })
-
-
+    
 })
