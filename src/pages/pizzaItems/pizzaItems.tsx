@@ -111,8 +111,6 @@ const PizzaItems: React.FC = () => {
   };
   return (
     <>
-
-      {status === 'loading' && <h2>Loading...</h2>}
       {error && <h2>Error occured: {error}</h2>}
       <section className='pizza-items'>
 
@@ -139,6 +137,7 @@ const PizzaItems: React.FC = () => {
         </div>
 
         <ul className='pizza-items__product-cards'>
+          {status === 'loading' && <h2 className='pizza-items__loader'></h2>}
           {pizzaItemsCards}
         </ul>
       </section>

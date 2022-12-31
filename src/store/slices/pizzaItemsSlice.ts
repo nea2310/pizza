@@ -219,14 +219,12 @@ export const filterPizzaItems = createAsyncThunk<IFilterPizzaItemsReturn, IFilte
   }
 )
 
-
-
 function isRejected(action: AnyAction) {
-  return action.type.endsWith('rejected');
+  if (action.type.match(NAMESPACE)) return action.type.endsWith('rejected');
 }
 
 function isPending(action: AnyAction) {
-  return action.type.endsWith('pending');
+  if (action.type.match(NAMESPACE)) return action.type.endsWith('pending');
 }
 
 
@@ -264,14 +262,23 @@ const pizzaItemsSlice = createSlice({
           data.pizzaItemsFiltered = pizzaItemsFiltered;
         })
 
-        .addMatcher(isRejected, (state, action: PayloadAction<string>) => {
-          state.status = 'rejected';
-          state.error = action.payload;
-        })
-        .addMatcher(isPending, (state) => {
+        .addCase(fetchPizzaItems.pending, (state) => {
           state.status = 'loading';
           state.error = null;
         })
+        .addCase(filterPizzaItems.pending, (state) => {
+          state.status = 'pending';
+          state.error = null;
+        })
+
+        .addMatcher(isRejected, (state, action: PayloadAction<string>) => {
+            state.status = 'rejected';
+            state.error = action.payload;
+        })
+        // .addMatcher(isPending, (state, action: PayloadAction<string>) => {
+        //     state.status = 'loading';
+        //     state.error = null;
+        // })
     },
 
   reducers: {},

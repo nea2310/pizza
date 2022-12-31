@@ -163,15 +163,15 @@ export const clearCart = createAsyncThunk<Array<ICartItem>, string>(
 
 
 function isFulfilled(action: AnyAction) {
-  return action.type.endsWith('fulfilled');
+  if (action.type.match(NAMESPACE)) return action.type.endsWith('fulfilled');
 }
 
 function isRejected(action: AnyAction) {
-  return action.type.endsWith('rejected');
+  if (action.type.match(NAMESPACE)) return action.type.endsWith('rejected');
 }
 
 function isPending(action: AnyAction) {
-  return action.type.endsWith('pending');
+  if (action.type.match(NAMESPACE)) return action.type.endsWith('pending');
 }
 
 
@@ -182,45 +182,19 @@ const cartSlice = createSlice({
   extraReducers:
     builder => {
       builder
-        .addCase(fetchCart.fulfilled, (state, action) => {
-          state.status = 'resolved';
-          state.cartItems = action.payload
-        })
-
-        .addCase(addCartItem.fulfilled, (state, action) => {
-          state.status = 'resolved';
-          state.cartItems = action.payload;
-        })
-
-        .addCase(changeCartItem.fulfilled, (state, action) => {
-          state.status = 'resolved';
-          state.cartItems = action.payload;
-        })
-
-        .addCase(removeCartItem.fulfilled, (state, action) => {
-          state.status = 'resolved';
-          state.cartItems = action.payload;
-        })
-
-        .addCase(clearCart.fulfilled, (state, action) => {
-          state.status = 'resolved';
-          state.cartItems = action.payload;
-        })
-
         .addMatcher(isPending, (state) => {
           state.status = 'loading';
           state.error = null;
         })
-        // .addMatcher(isFulfilled, (state, action: PayloadAction<Array<ICartItem>>) => {
-        //   state.status = 'resolved';
-        //   state.error = null;
-        //   state.cartItems = action.payload;
-        // })
+        .addMatcher(isFulfilled, (state, action: PayloadAction<Array<ICartItem>>) => {
+          state.status = 'resolved';
+          state.error = null;
+          state.cartItems = action.payload;
+        })
         .addMatcher(isRejected, (state, action: PayloadAction<string>) => {
           state.status = 'rejected';
           state.error = action.payload;
         })
-
     },
 
   reducers: {},

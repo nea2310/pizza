@@ -1,12 +1,16 @@
 import {registerUser} from '../slices/userSlice';
-jest.mock('firebase/firestore');
-jest.mock('firebase/auth');
+
+const mockedСreateUserWithEmailAndPassword = jest.fn();
+mockedСreateUserWithEmailAndPassword.mockImplementationOnce(() => Promise.resolve({ user: { refreshToken: '123', uid: '321' } }));
+
+jest.mock('firebase/auth', () => ({
+  ...jest.requireActual('firebase/auth'),
+  createUserWithEmailAndPassword: () => mockedСreateUserWithEmailAndPassword,
+}));
 
 
 describe('registerUser thunk', () => {
   it('should register user with resolved response', async () => {
-
-
     const dispatch = jest.fn();
     const thunk = registerUser({ 
     name: 'TestName', 
@@ -18,12 +22,8 @@ describe('registerUser thunk', () => {
 
 
 await thunk (dispatch, () => {}, () => {});
-const { calls } = dispatch.mock;
-expect(calls).toHaveLength(2);
-const [start, end] = calls;
-expect(start[0].type).toBe('user/registerUser/pending');
-
-console.log(end);
+const [start, end] = dispatch.mock.calls;
+expect(start[1].type).toBe('user/registerUser/fulfilled');
   })
     
 })

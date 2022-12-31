@@ -192,11 +192,11 @@ export const userUnset = createAsyncThunk<undefined, undefined, { state: { user:
 )
 
 function isRejected(action: AnyAction) {
-  return action.type.endsWith('rejected');
+  if (action.type.match(NAMESPACE))  return action.type.endsWith('rejected');
 }
 
 function isPending(action: AnyAction) {
-  return action.type.endsWith('pending');
+  if (action.type.match(NAMESPACE))  return action.type.endsWith('pending');
 }
 
 const userSlice = createSlice({
