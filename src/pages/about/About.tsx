@@ -1,12 +1,5 @@
-import './about.scss';
-
 const AboutUs: React.FC = () => {
-
-  return (
-    <div>
-      О нас
-    </div>
-  );
+  return <h1>О нас (раздел находится в разработке)</h1>;
 };
 
 export default AboutUs;

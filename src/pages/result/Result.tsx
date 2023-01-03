@@ -3,23 +3,25 @@ import { useAppSelector } from '../../hooks';
 import { TConst } from '../../interface';
 import { routesMap } from '../../routes/routes';
 
-const Result: React.FC = () => {
+import './result.scss';
 
+const Result: React.FC = () => {
   const { total } = (useLocation() as TConst).state;
-  const orderModel = useAppSelector(state => state.order);
+  const orderModel = useAppSelector((state) => state.order);
 
   return (
-    <div>
-      <h2>Congratulations!</h2>
-      <p>Hi, {orderModel.lastOrderCache.name}!</p>
-      <p><strong>Total: {total}</strong></p>
-      <div>
-      </div>
-      <Link to={routesMap.pizzaItems} className="btn btn-warning">
+    <div className="order">
+      <h1>Заказ успешно отправлен</h1>
+      <span>{orderModel.lastOrderCache.name}, спасибо за заказ</span>
+      <span>
+        <strong>Итого: {total}</strong>
+      </span>
+      <div></div>
+      <Link to={routesMap.pizzaItems} className="result__button">
         На главную
       </Link>
     </div>
   );
-}
+};
 
 export default Result;

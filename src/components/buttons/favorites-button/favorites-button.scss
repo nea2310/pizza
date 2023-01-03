@@ -1,10 +1,51 @@
+@import '../../../assets/styles/glob';
+
 .favorites-button {
-  height: 30px;
-  width: 30px;
+  cursor: pointer;
   background: transparent;
   border: none;
+  position: relative;
+  width: 44px;
+  height: 36px;
+
+  &:before,
+  &:after {
+    transition: all ease 0.1s;
+    position: absolute;
+    content: '';
+    left: 20px;
+    top: 4px;
+    width: 16px;
+    height: 26px;
+    background-color: $colorGrey;
+    border-radius: 50px 50px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+  }
+  &:after {
+    left: 4px;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+  }
+
+  &:hover {
+    &:before,
+    &:after {
+      transition: all ease 0.1s;
+      left: 20px;
+      top: 0;
+      width: 20px;
+      height: 32px;
+    }
+    &:after {
+      left: 0;
+    }
+  }
 
   &_in-fav {
-    fill: red;
+    &:before,
+    &:after {
+      background-color: $colorRed;
+    }
   }
 }

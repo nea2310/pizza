@@ -1,12 +1,5 @@
-import './deals.scss';
-
 const Deals: React.FC = () => {
-
-  return (
-    <div>
-      Акции
-    </div>
-  );
+  return <h1>Акции (раздел находится в разработке)</h1>;
 };
 
 export default Deals;

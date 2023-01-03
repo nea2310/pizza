@@ -112,14 +112,14 @@ describe('orderSlice', () => {
       ...initialState, formData: {
         name: {
           value: 'Name',
-          label: 'Name',
+          label: 'Имя',
           validator: '^[a-zA-ZА-Яа-яёЁ ]{2,}$',
           errorText: 'Русские или латинские символы, не менее двух',
           valid: true
         },
         phone: {
           value: '1234567',
-          label: 'Phone',
+          label: 'Телефон',
           validator: '^[0-9]{7,15}$',
           errorText: 'От 7 до 15 цифр',
           valid: true

@@ -1,65 +1,73 @@
-@import "../../assets/styles/glob.scss";
+@import '../../assets/styles/glob';
 
 .ingredients-list {
-  @include ul-reset-style;
+  border: none;
   user-select: none;
   font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+
+  &__legend {
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
 
   &__item {
-    font-weight: initial;
-    list-style: none;
-
-    &-label {
-      font-size: 1rem;
-      cursor: pointer;
-      display: inline-flex;
-      font-weight: bolder;
-      align-items: center;
-    }
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 10px;
 
     &:first-child {
       margin-top: 20px;
     }
+  }
 
-    &-checkbox {
-      @include visually-hidden;
+  &__checkbox {
+    position: absolute;
+    left: 7px;
+    top: 11px;
+    width: 5px;
+    height: 1px;
+    outline-offset: 12px;
+  }
+
+  &__checkmark {
+    cursor: pointer;
+    margin-right: 10px;
+    display: block;
+    position: relative;
+    border: 2px solid $colorRed;
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    background-color: $colorWhite;
+  }
+
+  &__checkbox:checked + &__checkmark,
+  &__checkbox:checked:focus + &__checkmark {
+    &::before {
+      position: absolute;
+      content: '';
+      height: 8px;
+      width: 4px;
+      background-color: $colorRed;
+      transform: rotate(45deg);
+      top: 3px;
+      left: 6px;
     }
 
-    &-checkmark {
-      cursor: pointer;
-      margin-right: 10px;
-      display: block;
-      position: relative;
-      border: 2px solid $colorRed;
-      width: 18px;
-      height: 18px;
-      border-radius: 5px;
+    &::after {
+      position: absolute;
+      content: '';
+      height: 8px;
+      width: 4px;
       background-color: $colorWhite;
-    }
-
-    &-checkbox:checked + &-checkmark,
-    &-checkbox:checked:focus + &-checkmark {
-      &::before {
-        position: absolute;
-        content: "";
-        height: 8px;
-        width: 4px;
-        background-color: $colorRed;
-        transform: rotate(45deg);
-        top: 3px;
-        left: 6px;
-      }
-
-      &::after {
-        position: absolute;
-        content: "";
-        height: 8px;
-        width: 4px;
-        background-color: $colorWhite;
-        transform: rotate(45deg) translateX(3px);
-        top: -2px;
-        left: 4px;
-      }
+      transform: rotate(45deg) translateX(3px);
+      top: -2px;
+      left: 4px;
     }
   }
 }

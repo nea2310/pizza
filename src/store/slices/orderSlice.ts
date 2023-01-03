@@ -16,14 +16,14 @@ const initialState: IOrderState = {
   formData: {
     name: {
       value: '',
-      label: 'Name',
+      label: 'Имя',
       validator: '^[a-zA-ZА-Яа-яёЁ ]{2,}$',
       errorText: 'Русские или латинские символы, не менее двух',
       valid: null
     },
     phone: {
       value: '',
-      label: 'Phone',
+      label: 'Телефон',
       validator: '^[0-9]{7,15}$',
       errorText: 'От 7 до 15 цифр',
       valid: null

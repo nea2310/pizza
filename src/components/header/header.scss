@@ -1,4 +1,4 @@
-@import "../../assets/styles/glob.scss";
+@import '../../assets/styles/glob';
 
 $headerHeight: 150px;
 .header {
@@ -27,31 +27,39 @@ $headerHeight: 150px;
   }
 
   &__content_active {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    position: absolute;
-    z-index: 3;
-    top: $headerHeight;
-    left: 0;
-    right: 0;
-    background-color: $colorRed;
+    @include media-breakpoint-down($sm) {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      position: absolute;
+      z-index: 3;
+      top: $headerHeight;
+      left: 0;
+      right: 0;
+      background-color: $colorRed;
+    }
   }
 
   &__content_active &__nav-list {
-    flex-direction: column;
+    @include media-breakpoint-down($sm) {
+      flex-direction: column;
+    }
   }
 
   &__content_active &__nav-item {
-    margin: 20px 0;
+    @include media-breakpoint-down($sm) {
+      margin: 20px 0;
+    }
   }
 
   &__content_active &__user {
-    padding: 0;
-    width: 100%;
+    @include media-breakpoint-down($sm) {
+      padding: 0;
+      width: 100%;
 
-    &::before {
-      width: 0;
+      &::before {
+        width: 0;
+      }
     }
   }
 
@@ -64,7 +72,7 @@ $headerHeight: 150px;
     padding: 20px;
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       width: 2px;
       height: 50px;
@@ -78,10 +86,12 @@ $headerHeight: 150px;
     margin: 10px;
     display: flex;
     flex-direction: column;
+
     &-link {
       @include a-reset-style;
       font-weight: bolder;
     }
+
     &-text {
       padding-top: 20px;
       color: $colorWheat;
@@ -93,6 +103,11 @@ $headerHeight: 150px;
     margin: 10px;
     width: 50px;
     height: 50px;
+
+    &:focus-visible {
+      outline: 2px solid black;
+      outline-offset: 5px;
+    }
   }
 
   &__nav {
@@ -109,7 +124,8 @@ $headerHeight: 150px;
       @include ul-reset-style;
       display: flex;
       flex-grow: 1;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 20%;
       height: 100%;
       align-items: center;
       font-size: 1.2rem;
@@ -122,6 +138,7 @@ $headerHeight: 150px;
 
     &-item {
       @include ul-reset-style;
+      white-space: nowrap;
     }
   }
 
@@ -153,12 +170,17 @@ $headerHeight: 150px;
         left: 30px;
       }
 
+      &:focus-visible {
+        outline-offset: 5px;
+        outline: 2px solid black;
+      }
+
       &:before,
       &:after {
         transition: all 0.9s ease 0s;
         @include media-breakpoint-down($sm) {
           border-radius: 1px;
-          content: "";
+          content: '';
           background-color: $colorWheat;
           position: absolute;
           width: 100%;

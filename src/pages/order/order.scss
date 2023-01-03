@@ -1,0 +1,28 @@
+@import '../../assets/styles/glob';
+
+.order {
+  padding: 20px;
+
+  &__form {
+    margin: 20px 0;
+    max-width: 400px;
+  }
+
+  &__button {
+    @include button;
+
+    &:visited {
+      color: $colorWheat;
+    }
+    &_type {
+      &_order,
+      &_confirm {
+        background-color: $colorBlue;
+      }
+      &_back,
+      &_cancel {
+        background-color: $colorYellow;
+      }
+    }
+  }
+}

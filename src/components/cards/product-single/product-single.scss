@@ -1,16 +1,4 @@
 .product-single {
-  * {
-    list-style: none;
-    text-decoration: none;
-    margin: 0;
-    padding: 0;
-
-    &:hover,
-    &:visited {
-      color: rgb(31, 31, 26);
-    }
-  }
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,26 +7,28 @@
     margin: 20px;
   }
 
-  &__img-wrapper {
+  &__img {
     width: 50%;
     margin-bottom: 20px;
-  }
-
-  &__img {
-    width: 100%;
-    height: 100%;
     object-fit: contain;
   }
 
   &__price {
     margin-bottom: 20px;
+    font-weight: bolder;
   }
 
   &__ingredients {
     margin-bottom: 20px;
+    font-weight: bolder;
   }
 
   &__back-link {
     text-decoration: underline;
+
+    &:hover,
+    &:visited {
+      color: rgb(31, 31, 26);
+    }
   }
 }

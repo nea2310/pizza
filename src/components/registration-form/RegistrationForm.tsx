@@ -7,9 +7,9 @@ interface FormProps {
     email: string,
     password: string,
     name: string,
-    surname: string) => void
+    surname: string
+  ) => void;
 }
-
 
 const RegistrationForm: FC<FormProps> = ({ title, handleClick }) => {
   const [email, setEmail] = useState('');
@@ -18,7 +18,7 @@ const RegistrationForm: FC<FormProps> = ({ title, handleClick }) => {
   const [surname, setSurname] = useState('');
 
   return (
-    <div className='registration-form'>
+    <div className="registration-form">
       <input
         className="registration-form__input"
         type="email"
@@ -47,7 +47,8 @@ const RegistrationForm: FC<FormProps> = ({ title, handleClick }) => {
         onChange={(e) => setSurname(e.target.value)}
         placeholder="surname"
       />
-      <button className='registration-form__button btn btn-warning'
+      <button
+        className="registration-form__button"
         onClick={() => handleClick(name, surname, email, password)}
       >
         {title}

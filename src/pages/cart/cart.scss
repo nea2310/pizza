@@ -1,6 +1,64 @@
+@import '../../assets/styles/glob';
+
 .cart {
-  &__btns {
+  padding: 20px;
+
+  &__table {
+    border-collapse: separate;
+    border-spacing: 5px;
+
+    thead td {
+      background-color: $colorGrey;
+    }
+    td {
+      background-color: $colorLightGrey;
+      padding: 10px 20px;
+    }
+  }
+
+  &__delete-item-button {
+    display: flex;
+    align-self: center;
+    margin: auto;
+    border: none;
+    position: relative;
+
+    &::after,
+    &::before {
+      background-color: $colorRed;
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 2px;
+      left: 0;
+      top: 50%;
+    }
+
+    &::before {
+      transform: rotate(-45deg);
+    }
+
+    &::after {
+      transform: rotate(45deg);
+    }
+  }
+
+  &__buttons {
     display: flex;
     column-gap: 5px;
+  }
+
+  &__button {
+    @include button;
+
+    &_type {
+      &_cancel {
+        background-color: $colorYellow;
+      }
+
+      &_order {
+        background-color: $colorBlue;
+      }
+    }
   }
 }

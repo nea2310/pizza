@@ -1,50 +1,51 @@
-@import "../../assets/styles/glob.scss";
+@import '../../assets/styles/glob';
 
 .radio {
-  @include ul-reset-style;
+  border: none;
 
-  &-list {
-    padding-inline: 0;
-    margin-block: 0;
+  &__legend {
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
 
-    margin-top: 20px;
-    font-weight: initial;
+  &__group {
     display: flex;
-    width: 250px;
     justify-content: space-between;
+    gap: 20px;
+  }
 
-    &__item {
-      list-style: none;
+  &__item {
+    align-items: center;
+    display: flex;
+    white-space: nowrap;
+    font-size: 1rem;
+    position: relative;
+  }
 
-      &-label {
-        font-weight: bolder;
-        align-items: center;
-        display: flex;
-        white-space: nowrap;
-        font-size: 1rem;
-      }
+  &__radiobutton {
+    position: absolute;
+    left: 7px;
+    top: 11px;
+    width: 5px;
+    height: 1px;
+    outline-offset: 12px;
+  }
 
-      &-radiobutton {
-        @include visually-hidden;
-      }
+  &__radiobutton:checked + &__radiomark {
+    box-shadow: inset 0px 0px 0px 3.5px $colorWhite;
+    background: $colorRed;
+  }
 
-      &-radiobutton:checked + &-radiomark {
-        box-shadow: inset 0px 0px 0px 3.5px $colorWhite;
-        background: $colorRed;
-      }
-
-      &-radiomark {
-        cursor: pointer;
-        margin-right: 10px;
-        display: block;
-        position: relative;
-        border: 2px solid $colorRed;
-        width: 18.5px;
-        height: 18px;
-        border-radius: 50%;
-        content: "";
-        background-color: $colorWhite;
-      }
-    }
+  &__radiomark {
+    cursor: pointer;
+    margin-right: 10px;
+    display: block;
+    position: relative;
+    border: 2px solid $colorRed;
+    width: 18.5px;
+    height: 18px;
+    border-radius: 50%;
+    content: '';
+    background-color: $colorWhite;
   }
 }

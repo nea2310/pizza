@@ -1,22 +1,44 @@
-@import "../../assets/styles/glob.scss";
+@import '../../assets/styles/glob';
 
 $footerHeight: 300px;
 
 .footer {
   background-color: #242222;
-
   min-height: $footerHeight;
   display: flex;
   color: $colorWheat;
 
   &__wrapper {
     @include wrapper-size;
+    width: 100%;
     display: flex;
+  }
+
+  &__phone-link {
+    color: $colorWheat;
+    text-decoration: none;
+
+    &:visited,
+    &:hover {
+      text-decoration: none;
+      color: $colorWheat;
+    }
+  }
+
+  &__phone {
+    position: relative;
+    left: 20px;
+
+    &:before {
+      position: absolute;
+      left: -20px;
+      content: '☏';
+    }
   }
 
   &__image {
     width: 30%;
-    background-image: url("./img/background.jpg");
+    background-image: url('./img/background.webp');
     background-repeat: no-repeat;
     background-size: auto 100%;
 
@@ -33,10 +55,13 @@ $footerHeight: 300px;
     display: flex;
     justify-content: center;
     gap: 15%;
+
     &-column-header {
       text-transform: uppercase;
     }
+
     &-column-block {
+      @include ul-reset-style;
       margin-top: 20px;
       display: flex;
       flex-direction: column;

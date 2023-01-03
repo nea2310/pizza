@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { routesMap } from '../../../routes/routes';
 
 const E404: React.FC = () => {
-
   return (
     <>
       <h1>Error 404, page not found</h1>
@@ -14,6 +13,6 @@ const E404: React.FC = () => {
       </div>
     </>
   );
-}
+};
 
 export default E404;

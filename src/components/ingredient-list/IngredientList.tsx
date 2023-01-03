@@ -1,24 +1,24 @@
 import { useEffect, useState, useRef, RefObject } from 'react';
-import './ingredient-list.scss';
 import { useAppSelector } from '../../hooks';
 import { IPizzaDetails } from '../../interface';
+import './ingredient-list.scss';
 
 type TProps = {
-  onClick: (ingredient: string, isChecked: boolean) => void
-}
-const IngredientList: React.FC<TProps> = ({ onClick }) => {
-
+  onClick: (ingredient: string, isChecked: boolean) => void;
+  canFocus: boolean;
+};
+const IngredientList: React.FC<TProps> = ({ onClick, canFocus }) => {
   const mapTemp: string[] = [];
 
-  const { ingredientsAll, pizzaItemsFiltered, currentQuery } = useAppSelector(state => state.pizzaItems.data);
-
+  const { ingredientsAll, pizzaItemsFiltered, currentQuery } = useAppSelector(
+    (state) => state.pizzaItems.data
+  );
 
   const [map, setMap] = useState(ingredientsAll);
 
   const ingredientsAvl: string[] = [];
 
   if (pizzaItemsFiltered.length) {
-
     pizzaItemsFiltered.forEach((item: IPizzaDetails) => {
       item.ingredients.forEach((ingr: string) => {
         ingredientsAvl.push(ingr);
@@ -30,12 +30,10 @@ const IngredientList: React.FC<TProps> = ({ onClick }) => {
     if (currentQuery) {
       if (currentQuery != 'ingredients') {
         return ingredientsAvl.includes(ingredient);
-      }
-      else {
+      } else {
         return map.includes(ingredient);
       }
-    }
-    else return true;
+    } else return true;
   };
 
   useEffect(() => {
@@ -54,43 +52,35 @@ const IngredientList: React.FC<TProps> = ({ onClick }) => {
     }
   });
 
-  const refList = useRef<HTMLUListElement>() as RefObject<HTMLUListElement>;
+  const refList =
+    useRef<HTMLFieldSetElement>() as RefObject<HTMLFieldSetElement>;
   const ingredientsList = ingredientsAll.map(
-
     (ingredient: string, id: number) => {
       return (
-        <li
-          className='ingredients-list__item'
-          key={id}>
-          <label className='ingredients-list__item-label'>
-            <input
-              className='ingredients-list__item-checkbox'
-              type="checkbox"
-              name={ingredient}
-              onChange={(e) => {
-                const isChecked = e.target.checked;
-                onClick(ingredient, isChecked);
-              }}
-            />
-            <span
-              className='ingredients-list__item-checkmark'>
-            </span>
-            {ingredient}
-          </label>
-        </li>
+        <label className="ingredients-list__item" key={id}>
+          <input
+            tabIndex={canFocus ? 0 : -1}
+            className="ingredients-list__checkbox"
+            type="checkbox"
+            name={ingredient}
+            onChange={(e) => {
+              const isChecked = e.target.checked;
+              onClick(ingredient, isChecked);
+            }}
+          />
+          <span className="ingredients-list__checkmark"></span>
+          {ingredient}
+        </label>
       );
     }
   );
 
   return (
-
-    <ul className='ingredients-list'
-      ref={refList}
-    > Ингредиент
+    <fieldset className="ingredients-list" ref={refList}>
+      <legend className="ingredients-list__legend">Ингредиент</legend>
       {ingredientsList}
-    </ul>
+    </fieldset>
   );
 };
 
 export default IngredientList;
-

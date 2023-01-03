@@ -1,10 +1,9 @@
 import { FC, useState } from 'react';
-import './login-form.scss'
-
+import './login-form.scss';
 
 interface FormProps {
   title: string;
-  handleClick: (email: string, password: string) => void
+  handleClick: (email: string, password: string) => void;
 }
 
 const LoginForm: FC<FormProps> = ({ title, handleClick }) => {
@@ -12,23 +11,23 @@ const LoginForm: FC<FormProps> = ({ title, handleClick }) => {
   const [password, setPassword] = useState('');
 
   return (
-    <div className='login-form'>
+    <div className="login-form">
       <input
-        className='login-form__input'
+        className="login-form__input"
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="email"
       />
       <input
-        className='login-form__input'
+        className="login-form__input"
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        placeholder="password"
+        placeholder="пароль"
       />
       <button
-        className='login-form__button btn btn-warning'
+        className="login-form__button"
         onClick={() => handleClick(email, password)}
       >
         {title}

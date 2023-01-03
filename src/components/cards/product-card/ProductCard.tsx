@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
-import './product-card.scss';
-
 import FavoritesButton from '../../../components/buttons/favorites-button/FavoritesButton';
 import OrderButton from '../../../components/buttons/order-button/OrderButton';
 import { urlBuilder } from '../../../routes/routes';
+import './product-card.scss';
 
 type TProps = {
   image: string;
@@ -12,45 +11,21 @@ type TProps = {
   pizzaid: string;
   price: number;
   incart: boolean;
-  userdocid: string;
+  userdocid: string | null;
   infav: boolean;
 };
 
 const ProductCard: React.FC<TProps> = (props) => {
   let isAvl = null;
   if (!props.isavl) {
-    isAvl = <span> Нет в наличии</span>;
+    isAvl = 'Нет в наличии';
   }
+
+  const imageClassName = isAvl ? 'product-card__img_inactive' : '';
+  const imageClasses = ['product-card__img', imageClassName];
   return (
-    <>
-      <div className="product-card">
-        <Link
-          className="product-card__link"
-          to={urlBuilder('productPage', { id: props.pizzaid })}
-        >
-          <h4 className="product-card__header">{props.name}</h4>
-          <div className="product-card__img-wrapper">
-            <img className="product-card__img" src={props.image} alt="" />
-          </div>
-        </Link>
-        <div className="product-card__bottom">
-          <div className="product-card__info">
-            <strong className="product-card__price">
-              Цена: {props.price}р.
-            </strong>
-            <strong className="product-card__avl">{isAvl}</strong>
-          </div>
-
-          <div className="product-card_order-button">
-            <OrderButton
-              incart={props.incart}
-              userdocid={props.userdocid}
-              pizzaid={props.pizzaid}
-              isavl={props.isavl}
-            />
-          </div>
-        </div>
-
+    <article className="product-card">
+      {props.userdocid && (
         <div className="product-card__favorites-button">
           <FavoritesButton
             infav={props.infav}
@@ -58,8 +33,46 @@ const ProductCard: React.FC<TProps> = (props) => {
             pizzaid={props.pizzaid}
           />
         </div>
+      )}
+      <div className="product-card__content">
+        <h2 className="product-card__header">
+          <Link
+            className="product-card__link"
+            to={urlBuilder('productPage', { id: props.pizzaid })}
+          >
+            {props.name}
+          </Link>
+        </h2>
+        <img
+          className={imageClasses.join(' ')}
+          src={props.image}
+          alt={props.name}
+        />
       </div>
-    </>
+
+      <div className="product-card__bottom">
+        <div className="product-card__info">
+          <span className="product-card__price">Цена: {props.price}р.</span>
+          {isAvl && <span className="product-card__avl">{isAvl}</span>}
+        </div>
+
+        <div className="product-card__order-button">
+          {props.userdocid && (
+            <OrderButton
+              incart={props.incart}
+              userdocid={props.userdocid}
+              pizzaid={props.pizzaid}
+              isavl={props.isavl}
+            />
+          )}
+          {!props.userdocid && (
+            <Link className="product-card__login" to={'/login'}>
+              Заказать
+            </Link>
+          )}
+        </div>
+      </div>
+    </article>
   );
 };
 

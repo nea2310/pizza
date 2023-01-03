@@ -11,9 +11,31 @@ $xxxl: 2400px;
 $colorWheat: rgb(255, 245, 226);
 $colorWhite: rgb(255, 255, 255);
 $colorRed: #d1481e;
-$colorGreen: rgb(113, 255, 161);
+$colorGreen: rgb(16, 144, 67);
+$colorGrey: rgb(195, 193, 190);
+$colorLightGrey: rgb(232, 232, 232);
+$colorYellow: rgb(231, 201, 51);
+$colorBlue: rgb(79, 67, 250);
+
+$shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
 
 /***** Mixins *****/
+
+@mixin button {
+  display: block;
+  padding: 10px;
+  color: $colorWheat;
+  border: none;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  font-size: 18px;
+  text-decoration: none;
+
+  &:hover,
+  &:visited {
+    color: $colorWheat;
+  }
+}
 
 @mixin visually-hidden() {
   position: absolute;
@@ -25,7 +47,6 @@ $colorGreen: rgb(113, 255, 161);
 
 @mixin wrapper-size() {
   max-width: $xxxl;
-  width: 100%;
   margin: auto;
 }
 
@@ -57,10 +78,13 @@ $colorGreen: rgb(113, 255, 161);
   &:visited {
     color: $colorWheat;
   }
+  &:focus-visible {
+    outline: 2px solid black;
+  }
 }
 
 @mixin font-h1() {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 24px;
   line-height: 29px;
@@ -68,7 +92,7 @@ $colorGreen: rgb(113, 255, 161);
 }
 
 @mixin font-h2() {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 19px;
   line-height: 23px;
@@ -76,7 +100,7 @@ $colorGreen: rgb(113, 255, 161);
 }
 
 @mixin font-h3() {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 12px;
   line-height: 15px;
@@ -85,7 +109,7 @@ $colorGreen: rgb(113, 255, 161);
 }
 
 @mixin font-body() {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;

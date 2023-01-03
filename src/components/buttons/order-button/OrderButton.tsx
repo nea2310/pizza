@@ -1,7 +1,6 @@
-import { Button } from 'react-bootstrap';
-import './order-button.scss';
-import { useAppDispatch } from '../../../hooks'
+import { useAppDispatch } from '../../../hooks';
 import { addCartItem, removeCartItem } from '../../../store/slices/cartSlice';
+import './order-button.scss';
 
 type TProps = {
   incart: boolean;
@@ -11,11 +10,10 @@ type TProps = {
 };
 
 const OrderButton: React.FC<TProps> = (props) => {
-
   const dispatch = useAppDispatch();
   let isAdding = true;
-  let type = "success";
-  let text = "Заказать";
+  let type = 'order-button order-button_type_order';
+  let text = 'Заказать';
 
   let handleClick = (user: string, pizzaItem: string) => {
     dispatch(addCartItem({ user, pizzaItem }));
@@ -23,24 +21,22 @@ const OrderButton: React.FC<TProps> = (props) => {
 
   if (props.incart) {
     isAdding = false;
-    type = "danger";
-    text = "Отменить заказ";
+    type = 'order-button order-button_type_cancel';
+    text = 'Отменить';
     handleClick = (user: string, pizzaItem: string) => {
       dispatch(removeCartItem({ user, pizzaItem }));
     };
   }
 
   return (
-    <Button
-      variant={type}
+    <button
+      className={type}
       disabled={!props.isavl}
-      onClick={() => handleClick(props.userdocid,
-        props.pizzaid)}
+      onClick={() => handleClick(props.userdocid, props.pizzaid)}
     >
       {text}
-    </Button>
+    </button>
   );
-}
+};
 
 export default OrderButton;
-

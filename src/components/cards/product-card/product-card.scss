@@ -1,58 +1,93 @@
-@import '../../../assets/styles/glob.scss';
+@import '../../../assets/styles/glob';
 
 .product-card {
   justify-content: flex-end;
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative;
+  box-shadow: $shadow;
+
+  &__content {
+    position: relative;
+  }
 
   &__link {
     text-decoration: none;
     color: black;
     flex-grow: 1;
+
     &:visited {
       color: black;
     }
+
     &:hover {
       color: black;
     }
+
+    &::after {
+      position: absolute;
+      content: '';
+      z-index: 1;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
   }
+
   &__header {
+    font-size: 24px;
     height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
   }
-  &__img-wrapper {
+
+  &__img {
     margin: 10px auto;
     width: 100%;
     aspect-ratio: 16/10;
-  }
-
-  &__img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
+
+    &_inactive {
+      filter: grayscale(100%);
+    }
   }
 
   &__avl {
+    top: 45%;
+    left: 20%;
+    transform: rotate(-35deg);
+    font-size: 30px;
+    position: absolute;
     color: $colorRed;
+    border: 2px solid $colorRed;
+    padding: 10px;
+    font-weight: bolder;
   }
 
-  &__order-button {
-    margin: 10px auto;
+  &__login {
+    @include button;
+    background-color: $colorYellow;
   }
 
   &__favorites-button {
     position: absolute;
+    z-index: 2;
     top: 10px;
     right: 10px;
   }
 
   &__bottom {
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  &__price {
+    font-weight: bolder;
   }
 }

@@ -1,0 +1,14 @@
+@import '../../assets/styles/glob';
+
+.result {
+  &__button {
+    padding: 10px;
+    color: $colorWheat;
+    border: none;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    font-size: 18px;
+    text-decoration: none;
+    background-color: $colorYellow;
+  }
+}

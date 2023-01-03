@@ -3,13 +3,11 @@
 */
 
 import React, { RefObject, useRef } from 'react';
-import './min-max.scss';
-import AppLazyInputWithRef from '../lazy-input/LazyInput';
 import { IAppLazyInputRef, IAppMinMaxProps } from '../../../interface';
-
+import AppLazyInputWithRef from '../lazy-input/LazyInput';
+import './min-max.scss';
 
 const MinMax: React.FC<IAppMinMaxProps> = (props) => {
-
   const lazyInput = useRef<IAppLazyInputRef>() as RefObject<IAppLazyInputRef>;
 
   const increase = () => {
@@ -20,18 +18,16 @@ const MinMax: React.FC<IAppMinMaxProps> = (props) => {
     set(props.cnt - 1);
   };
 
-
   /*
-  * Если значение в диапазоне между min и max -> вернуть это значение
-  * Если меньше min - > вернуть min 
-  * Если больше max - > вернуть max
+   * Если значение в диапазоне между min и max -> вернуть это значение
+   * Если меньше min - > вернуть min
+   * Если больше max - > вернуть max
    */
   const set = (newCnt: number) => {
     let cnt = Math.min(Math.max(newCnt, props.min), props.max);
     props.onChange(cnt);
     return cnt;
   };
-
 
   /*
   * Получить от дочернего компонента AppLazyInputWithRef событие (blur или keyup)
@@ -56,20 +52,30 @@ const MinMax: React.FC<IAppMinMaxProps> = (props) => {
     }
   };
 
-
   return (
-    <div>
-      <button onClick={decrease}>-</button>
+    <div className="min-max">
+      <button
+        className="min-max__button"
+        aria-label="уменьшить количество"
+        onClick={decrease}
+      >
+        -
+      </button>
       <AppLazyInputWithRef
-        nativeProps={{ type: 'text', className: '' }}
+        nativeProps={{ type: 'text', className: 'min-max__input' }}
         value={props.cnt}
         onChange={onChange}
         ref={lazyInput}
       />
-      <button onClick={increase}>+</button>
+      <button
+        className="min-max__button"
+        aria-label="увеличить количество"
+        onClick={increase}
+      >
+        +
+      </button>
     </div>
   );
 };
-
 
 export default MinMax;

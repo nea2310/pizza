@@ -154,13 +154,14 @@ export const updateUserFavItems = createAsyncThunk<{ favorites: string[] }, IUse
   `${NAMESPACE}/update${capitalize(NAMESPACE)}FavItems`,
 
   async function (data) {
-
     const { user, pizzaItem, isAdding } = data;
     const userRef = doc(db, 'users', user);
-
     const res = await getDoc(userRef);
+    
     const data1 = res.data() as DocumentData;
+    console.log('data1>>>', data1);
     let favorites: string[] = data1.favorites;
+   
     /*Если добавляем в  избранное*/
 
     if (isAdding) {

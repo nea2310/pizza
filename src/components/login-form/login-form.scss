@@ -1,4 +1,4 @@
-@import "../../assets/styles/glob.scss";
+@import '../../assets/styles/glob';
 
 .login-form {
   display: flex;
@@ -17,6 +17,8 @@
   }
 
   &__button {
+    @include button;
     align-self: center;
+    background-color: $colorYellow;
   }
 }

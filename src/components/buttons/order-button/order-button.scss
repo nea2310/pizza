@@ -1,3 +1,19 @@
+@import '../../../assets/styles/glob';
+
 .order-button {
-  padding: 5px;
+  @include button;
+
+  &:disabled {
+    filter: grayscale(100%);
+  }
+
+  &_type {
+    &_order {
+      background-color: $colorGreen;
+    }
+
+    &_cancel {
+      background-color: $colorRed;
+    }
+  }
 }
