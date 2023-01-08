@@ -32,7 +32,7 @@ const FavoritesButton: React.FC<TProps> = (props) => {
           })
         );
       }}
-    ></button>
+    />
   );
 };
 

@@ -15,7 +15,8 @@ const Order: React.FC = () => {
   /* useLocation - используется для извлечения пропсов, передаваемых странице во втором параметре функции navigate 
    (см. страницу cart -->  onClick={() => { navigate(routesMap.order, { state: { total } }) }) */
 
-  const { total } = (useLocation() as TConst).state;
+  // const { total } = (useLocation() as TConst).state; - так не работают тесты
+  const { total } = useLocation().state as { total: number };
   const { userDocID } = useAppSelector((state) => state.user);
   const orderModel = useAppSelector((state) => state.order);
 

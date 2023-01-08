@@ -215,3 +215,11 @@ interface IUserState {
   error: string | null
 }
 
+
+export interface AppState {
+  pizzaItems: IPizzaItemsState,
+  user: IUserState,
+  cart: ICartState,
+  order: IOrderState
+}
+

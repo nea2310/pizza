@@ -2,9 +2,11 @@
 
 .order-button {
   @include button;
+  cursor: pointer;
 
   &:disabled {
     filter: grayscale(100%);
+    cursor: auto;
   }
 
   &_type {

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import E404 from '../../components/errors/e-404/E404';
 import { IPizzaDetails } from '../../interface';
 import OrderButton from '../../components/buttons/order-button/OrderButton';
@@ -38,7 +37,6 @@ const Product: React.FC<IData> = (data) => {
             image={product.image}
             ingredients={product.ingredients}
             backUrl={routesMap.pizzaItems}
-            linkComponent={Link}
           />
         </div>
 

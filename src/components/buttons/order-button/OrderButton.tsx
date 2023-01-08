@@ -14,25 +14,28 @@ const OrderButton: React.FC<TProps> = (props) => {
   let isAdding = true;
   let type = 'order-button order-button_type_order';
   let text = 'Заказать';
+  let callBack = addCartItem;
 
-  let handleClick = (user: string, pizzaItem: string) => {
-    dispatch(addCartItem({ user, pizzaItem }));
+  const handleClick = (
+    user: string,
+    pizzaItem: string,
+    callBackFunction: Function
+  ) => {
+    dispatch(callBackFunction({ user, pizzaItem }));
   };
 
   if (props.incart) {
     isAdding = false;
     type = 'order-button order-button_type_cancel';
     text = 'Отменить';
-    handleClick = (user: string, pizzaItem: string) => {
-      dispatch(removeCartItem({ user, pizzaItem }));
-    };
+    callBack = removeCartItem;
   }
 
   return (
     <button
       className={type}
       disabled={!props.isavl}
-      onClick={() => handleClick(props.userdocid, props.pizzaid)}
+      onClick={() => handleClick(props.userdocid, props.pizzaid, callBack)}
     >
       {text}
     </button>

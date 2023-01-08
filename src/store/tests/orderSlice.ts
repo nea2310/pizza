@@ -16,14 +16,14 @@ const initialState = {
   formData: {
     name: {
       value: '',
-      label: 'Name',
+      label: 'Имя',
       validator: '^[a-zA-ZА-Яа-яёЁ ]{2,}$',
       errorText: 'Русские или латинские символы, не менее двух',
       valid: null
     },
     phone: {
       value: '',
-      label: 'Phone',
+      label: 'Телефон',
       validator: '^[0-9]{7,15}$',
       errorText: 'От 7 до 15 цифр',
       valid: null
@@ -47,9 +47,9 @@ describe('orderSlice', () => {
   })
 
   it('should set user by "orderSetUser" action', () => {
-    const action = { type: orderSetUser.type, payload: { name: 'Name', email: 'Email' } };
+    const action = { type: orderSetUser.type, payload: { name: 'Имя', email: 'Email' } };
     const result = orderReducer(initialState, action);
-    expect(result.formData.name.value).toBe('Name');
+    expect(result.formData.name.value).toBe('Имя');
     expect(result.formData.email.value).toBe('Email')
     expect(result.formData.name.valid).toBe(true);
     expect(result.formData.email.valid).toBe(true)
@@ -77,9 +77,9 @@ describe('orderSlice', () => {
   })
 
   it('should change field by "orderChangeField" action. Correct name format', () => {
-    const action = { type: orderChangeField.type, payload: { name: 'name', value: 'Name' } };
+    const action = { type: orderChangeField.type, payload: { name: 'name', value: 'Имя' } };
     const result = orderReducer(initialState, action);
-    expect(result.formData.name.value).toBe('Name')
+    expect(result.formData.name.value).toBe('Имя')
     expect(result.formData.name.valid).toBe(true);
   })
 
@@ -111,7 +111,7 @@ describe('orderSlice', () => {
     const result = orderReducer({
       ...initialState, formData: {
         name: {
-          value: 'Name',
+          value: 'Имя',
           label: 'Имя',
           validator: '^[a-zA-ZА-Яа-яёЁ ]{2,}$',
           errorText: 'Русские или латинские символы, не менее двух',
@@ -133,7 +133,7 @@ describe('orderSlice', () => {
         }
       },
     }, action);
-    expect(result.lastOrderCache.name).toBe('Name');
+    expect(result.lastOrderCache.name).toBe('Имя');
     expect(result.lastOrderCache.phone).toBe('1234567')
     expect(result.lastOrderCache.email).toBe('email@email.ru')
   })

@@ -11,6 +11,7 @@ interface IRoutesMap {
 }
 
 const Header: React.FC = () => {
+
   const [details, setDetails] = useState(false);
 
   const contentClassName = details ? 'header__content_active' : '';
@@ -19,6 +20,12 @@ const Header: React.FC = () => {
   const burgerClassName = details ? 'header__burger-button_active' : '';
   const burgerClasses = ['header__burger-button', burgerClassName];
   const { token, name, surname } = useAppSelector((state) => state.user);
+
+  // const { token, name, surname } = {
+  //   token: '123',
+  //   name: 'name',
+  //   surname: 'surname',
+  // };
 
   const isAuthed = !!token;
 
