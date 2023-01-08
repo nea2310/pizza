@@ -78,7 +78,6 @@ export const mockedStore = {
     status: null,
     error: null,
   },
-
 }
 };
 
@@ -97,9 +96,19 @@ export const initialStore = {
         spicy: false,
         id: "5zx7hXAm9qiJUkBTyJBT",
       }],
-      pizzaItemsFiltered: [],
+      pizzaItemsFiltered: [{
+        available: true,
+        price: 400,
+        meat: true,
+        image: "https://firebasestorage.googleapis.com/v0/",
+        ingredients: ["моцарелла", "пармезан", "горгонзола", "орегано"],
+        name: "Четыре сыра",
+        lent: false,
+        spicy: false,
+        id: "5zx7hXAm9qiJUkBTyJBT",
+      }],
       ingredientsSelected: [],
-      ingredientsAll: [],
+      ingredientsAll: ["моцарелла", "пармезан", "горгонзола", "орегано"],
       currentQuery: '',
       spicySelected: '',
       lentSelected: '',
@@ -114,7 +123,7 @@ export const initialStore = {
     name: 'Name',
     surname: 'Surname',
     userDocID: '123',
-    favorites: [],
+    favorites: ["5zx7hXAm9qiJUkBTyJBT"],
     status: 'fulfilled',
     error: null,
   },

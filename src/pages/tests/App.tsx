@@ -1,61 +1,36 @@
-import { render, screen, fireEvent } from '@testing-library/react';
 import App from '../../App';
-import {
- renderWithReduxAndRouter,
-  renderWithProviders
-} from './testUtils/testUtils';
-import { initialStore, mockedStore } from './testUtils/mockedStore';
-import userEvent from '@testing-library/user-event';
-import * as reduxHooks from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import configureStore from "redux-mock-store";
-
-jest.mock('react-redux');
-const mockedDispatch = jest.spyOn(reduxHooks, 'useDispatch');
-const dispatch = jest.fn();
-mockedDispatch.mockReturnValue(dispatch);
-
-describe('Application component rendering', () => {
-  it('657676576', () => {
-
-    // const mockStore = configureStore([]);
-
-    // const store = mockStore({});
-
-    renderWithReduxAndRouter(<main />, {
-      initialState: initialStore,
-    });
+import { rest } from 'msw'
+import { setupServer } from 'msw/node'
+import { fireEvent, screen } from '@testing-library/react'
+// We're using our own custom render function and not RTL's render.
+import { renderWithProviders } from './testUtils/testUtils';
+import { initialStore } from './testUtils/mockedStore';
 
 
+export const handlers = [
+  rest.get('../../firebaseAPI/fetchPizzaItems', (req, res, ctx) => {
+    return res(ctx.json({}), ctx.delay(150))
+  })
+]
 
+const server = setupServer(...handlers)
 
-  //  render(
-  //     <Provider store={store}>
-  //       {/* <BrowserRouter> */}
-  //               <App />
-  //       {/* </BrowserRouter> */}
-  //     </Provider>
-  //   );
+// Enable API mocking before tests.
+beforeAll(() => server.listen())
 
+// Reset any runtime request handlers we may add during the tests.
+afterEach(() => server.resetHandlers())
 
-    
+// Disable API mocking after the tests are done.
+afterAll(() => server.close())
 
+describe('Application rendering', () => {
+  it('657676576', async () => {
+    renderWithProviders(<App />, {
+      preloadedState: initialStore });
+    const link = screen.getByRole('link', { name: /Акции/i });
+    fireEvent.click(link);
+    expect(await screen.findByText(/Акции - раздел находится в разработке/i)).toBeInTheDocument();
     screen.debug();
-
-    // render(
-    //   <BrowserRouter>
-    //     <App />
-    //   </BrowserRouter>
-    // );
-
-   
-    // const link = screen.getByText('О нас');
-    // expect(link).toBeInTheDocument();
-    // const user = userEvent.setup();
-    // await user.click(link);
-    // expect(
-    //   screen.getByText('О нас (раздел находится в разработке)')
-    // ).toBeInTheDocument();
   });
 });

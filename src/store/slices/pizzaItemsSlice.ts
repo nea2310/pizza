@@ -3,6 +3,7 @@ import { collection, getDocs, query, where, DocumentData, QuerySnapshot, WhereFi
 import { Exception } from 'sass/types/exception';
 import { createSlice, createAsyncThunk, PayloadAction, AnyAction } from '@reduxjs/toolkit';
 import db from './../../firebase';
+import { FirebaseAPI } from '../../firebaseAPI';
 import {
   IPizzaItem,
   IPizzaItemsState,
@@ -31,30 +32,8 @@ const NAMESPACE = 'pizzaItems';
 
 export const fetchPizzaItems = createAsyncThunk<IFetchPizzaItemsReturn, undefined, { rejectValue: string }>(
   `${NAMESPACE}/fetch${capitalize(NAMESPACE)}`,
-  async function (_, { rejectWithValue }) {
-
-    const pizzaItems = await getDocs(collection(db, "pizza"));
-    if (pizzaItems.metadata.fromCache) {
-      return rejectWithValue('Server error')
-    }
-
-    const pizzaItemsAll: Array<IPizzaItem> = [];
-    pizzaItems.forEach((doc) => {
-      let a = { ...doc.data(), id: doc.id } as IPizzaItem;
-      pizzaItemsAll.push(a);
-    });
-
-    //список всех ингредиентов (с дублями)
-    const ingredientsRaw: Array<string> = [];
-    pizzaItemsAll.forEach((item: IPizzaItem) =>
-      item.ingredients.forEach((item: string) => ingredientsRaw.push(item))
-    );
-    //список всех ингредиентов (убираем дубли)
-    const ingredientsAll =
-      ingredientsRaw.filter((item: string, pos: number) =>
-        ingredientsRaw.indexOf(item) === pos
-      );
-    return { pizzaItemsAll, pizzaItemsFiltered: pizzaItemsAll, ingredientsAll }
+    (rejectValue) => {
+      return FirebaseAPI.fetchPizzaItems(rejectValue);
   }
 )
 
