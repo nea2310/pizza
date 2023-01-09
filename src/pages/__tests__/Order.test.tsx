@@ -1,11 +1,9 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import Order from '../order/order';
-import {
-  renderWithReduxAndRouter,
-  renderWithProviders,
-} from './testUtils/testUtils';
-import { initialStore, mockedStore } from './testUtils/mockedStore';
+import { renderWithProviders } from '../../shared/testUtils/testUtils';
+import { initialStore } from '../../shared/testUtils/mockedStore';
 import userEvent from '@testing-library/user-event';
+import { BrowserRouter } from 'react-router-dom';
 
 // const mockedUseNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
@@ -19,14 +17,19 @@ jest.mock('react-router-dom', () => ({
   },
 }));
 
-describe('Header component rendering', () => {
-  it('', () => {
-    renderWithReduxAndRouter(<Order />, { initialState: initialStore });
-    // renderWithProviders(<Order />, mockedStore);
+describe('Order page rendering', () => {
+
+  it('Renders Order page', async() => {
+    const orderPage = renderWithProviders(<BrowserRouter><Order /></BrowserRouter>, {
+      preloadedState: initialStore
+    });
+
+    expect(orderPage).toMatchSnapshot();
+
     const backToCart = screen.getByText(/Вернуться в корзину/);
     expect(backToCart).toBeInTheDocument();
-    fireEvent.click(backToCart);
-    expect(backToCart).toBeInTheDocument(); // не перешел в корзину
+    // fireEvent.click(backToCart);
+    // expect(backToCart).toBeInTheDocument(); // не перешел в корзину
     const orderButton = screen.getByText(/Заказать/);
     expect(orderButton).toBeInTheDocument();
     const nameField = screen.getByLabelText(/Имя/);
@@ -38,7 +41,5 @@ describe('Header component rendering', () => {
     userEvent.type(nameField, 'Тестовое Имя');
     userEvent.type(phoneField, '123456789');
     userEvent.type(emailField, 'gfhdsgfksfgfgftf@kjk.jhjh');
-    fireEvent.click(orderButton);
-    // expect(screen.getByText(/Отменить/)).toBeInTheDocument(); // форма не появилась
   });
 });

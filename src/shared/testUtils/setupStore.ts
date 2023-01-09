@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import type { PreloadedState } from '@reduxjs/toolkit';
 
-import { rootReducer } from '../../../store/index';
+import { rootReducer } from '../../store/index';
 
 export type RootState = ReturnType<typeof rootReducer>;
 

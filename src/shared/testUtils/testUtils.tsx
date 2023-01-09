@@ -5,14 +5,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import type { PreloadedState } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 
-import { setupStore, rootReducer } from '../../../store';
-import type { AppStore, RootState } from '../../../store';
+import { setupStore, rootReducer } from '../../store';
+import type { AppStore, RootState } from '../../store';
 
 
 
 
 import { createStore } from 'redux';
-import { AppState } from '../../../interface';
+import { AppState } from '../../interface';
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 
 
@@ -42,22 +42,22 @@ export function renderWithProviders(
 
 
 
-export const renderWithReduxAndRouter = (
-  component: JSX.Element,
-  {
-    initialState,
-    store = createStore(rootReducer, initialState),
-  }: { initialState?: AppState; store?: any } = {}
-) => {
-  return {
-    ...render(
+// export const renderWithReduxAndRouter = (
+//   component: JSX.Element,
+//   {
+//     initialState,
+//     store = createStore(rootReducer, initialState),
+//   }: { initialState?: AppState; store?: any } = {}
+// ) => {
+//   return {
+//     ...render(
       
-        <Provider store={store}><BrowserRouter>{component}</BrowserRouter></Provider>
+//         <Provider store={store}><BrowserRouter>{component}</BrowserRouter></Provider>
       
-    ),
-    store,
-  };
-};
+//     ),
+//     store,
+//   };
+// };
 
 // function rootReducer(rootReducer: any, initialState: AppState | undefined): any {
 //   throw new Error('Function not implemented.');

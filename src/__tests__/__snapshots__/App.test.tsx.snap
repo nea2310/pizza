@@ -1,0 +1,1255 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Application rendering Renders application with correct routing 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <header
+        class="header"
+      >
+        <button
+          aria-label="главное меню"
+          class="header__burger-button "
+        >
+          <div
+            class="header__burger"
+          />
+        </button>
+        <div
+          class="header__wrapper"
+        >
+          <div
+            class="header__logo"
+          >
+            <a
+              class="header__nav-link"
+              href="/"
+              title="главная страница"
+            >
+              <img
+                alt="главная страница"
+                class="header__nav-img"
+                src="logo.png"
+              />
+            </a>
+          </div>
+          <div
+            class="header__content "
+          >
+            <nav
+              class="header__nav"
+            >
+              <ul
+                class="header__nav-list"
+              >
+                <li
+                  class="header__nav-item"
+                >
+                  <a
+                    class="header__nav-link"
+                    href="/about"
+                  >
+                    О нас
+                  </a>
+                </li>
+                <li
+                  class="header__nav-item"
+                >
+                  <a
+                    class="header__nav-link"
+                    href="/deals"
+                  >
+                    Акции
+                  </a>
+                </li>
+                <li
+                  class="header__nav-item"
+                >
+                  <a
+                    class="header__nav-link"
+                    href="/blog"
+                  >
+                    Блог
+                  </a>
+                </li>
+              </ul>
+            </nav>
+            <div
+              class="header__user"
+            >
+              <div
+                class="header__auth"
+              >
+                <div>
+                  <button
+                    class="sc-bczRLJ avatar"
+                  >
+                    <img
+                      class="avatar__image"
+                      src="avatar.png"
+                    />
+                  </button>
+                  <div
+                    class="user-info "
+                  >
+                    <span
+                      class="user-info__name"
+                    >
+                      TestName TestSurname
+                    </span>
+                    <ul
+                      class="user-info__links"
+                    >
+                      <li
+                        class="user-info__link-wrapper"
+                      >
+                        <a
+                          class="user-info__link"
+                          href="/favorites"
+                          tabindex="-1"
+                        >
+                          Избранное
+                        </a>
+                      </li>
+                      <li
+                        class="user-info__link-wrapper"
+                      >
+                        <a
+                          class="user-info__link"
+                        >
+                          Мои баллы
+                        </a>
+                      </li>
+                      <li
+                        class="user-info__link-wrapper"
+                      >
+                        <a
+                          class="user-info__link"
+                        >
+                          Мои адреса доставки
+                        </a>
+                      </li>
+                      <li
+                        class="user-info__link-wrapper"
+                      >
+                        <a
+                          class="user-info__link"
+                        >
+                          Пригласить друга
+                        </a>
+                      </li>
+                    </ul>
+                    <button
+                      class="user-info__exit"
+                      tabindex="-1"
+                    >
+                      Выход
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <a
+                class="header__cart"
+                href="/cart"
+              >
+                <svg
+                  viewBox="0 0 576 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>
+                    Корзина
+                  </title>
+                  <path
+                    d="M176 416C149.49 416 128 437.49 128 464S149.49 512 176 512S224 490.51 224 464S202.51 416 176 416ZM464 416C437.49 416 416 437.49 416 464S437.49 512 464 512S512 490.51 512 464S490.51 416 464 416ZM569.529 44.734C563.42 36.641 554.107 32 543.967 32H121.957L119.578 19.51C117.422 8.189 107.523 0 96 0H24C10.746 0 0 10.744 0 24C0 37.254 10.746 48 24 48H76.141L136.424 364.488C138.58 375.809 148.479 384 160.002 384H488C501.254 384 512 373.254 512 360C512 346.744 501.254 336 488 336H179.859L170.717 288H489.123C503.406 288 515.959 278.531 519.885 264.797L574.748 72.797C577.529 63.047 575.623 52.828 569.529 44.734ZM477.049 240H161.574L131.1 80H522.77L477.049 240Z"
+                    fill="#FFF5E2"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main
+        class="main"
+      >
+        <section
+          class="pizza-items"
+        >
+          <h1
+            class="pizza-items__main-header"
+          >
+            Заказать пиццу
+          </h1>
+          <div
+            class="pizza-items__filter "
+          >
+            <button
+              aria-label="фильтр поиска"
+              class="pizza-items__filter-button"
+            />
+            <div
+              class="pizza-items__filter-ingredients"
+            >
+              <fieldset
+                class="ingredients-list"
+              >
+                <legend
+                  class="ingredients-list__legend"
+                >
+                  Ингредиент
+                </legend>
+                <label
+                  class="ingredients-list__item"
+                >
+                  <input
+                    class="ingredients-list__checkbox"
+                    name="моцарелла"
+                    tabindex="-1"
+                    type="checkbox"
+                  />
+                  <span
+                    class="ingredients-list__checkmark"
+                  />
+                  моцарелла
+                </label>
+                <label
+                  class="ingredients-list__item"
+                >
+                  <input
+                    class="ingredients-list__checkbox"
+                    name="пармезан"
+                    tabindex="-1"
+                    type="checkbox"
+                  />
+                  <span
+                    class="ingredients-list__checkmark"
+                  />
+                  пармезан
+                </label>
+                <label
+                  class="ingredients-list__item"
+                >
+                  <input
+                    class="ingredients-list__checkbox"
+                    name="горгонзола"
+                    tabindex="-1"
+                    type="checkbox"
+                  />
+                  <span
+                    class="ingredients-list__checkmark"
+                  />
+                  горгонзола
+                </label>
+                <label
+                  class="ingredients-list__item"
+                >
+                  <input
+                    class="ingredients-list__checkbox"
+                    name="орегано"
+                    tabindex="-1"
+                    type="checkbox"
+                  />
+                  <span
+                    class="ingredients-list__checkmark"
+                  />
+                  орегано
+                </label>
+                <label
+                  class="ingredients-list__item"
+                >
+                  <input
+                    class="ingredients-list__checkbox"
+                    name="томат"
+                    tabindex="-1"
+                    type="checkbox"
+                  />
+                  <span
+                    class="ingredients-list__checkmark"
+                  />
+                  томат
+                </label>
+              </fieldset>
+            </div>
+            <div
+              class="pizza-items__filter-spicy"
+            >
+              <fieldset
+                class="radio"
+              >
+                <legend
+                  class="radio__legend"
+                >
+                  Острая
+                </legend>
+                <div
+                  class="radio__group"
+                >
+                  <label
+                    class="radio__item"
+                  >
+                    <input
+                      class="radio__radiobutton"
+                      name="spicy"
+                      tabindex="-1"
+                      type="radio"
+                      value="да"
+                    />
+                    <span
+                      class="radio__radiomark"
+                    />
+                    да
+                  </label>
+                  <label
+                    class="radio__item"
+                  >
+                    <input
+                      class="radio__radiobutton"
+                      name="spicy"
+                      tabindex="-1"
+                      type="radio"
+                      value="нет"
+                    />
+                    <span
+                      class="radio__radiomark"
+                    />
+                    нет
+                  </label>
+                  <label
+                    class="radio__item"
+                  >
+                    <input
+                      class="radio__radiobutton"
+                      name="spicy"
+                      tabindex="-1"
+                      type="radio"
+                      value="не важно"
+                    />
+                    <span
+                      class="radio__radiomark"
+                    />
+                    не важно
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+            <div
+              class="pizza-items__filter-lent"
+            >
+              <fieldset
+                class="radio"
+              >
+                <legend
+                  class="radio__legend"
+                >
+                  Можно в пост
+                </legend>
+                <div
+                  class="radio__group"
+                >
+                  <label
+                    class="radio__item"
+                  >
+                    <input
+                      class="radio__radiobutton"
+                      name="lent"
+                      tabindex="-1"
+                      type="radio"
+                      value="да"
+                    />
+                    <span
+                      class="radio__radiomark"
+                    />
+                    да
+                  </label>
+                  <label
+                    class="radio__item"
+                  >
+                    <input
+                      class="radio__radiobutton"
+                      name="lent"
+                      tabindex="-1"
+                      type="radio"
+                      value="нет"
+                    />
+                    <span
+                      class="radio__radiomark"
+                    />
+                    нет
+                  </label>
+                  <label
+                    class="radio__item"
+                  >
+                    <input
+                      class="radio__radiobutton"
+                      name="lent"
+                      tabindex="-1"
+                      type="radio"
+                      value="не важно"
+                    />
+                    <span
+                      class="radio__radiomark"
+                    />
+                    не важно
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+          <ul
+            class="pizza-items__product-cards"
+          >
+            <span
+              class="pizza-items__loader"
+            />
+            <li
+              class="pizza-items__product-card"
+            >
+              <article
+                class="product-card"
+              >
+                <div
+                  class="product-card__favorites-button"
+                >
+                  <button
+                    aria-label="добавить в избранное"
+                    class="favorites-button"
+                  />
+                </div>
+                <div
+                  class="product-card__content"
+                >
+                  <h2
+                    class="product-card__header"
+                  >
+                    <a
+                      class="product-card__link"
+                      href="/product/fourCheesePizzaID"
+                    >
+                      Четыре сыра
+                    </a>
+                  </h2>
+                  <img
+                    alt="Четыре сыра"
+                    class="product-card__img "
+                    src="https://firebasestorage.googleapis.com/fourCheesePizza/"
+                  />
+                </div>
+                <div
+                  class="product-card__bottom"
+                >
+                  <div
+                    class="product-card__info"
+                  >
+                    <span
+                      class="product-card__price"
+                    >
+                      Цена: 
+                      400
+                      р.
+                    </span>
+                  </div>
+                  <div
+                    class="product-card__order-button"
+                  >
+                    <button
+                      class="order-button order-button_type_order"
+                    >
+                      Заказать
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </section>
+      </main>
+      <footer
+        class="footer"
+      >
+        <div
+          class="footer__wrapper"
+        >
+          <div
+            class="footer__image"
+          />
+          <div
+            class="footer__info"
+          >
+            <dl
+              class="footer__info-column"
+            >
+              <dt
+                class="footer__info-column-header"
+              >
+                ждем вас в наших ресторанах
+              </dt>
+              <dd
+                class="footer__info-column-block"
+              >
+                <span
+                  class="footer__info-column-row"
+                >
+                  Уфа, центр
+                </span>
+                <span
+                  class="footer__info-column-row"
+                >
+                  Парковая, 1
+                </span>
+                <a
+                  class="footer__phone-link"
+                  href="tel:+73471234567"
+                >
+                  <span
+                    class="footer__phone"
+                  >
+                    +7 (347) 123-45-67
+                  </span>
+                </a>
+              </dd>
+              <dd
+                class="footer__info-column-block"
+              >
+                <span
+                  class="footer__info-column-row"
+                >
+                  Уфа, Цветы Башкирии
+                </span>
+                <span
+                  class="footer__info-column-row"
+                >
+                  Цветочная, 1
+                </span>
+                <a
+                  class="footer__phone-link"
+                  href="tel:+73471234567"
+                >
+                  <span
+                    class="footer__phone"
+                  >
+                    +7 (347) 123-45-67
+                  </span>
+                </a>
+              </dd>
+              <dd
+                class="footer__info-column-block"
+              >
+                <span
+                  class="footer__info-column-row"
+                >
+                  Уфа, р-н Молодежный
+                </span>
+                <span
+                  class="footer__info-column-row"
+                >
+                  Молодежная, 1
+                </span>
+                <a
+                  class="footer__phone-link"
+                  href="tel:+73471234567"
+                >
+                  <span
+                    class="footer__phone"
+                  >
+                    +7 (347) 123-45-67
+                  </span>
+                </a>
+              </dd>
+            </dl>
+            <dl
+              class="footer__info-column"
+            >
+              <dt
+                class="footer__info-column-header"
+              >
+                мы открыты для вас
+              </dt>
+              <dd
+                class="footer__info-column-block"
+              >
+                <span
+                  class="footer__info-column-row"
+                >
+                  понедельник - четверг
+                </span>
+                <span
+                  class="footer__info-column-row"
+                >
+                  9:00 - 22:00
+                </span>
+              </dd>
+              <dd
+                class="footer__info-column-block"
+              >
+                <span
+                  class="footer__info-column-row"
+                >
+                  пятница - воскресенье
+                </span>
+                <span
+                  class="footer__info-column-row"
+                >
+                  11:00 - 24:00
+                </span>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>,
+  "container": <div>
+    <header
+      class="header"
+    >
+      <button
+        aria-label="главное меню"
+        class="header__burger-button "
+      >
+        <div
+          class="header__burger"
+        />
+      </button>
+      <div
+        class="header__wrapper"
+      >
+        <div
+          class="header__logo"
+        >
+          <a
+            class="header__nav-link"
+            href="/"
+            title="главная страница"
+          >
+            <img
+              alt="главная страница"
+              class="header__nav-img"
+              src="logo.png"
+            />
+          </a>
+        </div>
+        <div
+          class="header__content "
+        >
+          <nav
+            class="header__nav"
+          >
+            <ul
+              class="header__nav-list"
+            >
+              <li
+                class="header__nav-item"
+              >
+                <a
+                  class="header__nav-link"
+                  href="/about"
+                >
+                  О нас
+                </a>
+              </li>
+              <li
+                class="header__nav-item"
+              >
+                <a
+                  class="header__nav-link"
+                  href="/deals"
+                >
+                  Акции
+                </a>
+              </li>
+              <li
+                class="header__nav-item"
+              >
+                <a
+                  class="header__nav-link"
+                  href="/blog"
+                >
+                  Блог
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div
+            class="header__user"
+          >
+            <div
+              class="header__auth"
+            >
+              <div>
+                <button
+                  class="sc-bczRLJ avatar"
+                >
+                  <img
+                    class="avatar__image"
+                    src="avatar.png"
+                  />
+                </button>
+                <div
+                  class="user-info "
+                >
+                  <span
+                    class="user-info__name"
+                  >
+                    TestName TestSurname
+                  </span>
+                  <ul
+                    class="user-info__links"
+                  >
+                    <li
+                      class="user-info__link-wrapper"
+                    >
+                      <a
+                        class="user-info__link"
+                        href="/favorites"
+                        tabindex="-1"
+                      >
+                        Избранное
+                      </a>
+                    </li>
+                    <li
+                      class="user-info__link-wrapper"
+                    >
+                      <a
+                        class="user-info__link"
+                      >
+                        Мои баллы
+                      </a>
+                    </li>
+                    <li
+                      class="user-info__link-wrapper"
+                    >
+                      <a
+                        class="user-info__link"
+                      >
+                        Мои адреса доставки
+                      </a>
+                    </li>
+                    <li
+                      class="user-info__link-wrapper"
+                    >
+                      <a
+                        class="user-info__link"
+                      >
+                        Пригласить друга
+                      </a>
+                    </li>
+                  </ul>
+                  <button
+                    class="user-info__exit"
+                    tabindex="-1"
+                  >
+                    Выход
+                  </button>
+                </div>
+              </div>
+            </div>
+            <a
+              class="header__cart"
+              href="/cart"
+            >
+              <svg
+                viewBox="0 0 576 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>
+                  Корзина
+                </title>
+                <path
+                  d="M176 416C149.49 416 128 437.49 128 464S149.49 512 176 512S224 490.51 224 464S202.51 416 176 416ZM464 416C437.49 416 416 437.49 416 464S437.49 512 464 512S512 490.51 512 464S490.51 416 464 416ZM569.529 44.734C563.42 36.641 554.107 32 543.967 32H121.957L119.578 19.51C117.422 8.189 107.523 0 96 0H24C10.746 0 0 10.744 0 24C0 37.254 10.746 48 24 48H76.141L136.424 364.488C138.58 375.809 148.479 384 160.002 384H488C501.254 384 512 373.254 512 360C512 346.744 501.254 336 488 336H179.859L170.717 288H489.123C503.406 288 515.959 278.531 519.885 264.797L574.748 72.797C577.529 63.047 575.623 52.828 569.529 44.734ZM477.049 240H161.574L131.1 80H522.77L477.049 240Z"
+                  fill="#FFF5E2"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main
+      class="main"
+    >
+      <section
+        class="pizza-items"
+      >
+        <h1
+          class="pizza-items__main-header"
+        >
+          Заказать пиццу
+        </h1>
+        <div
+          class="pizza-items__filter "
+        >
+          <button
+            aria-label="фильтр поиска"
+            class="pizza-items__filter-button"
+          />
+          <div
+            class="pizza-items__filter-ingredients"
+          >
+            <fieldset
+              class="ingredients-list"
+            >
+              <legend
+                class="ingredients-list__legend"
+              >
+                Ингредиент
+              </legend>
+              <label
+                class="ingredients-list__item"
+              >
+                <input
+                  class="ingredients-list__checkbox"
+                  name="моцарелла"
+                  tabindex="-1"
+                  type="checkbox"
+                />
+                <span
+                  class="ingredients-list__checkmark"
+                />
+                моцарелла
+              </label>
+              <label
+                class="ingredients-list__item"
+              >
+                <input
+                  class="ingredients-list__checkbox"
+                  name="пармезан"
+                  tabindex="-1"
+                  type="checkbox"
+                />
+                <span
+                  class="ingredients-list__checkmark"
+                />
+                пармезан
+              </label>
+              <label
+                class="ingredients-list__item"
+              >
+                <input
+                  class="ingredients-list__checkbox"
+                  name="горгонзола"
+                  tabindex="-1"
+                  type="checkbox"
+                />
+                <span
+                  class="ingredients-list__checkmark"
+                />
+                горгонзола
+              </label>
+              <label
+                class="ingredients-list__item"
+              >
+                <input
+                  class="ingredients-list__checkbox"
+                  name="орегано"
+                  tabindex="-1"
+                  type="checkbox"
+                />
+                <span
+                  class="ingredients-list__checkmark"
+                />
+                орегано
+              </label>
+              <label
+                class="ingredients-list__item"
+              >
+                <input
+                  class="ingredients-list__checkbox"
+                  name="томат"
+                  tabindex="-1"
+                  type="checkbox"
+                />
+                <span
+                  class="ingredients-list__checkmark"
+                />
+                томат
+              </label>
+            </fieldset>
+          </div>
+          <div
+            class="pizza-items__filter-spicy"
+          >
+            <fieldset
+              class="radio"
+            >
+              <legend
+                class="radio__legend"
+              >
+                Острая
+              </legend>
+              <div
+                class="radio__group"
+              >
+                <label
+                  class="radio__item"
+                >
+                  <input
+                    class="radio__radiobutton"
+                    name="spicy"
+                    tabindex="-1"
+                    type="radio"
+                    value="да"
+                  />
+                  <span
+                    class="radio__radiomark"
+                  />
+                  да
+                </label>
+                <label
+                  class="radio__item"
+                >
+                  <input
+                    class="radio__radiobutton"
+                    name="spicy"
+                    tabindex="-1"
+                    type="radio"
+                    value="нет"
+                  />
+                  <span
+                    class="radio__radiomark"
+                  />
+                  нет
+                </label>
+                <label
+                  class="radio__item"
+                >
+                  <input
+                    class="radio__radiobutton"
+                    name="spicy"
+                    tabindex="-1"
+                    type="radio"
+                    value="не важно"
+                  />
+                  <span
+                    class="radio__radiomark"
+                  />
+                  не важно
+                </label>
+              </div>
+            </fieldset>
+          </div>
+          <div
+            class="pizza-items__filter-lent"
+          >
+            <fieldset
+              class="radio"
+            >
+              <legend
+                class="radio__legend"
+              >
+                Можно в пост
+              </legend>
+              <div
+                class="radio__group"
+              >
+                <label
+                  class="radio__item"
+                >
+                  <input
+                    class="radio__radiobutton"
+                    name="lent"
+                    tabindex="-1"
+                    type="radio"
+                    value="да"
+                  />
+                  <span
+                    class="radio__radiomark"
+                  />
+                  да
+                </label>
+                <label
+                  class="radio__item"
+                >
+                  <input
+                    class="radio__radiobutton"
+                    name="lent"
+                    tabindex="-1"
+                    type="radio"
+                    value="нет"
+                  />
+                  <span
+                    class="radio__radiomark"
+                  />
+                  нет
+                </label>
+                <label
+                  class="radio__item"
+                >
+                  <input
+                    class="radio__radiobutton"
+                    name="lent"
+                    tabindex="-1"
+                    type="radio"
+                    value="не важно"
+                  />
+                  <span
+                    class="radio__radiomark"
+                  />
+                  не важно
+                </label>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <ul
+          class="pizza-items__product-cards"
+        >
+          <span
+            class="pizza-items__loader"
+          />
+          <li
+            class="pizza-items__product-card"
+          >
+            <article
+              class="product-card"
+            >
+              <div
+                class="product-card__favorites-button"
+              >
+                <button
+                  aria-label="добавить в избранное"
+                  class="favorites-button"
+                />
+              </div>
+              <div
+                class="product-card__content"
+              >
+                <h2
+                  class="product-card__header"
+                >
+                  <a
+                    class="product-card__link"
+                    href="/product/fourCheesePizzaID"
+                  >
+                    Четыре сыра
+                  </a>
+                </h2>
+                <img
+                  alt="Четыре сыра"
+                  class="product-card__img "
+                  src="https://firebasestorage.googleapis.com/fourCheesePizza/"
+                />
+              </div>
+              <div
+                class="product-card__bottom"
+              >
+                <div
+                  class="product-card__info"
+                >
+                  <span
+                    class="product-card__price"
+                  >
+                    Цена: 
+                    400
+                    р.
+                  </span>
+                </div>
+                <div
+                  class="product-card__order-button"
+                >
+                  <button
+                    class="order-button order-button_type_order"
+                  >
+                    Заказать
+                  </button>
+                </div>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer
+      class="footer"
+    >
+      <div
+        class="footer__wrapper"
+      >
+        <div
+          class="footer__image"
+        />
+        <div
+          class="footer__info"
+        >
+          <dl
+            class="footer__info-column"
+          >
+            <dt
+              class="footer__info-column-header"
+            >
+              ждем вас в наших ресторанах
+            </dt>
+            <dd
+              class="footer__info-column-block"
+            >
+              <span
+                class="footer__info-column-row"
+              >
+                Уфа, центр
+              </span>
+              <span
+                class="footer__info-column-row"
+              >
+                Парковая, 1
+              </span>
+              <a
+                class="footer__phone-link"
+                href="tel:+73471234567"
+              >
+                <span
+                  class="footer__phone"
+                >
+                  +7 (347) 123-45-67
+                </span>
+              </a>
+            </dd>
+            <dd
+              class="footer__info-column-block"
+            >
+              <span
+                class="footer__info-column-row"
+              >
+                Уфа, Цветы Башкирии
+              </span>
+              <span
+                class="footer__info-column-row"
+              >
+                Цветочная, 1
+              </span>
+              <a
+                class="footer__phone-link"
+                href="tel:+73471234567"
+              >
+                <span
+                  class="footer__phone"
+                >
+                  +7 (347) 123-45-67
+                </span>
+              </a>
+            </dd>
+            <dd
+              class="footer__info-column-block"
+            >
+              <span
+                class="footer__info-column-row"
+              >
+                Уфа, р-н Молодежный
+              </span>
+              <span
+                class="footer__info-column-row"
+              >
+                Молодежная, 1
+              </span>
+              <a
+                class="footer__phone-link"
+                href="tel:+73471234567"
+              >
+                <span
+                  class="footer__phone"
+                >
+                  +7 (347) 123-45-67
+                </span>
+              </a>
+            </dd>
+          </dl>
+          <dl
+            class="footer__info-column"
+          >
+            <dt
+              class="footer__info-column-header"
+            >
+              мы открыты для вас
+            </dt>
+            <dd
+              class="footer__info-column-block"
+            >
+              <span
+                class="footer__info-column-row"
+              >
+                понедельник - четверг
+              </span>
+              <span
+                class="footer__info-column-row"
+              >
+                9:00 - 22:00
+              </span>
+            </dd>
+            <dd
+              class="footer__info-column-block"
+            >
+              <span
+                class="footer__info-column-row"
+              >
+                пятница - воскресенье
+              </span>
+              <span
+                class="footer__info-column-row"
+              >
+                11:00 - 24:00
+              </span>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </footer>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "store": Object {
+    "@@observable": [Function],
+    "dispatch": [Function],
+    "getState": [Function],
+    "replaceReducer": [Function],
+    "subscribe": [Function],
+  },
+  "unmount": [Function],
+}
+`;

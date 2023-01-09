@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import * as reduxHooks from 'react-redux';
-import OrderButton from '../../components/buttons/order-button/OrderButton';
+import OrderButton from '../buttons/order-button/OrderButton';
 import * as actions from '../../store/slices/cartSlice';
 
 jest.mock('react-redux');
@@ -11,7 +11,7 @@ describe('OrderButton component rendering', () => {
     const dispatch = jest.fn();
     mockedDispatch.mockReturnValue(dispatch);
     const mockedAddCartItem = jest.spyOn(actions, 'addCartItem');
-    render(
+    const orderButtonComponent = render(
       <OrderButton
         incart={false}
         isavl={true}
@@ -26,13 +26,14 @@ describe('OrderButton component rendering', () => {
       user: '123',
       pizzaItem: '123456',
     });
+    expect(orderButtonComponent).toMatchSnapshot();
   });
 
   it('should dispatch removeCartItem action on button click if the pizza is in the cart', () => {
     const dispatch = jest.fn();
     mockedDispatch.mockReturnValue(dispatch);
     const mockedAddCartItem = jest.spyOn(actions, 'removeCartItem');
-    render(
+    const orderButtonComponent = render(
       <OrderButton
         incart={true}
         isavl={true}
@@ -47,12 +48,13 @@ describe('OrderButton component rendering', () => {
       user: '123',
       pizzaItem: '123456',
     });
+    expect(orderButtonComponent).toMatchSnapshot();
   });
 
   it('should dispatch no action on button click if the pizza is not available', () => {
     const dispatch = jest.fn();
     mockedDispatch.mockReturnValue(dispatch);
-    render(
+    const orderButtonComponent = render(
       <OrderButton
         incart={false}
         isavl={false}
@@ -63,5 +65,6 @@ describe('OrderButton component rendering', () => {
     expect(screen.getByText(/Заказать/)).toBeInTheDocument();
     fireEvent.click(screen.getByRole('button'));
     expect(dispatch).toHaveBeenCalledTimes(0);
+    expect(orderButtonComponent).toMatchSnapshot();
   });
 });

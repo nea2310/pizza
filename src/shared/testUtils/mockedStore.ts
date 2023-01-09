@@ -7,12 +7,12 @@ export const mockedStore = {
         available: true,
         price: 400,
         meat: true,
-        image: "https://firebasestorage.googleapis.com/v0/",
-        ingredients: ["моцарелла", "пармезан", "горгонзола", "орегано"],
-        name: "Четыре сыра",
+        image: 'https://firebasestorage.googleapis.com/v0/',
+        ingredients: ['моцарелла', 'пармезан', 'горгонзола', 'орегано'],
+        name: 'Четыре сыра',
         lent: false,
         spicy: false,
-        id: "5zx7hXAm9qiJUkBTyJBT",
+        id: '5zx7hXAm9qiJUkBTyJBT',
       }],
       pizzaItemsFiltered: [],
       ingredientsSelected: [],
@@ -81,34 +81,38 @@ export const mockedStore = {
 }
 };
 
+const fourCheesePizza = {
+  available: true,
+  price: 400,
+  meat: true,
+  image: 'https://firebasestorage.googleapis.com/fourCheesePizza/',
+  ingredients: ['моцарелла', 'пармезан', 'горгонзола', 'бри'],
+  name: 'Четыре сыра',
+  lent: false,
+  spicy: false,
+  id: 'fourCheesePizzaID',
+}
+
+const margaritaPizza = {
+  available: false,
+  price: 300,
+  meat: false,
+  image: 'https://firebasestorage.googleapis.com/margaritaPizza/',
+  ingredients: ['моцарелла', 'томат', 'орегано'],
+  name: 'Маргарита',
+  lent: false,
+  spicy: false,
+  id: 'margaritaPizzaID',
+}
+
 
 export const initialStore = {
   pizzaItems: {
     data: {
-      pizzaItemsAll: [{
-        available: true,
-        price: 400,
-        meat: true,
-        image: "https://firebasestorage.googleapis.com/v0/",
-        ingredients: ["моцарелла", "пармезан", "горгонзола", "орегано"],
-        name: "Четыре сыра",
-        lent: false,
-        spicy: false,
-        id: "5zx7hXAm9qiJUkBTyJBT",
-      }],
-      pizzaItemsFiltered: [{
-        available: true,
-        price: 400,
-        meat: true,
-        image: "https://firebasestorage.googleapis.com/v0/",
-        ingredients: ["моцарелла", "пармезан", "горгонзола", "орегано"],
-        name: "Четыре сыра",
-        lent: false,
-        spicy: false,
-        id: "5zx7hXAm9qiJUkBTyJBT",
-      }],
+      pizzaItemsAll: [{...fourCheesePizza }, { ...margaritaPizza }],
+      pizzaItemsFiltered: [{...fourCheesePizza }],
       ingredientsSelected: [],
-      ingredientsAll: ["моцарелла", "пармезан", "горгонзола", "орегано"],
+      ingredientsAll: ['моцарелла', 'пармезан', 'горгонзола', 'орегано', 'томат'],
       currentQuery: '',
       spicySelected: '',
       lentSelected: '',
@@ -120,10 +124,10 @@ export const initialStore = {
     email: 'test@mail.com',
     token: '123456',
     id: '654321',
-    name: 'Name',
-    surname: 'Surname',
+    name: 'TestName',
+    surname: 'TestSurname',
     userDocID: '123',
-    favorites: ["5zx7hXAm9qiJUkBTyJBT"],
+    favorites: ['margaritaPizzaID'],
     status: 'fulfilled',
     error: null,
   },

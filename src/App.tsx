@@ -37,7 +37,7 @@ const App = () => {
     dispatch(fetchPizzaItems());
 
     /*запрашиваем пользователя с сервера*/
-    // dispatch(fetchUser());
+    dispatch(fetchUser());
   }, []);
 
   // eslint-disable-next-line no-undef

@@ -21,12 +21,6 @@ const Header: React.FC = () => {
   const burgerClasses = ['header__burger-button', burgerClassName];
   const { token, name, surname } = useAppSelector((state) => state.user);
 
-  // const { token, name, surname } = {
-  //   token: '123',
-  //   name: 'name',
-  //   surname: 'surname',
-  // };
-
   const isAuthed = !!token;
 
   /*в зависимости от того, авторизован ли пользователь, отображаем либо приветствие, 
@@ -105,7 +99,7 @@ const Header: React.FC = () => {
       </button>
       <div className="header__wrapper">
         <div className="header__logo">
-          <Link className="header__nav-link" to={routesMap.pizzaItems}>
+          <Link className="header__nav-link" to={routesMap.pizzaItems} title="главная страница">
             <img
               className="header__nav-img"
               src={logo}

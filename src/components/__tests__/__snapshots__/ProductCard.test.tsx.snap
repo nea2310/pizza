@@ -1,0 +1,347 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductCard component rendering should render Order button and Favorites button if user is signed in 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <article
+        class="product-card"
+      >
+        <div
+          class="product-card__favorites-button"
+        >
+          <button
+            aria-label="добавить в избранное"
+            class="favorites-button"
+          />
+        </div>
+        <div
+          class="product-card__content"
+        >
+          <h2
+            class="product-card__header"
+          >
+            <a
+              class="product-card__link"
+              href="/product/123"
+            >
+              Четыре сыра
+            </a>
+          </h2>
+          <img
+            alt="Четыре сыра"
+            class="product-card__img "
+            src="http//"
+          />
+        </div>
+        <div
+          class="product-card__bottom"
+        >
+          <div
+            class="product-card__info"
+          >
+            <span
+              class="product-card__price"
+            >
+              Цена: 
+              100
+              р.
+            </span>
+          </div>
+          <div
+            class="product-card__order-button"
+          >
+            <button
+              class="order-button order-button_type_order"
+            >
+              Заказать
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </body>,
+  "container": <div>
+    <article
+      class="product-card"
+    >
+      <div
+        class="product-card__favorites-button"
+      >
+        <button
+          aria-label="добавить в избранное"
+          class="favorites-button"
+        />
+      </div>
+      <div
+        class="product-card__content"
+      >
+        <h2
+          class="product-card__header"
+        >
+          <a
+            class="product-card__link"
+            href="/product/123"
+          >
+            Четыре сыра
+          </a>
+        </h2>
+        <img
+          alt="Четыре сыра"
+          class="product-card__img "
+          src="http//"
+        />
+      </div>
+      <div
+        class="product-card__bottom"
+      >
+        <div
+          class="product-card__info"
+        >
+          <span
+            class="product-card__price"
+          >
+            Цена: 
+            100
+            р.
+          </span>
+        </div>
+        <div
+          class="product-card__order-button"
+        >
+          <button
+            class="order-button order-button_type_order"
+          >
+            Заказать
+          </button>
+        </div>
+      </div>
+    </article>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "store": Object {
+    "@@observable": [Function],
+    "dispatch": [Function],
+    "getState": [Function],
+    "replaceReducer": [Function],
+    "subscribe": [Function],
+  },
+  "unmount": [Function],
+}
+`;
+
+exports[`ProductCard component rendering should render Sign in link and no Favorites button if user is not signed in 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <article
+        class="product-card"
+      >
+        <div
+          class="product-card__content"
+        >
+          <h2
+            class="product-card__header"
+          >
+            <a
+              class="product-card__link"
+              href="/product/123"
+            >
+              Четыре сыра
+            </a>
+          </h2>
+          <img
+            alt="Четыре сыра"
+            class="product-card__img "
+            src="http//"
+          />
+        </div>
+        <div
+          class="product-card__bottom"
+        >
+          <div
+            class="product-card__info"
+          >
+            <span
+              class="product-card__price"
+            >
+              Цена: 
+              100
+              р.
+            </span>
+          </div>
+          <div
+            class="product-card__order-button"
+          >
+            <a
+              class="product-card__login"
+              href="/login"
+            >
+              Заказать
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </body>,
+  "container": <div>
+    <article
+      class="product-card"
+    >
+      <div
+        class="product-card__content"
+      >
+        <h2
+          class="product-card__header"
+        >
+          <a
+            class="product-card__link"
+            href="/product/123"
+          >
+            Четыре сыра
+          </a>
+        </h2>
+        <img
+          alt="Четыре сыра"
+          class="product-card__img "
+          src="http//"
+        />
+      </div>
+      <div
+        class="product-card__bottom"
+      >
+        <div
+          class="product-card__info"
+        >
+          <span
+            class="product-card__price"
+          >
+            Цена: 
+            100
+            р.
+          </span>
+        </div>
+        <div
+          class="product-card__order-button"
+        >
+          <a
+            class="product-card__login"
+            href="/login"
+          >
+            Заказать
+          </a>
+        </div>
+      </div>
+    </article>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "store": Object {
+    "@@observable": [Function],
+    "dispatch": [Function],
+    "getState": [Function],
+    "replaceReducer": [Function],
+    "subscribe": [Function],
+  },
+  "unmount": [Function],
+}
+`;

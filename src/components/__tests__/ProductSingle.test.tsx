@@ -1,12 +1,12 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { MemoryRouter, useParams } from 'react-router-dom';
-import ProductSingle from '../../components/cards/product-single/ProductSingle';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { BrowserRouter } from 'react-router-dom';
+import ProductSingle from '../cards/product-single/ProductSingle';
 
 describe('ProductSingle component rendering', () => {
-  it('', async () => {
-    render(
-      <MemoryRouter>
+  it('Renders ProductSingle component', async () => {
+    const productSingleComponent = render(
+      <BrowserRouter>
         <ProductSingle
           backUrl={'/'}
           image={''}
@@ -14,7 +14,7 @@ describe('ProductSingle component rendering', () => {
           name={'Маргарита'}
           price={100}
         />
-      </MemoryRouter>
+      </BrowserRouter>
     );
 
     const user = userEvent.setup();
@@ -23,8 +23,6 @@ describe('ProductSingle component rendering', () => {
       screen.getByText(/Состав: пармезан, моцарелла, камамбер/)
     ).toBeInTheDocument();
     expect(screen.getByText(/Цена: 100р./)).toBeInTheDocument();
-
-    await user.click(screen.getByRole('link'));
-    // expect(screen.getByText(/Заказать пиццу/)).toBeInTheDocument(); // не перешел на главную страницу
+    expect(productSingleComponent).toMatchSnapshot();
   });
 });
