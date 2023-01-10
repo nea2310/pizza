@@ -67,7 +67,8 @@ const Order: React.FC = () => {
         <tr key={product.id}>
           <td>{product.name}</td>
           <td>{`${product.cnt} шт.`}</td>
-          <td>{`${product.price} руб. за 1 штуку`}</td>
+          <td className='order__times-sign'>x</td>
+          <td>{`${product.price} руб.`}</td>
         </tr>
       );
     }

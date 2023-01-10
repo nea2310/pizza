@@ -21,7 +21,10 @@
     align-self: center;
     margin: auto;
     border: none;
+    height: 15px;
+    width: 15px;
     position: relative;
+    background-color: $colorLightGrey;
 
     &::after,
     &::before {

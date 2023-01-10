@@ -13,10 +13,9 @@ const Result: React.FC = () => {
     <div className="order">
       <h1>Заказ успешно отправлен</h1>
       <span>{orderModel.lastOrderCache.name}, спасибо за заказ</span>
-      <span>
-        <strong>Итого: {total}</strong>
-      </span>
-      <div></div>
+      <div>
+        <strong>Итого: {total}р.</strong>
+      </div>
       <Link to={routesMap.pizzaItems} className="result__button">
         На главную
       </Link>

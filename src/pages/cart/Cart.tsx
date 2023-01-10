@@ -101,7 +101,7 @@ const Cart: React.FC = () => {
           </thead>
           <tbody>{productsRows}</tbody>
         </table>
-        <span>Сумма заказа: {total} </span>
+        <span>Сумма заказа: {total}р.</span>
         <hr />
         <div className="cart__buttons">
           <button
