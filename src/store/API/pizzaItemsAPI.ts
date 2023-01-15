@@ -33,10 +33,8 @@ export const pizzaItemsAPI = {
       item.ingredients.forEach((item: string) => ingredientsRaw.push(item))
     );
     //список всех ингредиентов (убираем дубли)
-    const ingredientsAll =
-      ingredientsRaw.filter((item: string, pos: number) =>
-        ingredientsRaw.indexOf(item) === pos
-      );
+    const ingredientsAll = [...new Set([...ingredientsRaw])];
+
     return { pizzaItemsAll, pizzaItemsFiltered: pizzaItemsAll, ingredientsAll }
   },
 
